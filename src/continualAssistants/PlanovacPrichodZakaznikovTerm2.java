@@ -36,7 +36,7 @@ public class PlanovacPrichodZakaznikovTerm2 extends Scheduler {
 
     //meta! userInfo="Process messages defined in code", id="0"
     public void processDefault(MessageForm message) {
-        throw new UnsupportedOperationException("Vykonal sa default v PlanovacPrichodZakaznikovTerm1.");
+        throw new UnsupportedOperationException("Vykonal sa default v PlanovacPrichodZakaznikovTerm2.");
     }
 
     //meta! sender="AgentOkolia", id="135", type="Notice"
