@@ -9,7 +9,6 @@ import agents.*;
 public class PlanovacPrichodZakaznikovTerm1 extends Scheduler {
 
     private static final double HODINA = 3600D;
-    private static final int MINUTA = 60;
     private ExponentialRNG[] generatory = new ExponentialRNG[18];
     private static final double[] vstupy = {4 / HODINA, 8 / HODINA, 12 / HODINA, 15 / HODINA, 18 / HODINA, 14 / HODINA,
         13 / HODINA, 10 / HODINA, 4 / HODINA, 6 / HODINA, 10 / HODINA, 14 / HODINA, 16 / HODINA,
@@ -17,6 +16,10 @@ public class PlanovacPrichodZakaznikovTerm1 extends Scheduler {
 
     public PlanovacPrichodZakaznikovTerm1(int id, Simulation mySim, CommonAgent myAgent) {
         super(id, mySim, myAgent);
+        
+        for (int i = 0; i < 18; i++) {
+            generatory[i] = new ExponentialRNG(vstupy[i]);
+        }
     }
 
     @Override
@@ -28,7 +31,7 @@ public class PlanovacPrichodZakaznikovTerm1 extends Scheduler {
     //meta! sender="AgentOkolia", id="75", type="Start"
     public void processStart(MessageForm message) {
         message.setCode(Mc.novyZakaznik);
-        this.hold(dajTrvanie(), message);
+        this.hold(myAgent().dajTrvanie(generatory, vstupy), message);
     }
 
     //meta! userInfo="Process messages defined in code", id="0"
@@ -43,7 +46,7 @@ public class PlanovacPrichodZakaznikovTerm1 extends Scheduler {
             this.assistantFinished(message);
         } else {
             MessageForm kopia = message.createCopy();
-            this.hold(dajTrvanie(), kopia);
+            this.hold(myAgent().dajTrvanie(generatory, vstupy), kopia);
             this.assistantFinished(message);
         }
     }
@@ -78,35 +81,6 @@ public class PlanovacPrichodZakaznikovTerm1 extends Scheduler {
     @Override
     public AgentOkolia myAgent() {
         return (AgentOkolia) super.myAgent();
-    }
-
-    private double dajTrvanie() {
-        final double aktualnyCas = mySim().currentTime();
-        int aktualnyInterval = dajCisloIntervalu(aktualnyCas);
-        double aktualneTrvanie = generatory[aktualnyInterval].sample();
-        int nasledujuciInterval = dajCisloIntervalu(aktualnyCas + aktualneTrvanie);
-        if (nasledujuciInterval > aktualnyInterval
-                && vstupy[aktualnyInterval] < vstupy[nasledujuciInterval]) {
-
-            double zaciatokNasledujucehoIntervalu = nasledujuciInterval * 15 * MINUTA + HODINA;
-            double trvanieVNasledujucom = (aktualnyCas + aktualneTrvanie) % (zaciatokNasledujucehoIntervalu);
-            double tvanieVAktualnom = aktualneTrvanie - trvanieVNasledujucom;
-            double nasledujuceTrvanie = generatory[nasledujuciInterval].sample();
-            return tvanieVAktualnom + ((trvanieVNasledujucom + nasledujuceTrvanie) / 2);
-        } else {
-            return aktualneTrvanie;
-        }
-    }
-
-    private int dajCisloIntervalu(double aktualnyCas) {
-        int aktualnaHodina = (int) (aktualnyCas / HODINA);
-        if (aktualnaHodina < 1) {
-            return 0;
-        } else {
-            double zvysokSekund = aktualnyCas % HODINA;
-            int aktualnaMinuta = (int) (zvysokSekund / (15 * MINUTA));
-            return ((aktualnaHodina - 1) * 4) + aktualnaMinuta;
-        }
     }
 
 }
