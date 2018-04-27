@@ -4,19 +4,19 @@ import OSPABA.*;
 
 public class MyMessage extends MessageForm {
 
-    private double zaciatokCakania;
-    private double celkoveCakanie;
+    private Zakaznik zakaznik;
 
     public MyMessage(Simulation sim) {
         super(sim);
-        zaciatokCakania = 0.0;
-        celkoveCakanie = 0.0;
     }
 
     public MyMessage(MyMessage original) {
         super(original);
-        zaciatokCakania = ((MyMessage) original).zaciatokCakania;
-        celkoveCakanie = ((MyMessage) original).celkoveCakanie;
+    }
+
+    public MyMessage(Zakaznik zakaznik, MyMessage original) {
+        super(original);
+        this.zakaznik = original.getZakaznik();
     }
 
     @Override
@@ -31,20 +31,7 @@ public class MyMessage extends MessageForm {
         // Copy attributes
     }
 
-    public double getZaciatokCakania() {
-        return zaciatokCakania;
+    public Zakaznik getZakaznik() {
+        return zakaznik;
     }
-
-    public void setZaciatokCakania(double zaciatokCakania) {
-        this.zaciatokCakania = zaciatokCakania;
-    }
-
-    public double getCelkoveCakanie() {
-        return celkoveCakanie;
-    }
-
-    public void setCelkoveCakanie(double celkoveCakanie) {
-        this.celkoveCakanie = celkoveCakanie;
-    }
-
 }
