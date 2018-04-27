@@ -9,14 +9,14 @@ import agents.*;
 public class PlanovacPrichodZakaznikovTerm1 extends Scheduler {
 
     private static final double HODINA = 3600D;
-    private ExponentialRNG[] generatory = new ExponentialRNG[18];
+    private final ExponentialRNG[] generatory = new ExponentialRNG[18];
     private static final double[] vstupy = {4 / HODINA, 8 / HODINA, 12 / HODINA, 15 / HODINA, 18 / HODINA, 14 / HODINA,
         13 / HODINA, 10 / HODINA, 4 / HODINA, 6 / HODINA, 10 / HODINA, 14 / HODINA, 16 / HODINA,
         15 / HODINA, 7 / HODINA, 3 / HODINA, 4 / HODINA, 2 / HODINA};
 
     public PlanovacPrichodZakaznikovTerm1(int id, Simulation mySim, CommonAgent myAgent) {
         super(id, mySim, myAgent);
-        
+
         for (int i = 0; i < 18; i++) {
             generatory[i] = new ExponentialRNG(vstupy[i]);
         }
