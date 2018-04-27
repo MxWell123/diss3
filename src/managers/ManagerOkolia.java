@@ -6,96 +6,94 @@ import agents.*;
 import continualAssistants.*;
 
 //meta! id="2"
-public class ManagerOkolia extends Manager
-{
-	public ManagerOkolia(int id, Simulation mySim, Agent myAgent)
-	{
-		super(id, mySim, myAgent);
-		init();
-	}
+public class ManagerOkolia extends Manager {
 
-	@Override
-	public void prepareReplication()
-	{
-		super.prepareReplication();
-		// Setup component for the next replication
+    public ManagerOkolia(int id, Simulation mySim, Agent myAgent) {
+        super(id, mySim, myAgent);
+        init();
+    }
 
-		if (petriNet() != null)
-		{
-			petriNet().clear();
-		}
-	}
+    @Override
+    public void prepareReplication() {
+        super.prepareReplication();
+        // Setup component for the next replication
 
-	//meta! sender="AgentModelu", id="4", type="Notice"
-	public void processInitPrichodyZakaznikov(MessageForm message)
-	{
-	}
+        if (petriNet() != null) {
+            petriNet().clear();
+        }
+    }
 
-	//meta! sender="PlanovacPrichodZakaznikovOdchod", id="79", type="Finish"
-	public void processFinishPlanovacPrichodZakaznikovOdchod(MessageForm message)
-	{
-	}
+    //meta! sender="AgentModelu", id="4", type="Notice"
+    public void processInitPrichodyZakaznikov(MessageForm message) {
+        MessageForm kopia1 = message.createCopy();
+        kopia1.setAddressee(myAgent().findAssistant(Id.planovacPrichodZakaznikovTerm1));
+        startContinualAssistant(kopia1);
 
-	//meta! sender="PlanovacPrichodZakaznikovTerm2", id="77", type="Finish"
-	public void processFinishPlanovacPrichodZakaznikovTerm2(MessageForm message)
-	{
-	}
+        MessageForm kopia2 = message.createCopy();
+        kopia2.setAddressee(myAgent().findAssistant(Id.planovacPrichodZakaznikovTerm2));
+        startContinualAssistant(kopia2);
 
-	//meta! sender="PlanovacPrichodZakaznikovTerm1", id="75", type="Finish"
-	public void processFinishPlanovacPrichodZakaznikovTerm1(MessageForm message)
-	{
-	}
+        MessageForm kopia3 = message.createCopy();
+        kopia3.setAddressee(myAgent().findAssistant(Id.planovacPrichodZakaznikovOdchod));
+        startContinualAssistant(kopia3);
 
-	//meta! userInfo="Process messages defined in code", id="0"
-	public void processDefault(MessageForm message)
-	{
-		switch (message.code())
-		{
-		}
-	}
+    }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	public void init()
-	{
-	}
+    //meta! sender="PlanovacPrichodZakaznikovOdchod", id="79", type="Finish"
+    public void processFinishPlanovacPrichodZakaznikovOdchod(MessageForm message) {
+    }
 
-	@Override
-	public void processMessage(MessageForm message)
-	{
-		switch (message.code())
-		{
-		case Mc.finish:
-			switch (message.sender().id())
-			{
-			case Id.planovacPrichodZakaznikovTerm2:
-				processFinishPlanovacPrichodZakaznikovTerm2(message);
-			break;
+    //meta! sender="PlanovacPrichodZakaznikovTerm2", id="77", type="Finish"
+    public void processFinishPlanovacPrichodZakaznikovTerm2(MessageForm message) {
+    }
 
-			case Id.planovacPrichodZakaznikovOdchod:
-				processFinishPlanovacPrichodZakaznikovOdchod(message);
-			break;
+    //meta! sender="PlanovacPrichodZakaznikovTerm1", id="75", type="Finish"
+    public void processFinishPlanovacPrichodZakaznikovTerm1(MessageForm message) {
+    }
 
-			case Id.planovacPrichodZakaznikovTerm1:
-				processFinishPlanovacPrichodZakaznikovTerm1(message);
-			break;
-			}
-		break;
+    //meta! userInfo="Process messages defined in code", id="0"
+    public void processDefault(MessageForm message) {
+        switch (message.code()) {
+        }
+    }
 
-		case Mc.initPrichodyZakaznikov:
-			processInitPrichodyZakaznikov(message);
-		break;
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    public void init() {
+    }
 
-		default:
-			processDefault(message);
-		break;
-		}
-	}
-	//meta! tag="end"
+    @Override
+    public void processMessage(MessageForm message) {
+        switch (message.code()) {
+            case Mc.finish:
+                switch (message.sender().id()) {
+                    case Id.planovacPrichodZakaznikovTerm2:
+                        processFinishPlanovacPrichodZakaznikovTerm2(message);
+                        break;
 
-	@Override
-	public AgentOkolia myAgent()
-	{
-		return (AgentOkolia)super.myAgent();
-	}
+                    case Id.planovacPrichodZakaznikovOdchod:
+                        processFinishPlanovacPrichodZakaznikovOdchod(message);
+                        break;
+
+                    case Id.planovacPrichodZakaznikovTerm1:
+                        processFinishPlanovacPrichodZakaznikovTerm1(message);
+                        break;
+                }
+                break;
+
+            case Mc.initPrichodyZakaznikov:
+                processInitPrichodyZakaznikov(message);
+                break;
+
+            default:
+                processDefault(message);
+                break;
+        }
+    }
+    //meta! tag="end"
+
+    @Override
+    public AgentOkolia myAgent() {
+        return (AgentOkolia) super.myAgent();
+    }
 
 }
