@@ -28,7 +28,7 @@ public class AgentObsluhy extends Agent
 		new ProcesObsluhaZakaznika(Id.procesObsluhaZakaznika, mySim(), this);
 		addOwnMessage(Mc.nastupZakaznikovZObsluhy);
 		addOwnMessage(Mc.vystupZakaznikaObsluha);
-		addOwnMessage(Mc.prichodZakaznikovNaVratenieAuta);
+		addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
 	}
 	//meta! tag="end"
 }

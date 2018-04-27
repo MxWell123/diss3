@@ -42,7 +42,7 @@ public class ManagerObsluhy extends Manager
 	}
 
 	//meta! sender="AgentSpolocnosti", id="83", type="Notice"
-	public void processPrichodZakaznikovNaVratenieAuta(MessageForm message)
+	public void processPrichodZakaznikaNaVratenieAuta(MessageForm message)
 	{
 	}
 
@@ -64,8 +64,8 @@ public class ManagerObsluhy extends Manager
 	{
 		switch (message.code())
 		{
-		case Mc.prichodZakaznikovNaVratenieAuta:
-			processPrichodZakaznikovNaVratenieAuta(message);
+		case Mc.prichodZakaznikaNaVratenieAuta:
+			processPrichodZakaznikaNaVratenieAuta(message);
 		break;
 
 		case Mc.vystupZakaznikaObsluha:

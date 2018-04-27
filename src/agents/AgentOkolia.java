@@ -53,15 +53,16 @@ public class AgentOkolia extends Agent {
         }
     }
 
-    //meta! userInfo="Generated code: do not modify", tag="begin"
-    private void init() {
-        new ManagerOkolia(Id.managerOkolia, mySim(), this);
-        new PlanovacPrichodZakaznikovTerm2(Id.planovacPrichodZakaznikovTerm2, mySim(), this);
-        new PlanovacPrichodZakaznikovOdchod(Id.planovacPrichodZakaznikovOdchod, mySim(), this);
-        new PlanovacPrichodZakaznikovTerm1(Id.planovacPrichodZakaznikovTerm1, mySim(), this);
-        addOwnMessage(Mc.koniec);
-        addOwnMessage(Mc.initPrichodyZakaznikov);
-        addOwnMessage(Mc.novyZakaznik);
-    }
-    //meta! tag="end"
+	//meta! userInfo="Generated code: do not modify", tag="begin"
+	private void init()
+	{
+		new ManagerOkolia(Id.managerOkolia, mySim(), this);
+		new PlanovacPrichodZakaznikovTerm2(Id.planovacPrichodZakaznikovTerm2, mySim(), this);
+		new PlanovacPrichodZakaznikovOdchod(Id.planovacPrichodZakaznikovOdchod, mySim(), this);
+		new PlanovacPrichodZakaznikovTerm1(Id.planovacPrichodZakaznikovTerm1, mySim(), this);
+		addOwnMessage(Mc.koniec);
+		addOwnMessage(Mc.initPrichodyZakaznikov);
+		addOwnMessage(Mc.novyZakaznik);
+	}
+	//meta! tag="end"
 }
