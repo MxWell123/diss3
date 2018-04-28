@@ -4,9 +4,18 @@ import OSPABA.*;
 import simulation.*;
 import agents.*;
 import OSPABA.Process;
+import OSPRNG.*;
+import java.util.Random;
 
 //meta! id="86"
 public class ProcesObsluhaZakaznika extends Process {
+
+    TriangularRNG trian = new TriangularRNG(1.6, 2.65, 5.1);
+    UniformContinuousRNG rovn = new UniformContinuousRNG(1.6, 2.1);
+    ExponentialRNG exp = new ExponentialRNG(1.97);
+    UniformContinuousRNG rovnOut = new UniformContinuousRNG(1.3, 2.5);
+    Random nasada = new Random();
+    Random rnd = new Random(nasada.nextLong());
 
     public ProcesObsluhaZakaznika(int id, Simulation mySim, CommonAgent myAgent) {
         super(id, mySim, myAgent);
@@ -20,8 +29,25 @@ public class ProcesObsluhaZakaznika extends Process {
 
     //meta! sender="AgentObsluhy", id="87", type="Start"
     public void processStart(MessageForm message) {
-        message.setCode(Mc.koniecObsluhy);
-        hold(_id, message);
+        MyMessage sprava = (MyMessage) message;
+        sprava.setCode(Mc.koniecObsluhy);
+        double pom = 0.0;
+        if (sprava.getZakaznik().isTyp() == false) {
+            if (rnd.nextDouble() < 0.45) {
+                pom = trian.sample();
+            } else {
+                pom = rovn.sample();
+            }
+            hold(pom, message);
+        } else {
+            if (rnd.nextDouble() < 0.33) {
+                pom = exp.sample();
+            } else {
+                pom = rovnOut.sample();
+            }
+            hold(pom, message);
+        }
+
     }
 
     //meta! userInfo="Process messages defined in code", id="0"
