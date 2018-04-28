@@ -72,7 +72,7 @@ public class ManagerSpolocnosti extends Manager
 	}
 
 	//meta! sender="AgentMinibus", id="50", type="Notice"
-	public void processVystupZakaznikaObsluha(MessageForm message)
+	public void processVystupZakaznikaObsluhaAgentMinibus(MessageForm message)
 	{
 	}
 
@@ -84,6 +84,7 @@ public class ManagerSpolocnosti extends Manager
 	//meta! sender="AgentModelu", id="44", type="Notice"
 	public void processInitPrichodMinibusov(MessageForm message)
 	{
+            
 	}
 
 	//meta! userInfo="Process messages defined in code", id="0"
@@ -92,6 +93,11 @@ public class ManagerSpolocnosti extends Manager
 		switch (message.code())
 		{
 		}
+	}
+
+	//meta! sender="AgentObsluhy", id="114", type="Notice"
+	public void processVystupZakaznikaObsluhaAgentObsluhy(MessageForm message)
+	{
 	}
 
 	//meta! userInfo="Generated code: do not modify", tag="begin"
@@ -104,48 +110,6 @@ public class ManagerSpolocnosti extends Manager
 	{
 		switch (message.code())
 		{
-		case Mc.nastupZakaznikovZObsluhy:
-			switch (message.sender().id())
-			{
-			case Id.agentMinibus:
-				processNastupZakaznikovZObsluhyAgentMinibus(message);
-			break;
-
-			case Id.agentObsluhy:
-				processNastupZakaznikovZObsluhyAgentObsluhy(message);
-			break;
-			}
-		break;
-
-		case Mc.vystupZakaznikaObsluha:
-			processVystupZakaznikaObsluha(message);
-		break;
-
-		case Mc.prichodZakaznikaTerm2:
-			processPrichodZakaznikaTerm2(message);
-		break;
-
-		case Mc.initPrichodMinibusov:
-			processInitPrichodMinibusov(message);
-		break;
-
-		case Mc.vystupZakaznikaTerm3:
-			processVystupZakaznikaTerm3(message);
-		break;
-
-		case Mc.nastupZakaznikovTerm2:
-			switch (message.sender().id())
-			{
-			case Id.agentPrichodov:
-				processNastupZakaznikovTerm2AgentPrichodov(message);
-			break;
-
-			case Id.agentMinibus:
-				processNastupZakaznikovTerm2AgentMinibus(message);
-			break;
-			}
-		break;
-
 		case Mc.nastupZakaznikovTerm1:
 			switch (message.sender().id())
 			{
@@ -159,12 +123,63 @@ public class ManagerSpolocnosti extends Manager
 			}
 		break;
 
-		case Mc.prichodZakaznikaTerm1:
-			processPrichodZakaznikaTerm1(message);
-		break;
-
 		case Mc.prichodZakaznikaNaVratenieAuta:
 			processPrichodZakaznikaNaVratenieAuta(message);
+		break;
+
+		case Mc.nastupZakaznikovTerm2:
+			switch (message.sender().id())
+			{
+			case Id.agentMinibus:
+				processNastupZakaznikovTerm2AgentMinibus(message);
+			break;
+
+			case Id.agentPrichodov:
+				processNastupZakaznikovTerm2AgentPrichodov(message);
+			break;
+			}
+		break;
+
+		case Mc.initPrichodMinibusov:
+			processInitPrichodMinibusov(message);
+		break;
+
+		case Mc.prichodZakaznikaTerm2:
+			processPrichodZakaznikaTerm2(message);
+		break;
+
+		case Mc.nastupZakaznikovZObsluhy:
+			switch (message.sender().id())
+			{
+			case Id.agentObsluhy:
+				processNastupZakaznikovZObsluhyAgentObsluhy(message);
+			break;
+
+			case Id.agentMinibus:
+				processNastupZakaznikovZObsluhyAgentMinibus(message);
+			break;
+			}
+		break;
+
+		case Mc.vystupZakaznikaTerm3:
+			processVystupZakaznikaTerm3(message);
+		break;
+
+		case Mc.vystupZakaznikaObsluha:
+			switch (message.sender().id())
+			{
+			case Id.agentObsluhy:
+				processVystupZakaznikaObsluhaAgentObsluhy(message);
+			break;
+
+			case Id.agentMinibus:
+				processVystupZakaznikaObsluhaAgentMinibus(message);
+			break;
+			}
+		break;
+
+		case Mc.prichodZakaznikaTerm1:
+			processPrichodZakaznikaTerm1(message);
 		break;
 
 		default:

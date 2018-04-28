@@ -27,13 +27,13 @@ public class AgentSpolocnosti extends Agent
 		new ManagerSpolocnosti(Id.managerSpolocnosti, mySim(), this);
 		addOwnMessage(Mc.nastupZakaznikovZObsluhy);
 		addOwnMessage(Mc.vystupZakaznikaTerm3);
-		addOwnMessage(Mc.prichodZakaznikaTerm2);
 		addOwnMessage(Mc.nastupZakaznikovTerm2);
+		addOwnMessage(Mc.prichodZakaznikaTerm2);
 		addOwnMessage(Mc.nastupZakaznikovTerm1);
 		addOwnMessage(Mc.prichodZakaznikaTerm1);
 		addOwnMessage(Mc.vystupZakaznikaObsluha);
-		addOwnMessage(Mc.initPrichodMinibusov);
 		addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
+		addOwnMessage(Mc.initPrichodMinibusov);
 	}
 	//meta! tag="end"
 }

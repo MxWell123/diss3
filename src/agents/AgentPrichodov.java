@@ -27,8 +27,8 @@ public class AgentPrichodov extends Agent
 		new ManagerPrichodov(Id.managerPrichodov, mySim(), this);
 		addOwnMessage(Mc.prichodZakaznikaTerm2);
 		addOwnMessage(Mc.nastupZakaznikovTerm2);
-		addOwnMessage(Mc.prichodZakaznikaTerm1);
 		addOwnMessage(Mc.nastupZakaznikovTerm1);
+		addOwnMessage(Mc.prichodZakaznikaTerm1);
 	}
 	//meta! tag="end"
 }

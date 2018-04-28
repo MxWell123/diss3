@@ -36,7 +36,7 @@ public class ManagerObsluhy extends Manager
 	{
 	}
 
-	//meta! sender="AgentSpolocnosti", id="114", type="Notice"
+	//meta! userInfo="Removed from model"
 	public void processVystupZakaznikaObsluha(MessageForm message)
 	{
 	}
@@ -68,16 +68,12 @@ public class ManagerObsluhy extends Manager
 			processPrichodZakaznikaNaVratenieAuta(message);
 		break;
 
-		case Mc.vystupZakaznikaObsluha:
-			processVystupZakaznikaObsluha(message);
+		case Mc.finish:
+			processFinish(message);
 		break;
 
 		case Mc.nastupZakaznikovZObsluhy:
 			processNastupZakaznikovZObsluhy(message);
-		break;
-
-		case Mc.finish:
-			processFinish(message);
 		break;
 
 		default:

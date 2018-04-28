@@ -59,6 +59,7 @@ public class ManagerMinibus extends Manager
 	//meta! sender="AgentSpolocnosti", id="56", type="Notice"
 	public void processInitPrichodMinibusov(MessageForm message)
 	{
+           
 	}
 
 	//meta! userInfo="Process messages defined in code", id="0"
@@ -67,6 +68,11 @@ public class ManagerMinibus extends Manager
 		switch (message.code())
 		{
 		}
+	}
+
+	//meta! sender="PlanovacMinibusov", id="151", type="Finish"
+	public void processFinishPlanovacMinibusov(MessageForm message)
+	{
 	}
 
 	//meta! userInfo="Generated code: do not modify", tag="begin"
@@ -86,18 +92,26 @@ public class ManagerMinibus extends Manager
 		case Mc.finish:
 			switch (message.sender().id())
 			{
-			case Id.procesVystupZakaznikaZMinibusu:
-				processFinishProcesVystupZakaznikaZMinibusu(message);
-			break;
-
 			case Id.procesPrechodMedziTerminalmi:
 				processFinishProcesPrechodMedziTerminalmi(message);
+			break;
+
+			case Id.planovacMinibusov:
+				processFinishPlanovacMinibusov(message);
 			break;
 
 			case Id.procesNastupZakaznikaDoMinibusu:
 				processFinishProcesNastupZakaznikaDoMinibusu(message);
 			break;
+
+			case Id.procesVystupZakaznikaZMinibusu:
+				processFinishProcesVystupZakaznikaZMinibusu(message);
+			break;
 			}
+		break;
+
+		case Mc.nastupZakaznikovTerm2:
+			processNastupZakaznikovTerm2(message);
 		break;
 
 		case Mc.initPrichodMinibusov:
@@ -106,10 +120,6 @@ public class ManagerMinibus extends Manager
 
 		case Mc.nastupZakaznikovZObsluhy:
 			processNastupZakaznikovZObsluhy(message);
-		break;
-
-		case Mc.nastupZakaznikovTerm2:
-			processNastupZakaznikovTerm2(message);
 		break;
 
 		default:
