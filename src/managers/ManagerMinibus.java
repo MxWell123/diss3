@@ -85,19 +85,23 @@ public class ManagerMinibus extends Manager
 	{
 		switch (message.code())
 		{
-		case Mc.nastupZakaznikovTerm1:
-			processNastupZakaznikovTerm1(message);
+		case Mc.nastupZakaznikovTerm2:
+			processNastupZakaznikovTerm2(message);
+		break;
+
+		case Mc.nastupZakaznikovZObsluhy:
+			processNastupZakaznikovZObsluhy(message);
 		break;
 
 		case Mc.finish:
 			switch (message.sender().id())
 			{
-			case Id.procesPrechodMedziTerminalmi:
-				processFinishProcesPrechodMedziTerminalmi(message);
-			break;
-
 			case Id.planovacMinibusov:
 				processFinishPlanovacMinibusov(message);
+			break;
+
+			case Id.procesPrechodMedziTerminalmi:
+				processFinishProcesPrechodMedziTerminalmi(message);
 			break;
 
 			case Id.procesNastupZakaznikaDoMinibusu:
@@ -110,16 +114,12 @@ public class ManagerMinibus extends Manager
 			}
 		break;
 
-		case Mc.nastupZakaznikovTerm2:
-			processNastupZakaznikovTerm2(message);
+		case Mc.nastupZakaznikovTerm1:
+			processNastupZakaznikovTerm1(message);
 		break;
 
 		case Mc.initPrichodMinibusov:
 			processInitPrichodMinibusov(message);
-		break;
-
-		case Mc.nastupZakaznikovZObsluhy:
-			processNastupZakaznikovZObsluhy(message);
 		break;
 
 		default:

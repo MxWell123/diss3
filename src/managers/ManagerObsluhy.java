@@ -26,7 +26,7 @@ public class ManagerObsluhy extends Manager
 		}
 	}
 
-	//meta! sender="AgentSpolocnosti", id="113", type="Request"
+	//meta! sender="AgentSpolocnosti", id="113", type="Notice"
 	public void processNastupZakaznikovZObsluhy(MessageForm message)
 	{
 	}
@@ -54,6 +54,11 @@ public class ManagerObsluhy extends Manager
 		}
 	}
 
+	//meta! sender="AgentSpolocnosti", id="114", type="Notice"
+	public void processVystupZakaznikaDoObsluhy(MessageForm message)
+	{
+	}
+
 	//meta! userInfo="Generated code: do not modify", tag="begin"
 	public void init()
 	{
@@ -70,6 +75,10 @@ public class ManagerObsluhy extends Manager
 
 		case Mc.finish:
 			processFinish(message);
+		break;
+
+		case Mc.vystupZakaznikaDoObsluhy:
+			processVystupZakaznikaDoObsluhy(message);
 		break;
 
 		case Mc.nastupZakaznikovZObsluhy:

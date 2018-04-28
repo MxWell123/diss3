@@ -1,39 +1,49 @@
 package agents;
 
 import OSPABA.*;
+import OSPDataStruct.SimQueue;
 import simulation.*;
 import managers.*;
 import continualAssistants.*;
 
 //meta! id="38"
-public class AgentSpolocnosti extends Agent
-{
-	public AgentSpolocnosti(int id, Simulation mySim, Agent parent)
-	{
-		super(id, mySim, parent);
-		init();
-	}
+public class AgentSpolocnosti extends Agent {
 
-	@Override
-	public void prepareReplication()
-	{
-		super.prepareReplication();
-		// Setup component for the next replication
-	}
+    private SimQueue<Zakaznik> frontZakaznikovNaMinibus;
+
+    public AgentSpolocnosti(int id, Simulation mySim, Agent parent) {
+        super(id, mySim, parent);
+        frontZakaznikovNaMinibus = new SimQueue<>();
+        init();
+    }
+
+    public void pridajZakaznikDoRaduNaMinibus(Zakaznik zak) {
+        frontZakaznikovNaMinibus.add(zak);
+    }
+
+    public Zakaznik vyberZakaznikaZRaduNaMinibus() {
+        return frontZakaznikovNaMinibus.poll();
+    }
+
+    @Override
+    public void prepareReplication() {
+        super.prepareReplication();
+        // Setup component for the next replication
+    }
 
 	//meta! userInfo="Generated code: do not modify", tag="begin"
 	private void init()
 	{
 		new ManagerSpolocnosti(Id.managerSpolocnosti, mySim(), this);
+		addOwnMessage(Mc.vystupZakaznikaDoObsluhy);
 		addOwnMessage(Mc.nastupZakaznikovZObsluhy);
 		addOwnMessage(Mc.vystupZakaznikaTerm3);
 		addOwnMessage(Mc.nastupZakaznikovTerm2);
 		addOwnMessage(Mc.prichodZakaznikaTerm2);
 		addOwnMessage(Mc.nastupZakaznikovTerm1);
 		addOwnMessage(Mc.prichodZakaznikaTerm1);
-		addOwnMessage(Mc.vystupZakaznikaObsluha);
-		addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
 		addOwnMessage(Mc.initPrichodMinibusov);
+		addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
 	}
 	//meta! tag="end"
 }

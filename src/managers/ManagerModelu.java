@@ -49,10 +49,6 @@ public class ManagerModelu extends Manager {
 	//meta! userInfo="Generated code: do not modify", tag="begin"
 	public void init()
 	{
-            MessageForm message = new MyMessage(_mySim);
-            message.setAddressee(Id.agentSpolocnosti);
-            message.setCode(Mc.initPrichodMinibusov);
-            notice(message);
 	}
 
 	@Override
@@ -60,16 +56,16 @@ public class ManagerModelu extends Manager {
 	{
 		switch (message.code())
 		{
-		case Mc.prichodZakaznikaTerm1:
-			processPrichodZakaznikaTerm1(message);
+		case Mc.prichodZakaznikaTerm2:
+			processPrichodZakaznikaTerm2(message);
 		break;
 
 		case Mc.prichodZakaznikaNaVratenieAuta:
 			processPrichodZakaznikaNaVratenieAuta(message);
 		break;
 
-		case Mc.prichodZakaznikaTerm2:
-			processPrichodZakaznikaTerm2(message);
+		case Mc.prichodZakaznikaTerm1:
+			processPrichodZakaznikaTerm1(message);
 		break;
 
 		default:

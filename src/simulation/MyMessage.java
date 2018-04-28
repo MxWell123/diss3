@@ -34,4 +34,9 @@ public class MyMessage extends MessageForm {
     public Zakaznik getZakaznik() {
         return zakaznik;
     }
+
+    public void setZakaznik(Zakaznik zakaznik) {
+        this.zakaznik = zakaznik;
+    }
+
 }
