@@ -38,12 +38,12 @@ public class AgentSpolocnosti extends Agent {
 		addOwnMessage(Mc.vystupZakaznikaDoObsluhy);
 		addOwnMessage(Mc.nastupZakaznikovZObsluhy);
 		addOwnMessage(Mc.vystupZakaznikaTerm3);
-		addOwnMessage(Mc.nastupZakaznikovTerm2);
 		addOwnMessage(Mc.prichodZakaznikaTerm2);
-		addOwnMessage(Mc.nastupZakaznikovTerm1);
+		addOwnMessage(Mc.nastupZakaznikovTerm2);
 		addOwnMessage(Mc.prichodZakaznikaTerm1);
-		addOwnMessage(Mc.initPrichodMinibusov);
+		addOwnMessage(Mc.nastupZakaznikovTerm1);
 		addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
+		addOwnMessage(Mc.initPrichodMinibusov);
 	}
 	//meta! tag="end"
 }

@@ -14,11 +14,29 @@ public class Zakaznik {
     private double zaciatokCakania;
     private double celkoveCakanie;
     private int pocetSpolucestujucich;
+    private boolean typ; //false = z term1/term2 ...... true = vracia auto
 
-    public Zakaznik(int pocetSpolucestujucich) {
+    public Zakaznik(int pocetSpolucestujucich, boolean typ) {
         this.zaciatokCakania = 0;
         this.celkoveCakanie = 0;
         this.pocetSpolucestujucich = pocetSpolucestujucich;
+        this.typ = typ;
+    }
+
+    public int getPocetSpolucestujucich() {
+        return pocetSpolucestujucich;
+    }
+
+    public void setPocetSpolucestujucich(int pocetSpolucestujucich) {
+        this.pocetSpolucestujucich = pocetSpolucestujucich;
+    }
+
+    public boolean isTyp() {
+        return typ;
+    }
+
+    public void setTyp(boolean typ) {
+        this.typ = typ;
     }
 
     public double getZaciatokCakania() {

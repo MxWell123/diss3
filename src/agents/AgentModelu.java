@@ -21,12 +21,13 @@ public class AgentModelu extends Agent {
         // Setup component for the next replication
     }
 
-    //meta! userInfo="Generated code: do not modify", tag="begin"
-    private void init() {
-        new ManagerModelu(Id.managerModelu, mySim(), this);
-        addOwnMessage(Mc.prichodZakaznikaTerm2);
-        addOwnMessage(Mc.prichodZakaznikaTerm1);
-        addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
-    }
-    //meta! tag="end"
+	//meta! userInfo="Generated code: do not modify", tag="begin"
+	private void init()
+	{
+		new ManagerModelu(Id.managerModelu, mySim(), this);
+		addOwnMessage(Mc.prichodZakaznikaTerm2);
+		addOwnMessage(Mc.prichodZakaznikaTerm1);
+		addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
+	}
+	//meta! tag="end"
 }
