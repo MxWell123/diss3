@@ -6,54 +6,61 @@ import agents.*;
 import OSPABA.Process;
 
 //meta! id="86"
-public class ProcesObsluhaZakaznika extends Process
-{
-	public ProcesObsluhaZakaznika(int id, Simulation mySim, CommonAgent myAgent)
-	{
-		super(id, mySim, myAgent);
-	}
+public class ProcesObsluhaZakaznika extends Process {
 
-	@Override
-	public void prepareReplication()
-	{
-		super.prepareReplication();
-		// Setup component for the next replication
-	}
+    public ProcesObsluhaZakaznika(int id, Simulation mySim, CommonAgent myAgent) {
+        super(id, mySim, myAgent);
+    }
 
-	//meta! sender="AgentObsluhy", id="87", type="Start"
-	public void processStart(MessageForm message)
-	{
-	}
+    @Override
+    public void prepareReplication() {
+        super.prepareReplication();
+        // Setup component for the next replication
+    }
 
-	//meta! userInfo="Process messages defined in code", id="0"
-	public void processDefault(MessageForm message)
-	{
-		switch (message.code())
-		{
-		}
-	}
+    //meta! sender="AgentObsluhy", id="87", type="Start"
+    public void processStart(MessageForm message) {
+        message.setCode(Mc.koniecObsluhy);
+        hold(_id, message);
+    }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	@Override
-	public void processMessage(MessageForm message)
-	{
-		switch (message.code())
-		{
-		case Mc.start:
-			processStart(message);
-		break;
+    //meta! userInfo="Process messages defined in code", id="0"
+    public void processDefault(MessageForm message) {
+        switch (message.code()) {
+        }
+    }
 
-		default:
-			processDefault(message);
-		break;
-		}
-	}
-	//meta! tag="end"
+    //meta! userInfo="Removed from model"
+    public void processObsluhaZakaznika(MessageForm message) {
+    }
 
-	@Override
-	public AgentObsluhy myAgent()
-	{
-		return (AgentObsluhy)super.myAgent();
-	}
+    //meta! sender="AgentObsluhy", id="169", type="Notice"
+    public void processKoniecObsluhy(MessageForm message) {
+        assistantFinished(message);
+    }
+
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    @Override
+    public void processMessage(MessageForm message) {
+        switch (message.code()) {
+            case Mc.koniecObsluhy:
+                processKoniecObsluhy(message);
+                break;
+
+            case Mc.start:
+                processStart(message);
+                break;
+
+            default:
+                processDefault(message);
+                break;
+        }
+    }
+    //meta! tag="end"
+
+    @Override
+    public AgentObsluhy myAgent() {
+        return (AgentObsluhy) super.myAgent();
+    }
 
 }
