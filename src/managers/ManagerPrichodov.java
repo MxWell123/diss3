@@ -6,91 +6,91 @@ import agents.*;
 import continualAssistants.*;
 
 //meta! id="59"
-public class ManagerPrichodov extends Manager
-{
-	public ManagerPrichodov(int id, Simulation mySim, Agent myAgent)
-	{
-		super(id, mySim, myAgent);
-		init();
-	}
+public class ManagerPrichodov extends Manager {
 
-	@Override
-	public void prepareReplication()
-	{
-		super.prepareReplication();
-		// Setup component for the next replication
+    public ManagerPrichodov(int id, Simulation mySim, Agent myAgent) {
+        super(id, mySim, myAgent);
+        init();
+    }
 
-		if (petriNet() != null)
-		{
-			petriNet().clear();
-		}
-	}
+    @Override
+    public void prepareReplication() {
+        super.prepareReplication();
+        // Setup component for the next replication
 
-	//meta! sender="AgentSpolocnosti", id="62", type="Request"
-	public void processNastupZakaznikovTerm2(MessageForm message)
-	{
-	}
+        if (petriNet() != null) {
+            petriNet().clear();
+        }
+    }
 
-	//meta! sender="AgentSpolocnosti", id="68", type="Notice"
-	public void processPrichodZakaznikaTerm2(MessageForm message)
-	{
-	}
+    //meta! sender="AgentSpolocnosti", id="62", type="Request"
+    public void processNastupZakaznikovTerm2(MessageForm message) {
+        MyMessage sprava = (MyMessage) message.createCopy();
+        sprava.setZakaznik(myAgent().vyberZakaznikaZRaduTerm2());
+        sprava.setAddressee(Id.agentSpolocnosti);
+        response(sprava);
+    }
 
-	//meta! sender="AgentSpolocnosti", id="61", type="Request"
-	public void processNastupZakaznikovTerm1(MessageForm message)
-	{
-	}
+    //meta! sender="AgentSpolocnosti", id="68", type="Notice"
+    public void processPrichodZakaznikaTerm2(MessageForm message) {
+        MyMessage sprava = (MyMessage) message.createCopy();
+        myAgent().pridajZakaznikDoRaduTerm2(sprava.getZakaznik());
+    }
 
-	//meta! sender="AgentSpolocnosti", id="67", type="Notice"
-	public void processPrichodZakaznikaTerm1(MessageForm message)
-	{
-	}
+    //meta! sender="AgentSpolocnosti", id="61", type="Request"
+    public void processNastupZakaznikovTerm1(MessageForm message) {
+        MyMessage sprava = (MyMessage) message.createCopy();
+        sprava.setZakaznik(myAgent().vyberZakaznikaZRaduTerm1());
+        sprava.setAddressee(Id.agentSpolocnosti);
+        response(sprava);
+    }
 
-	//meta! userInfo="Process messages defined in code", id="0"
-	public void processDefault(MessageForm message)
-	{
-		switch (message.code())
-		{
-		}
-	}
+    //meta! sender="AgentSpolocnosti", id="67", type="Notice"
+    public void processPrichodZakaznikaTerm1(MessageForm message) {
+        MyMessage sprava = (MyMessage) message.createCopy();
+        myAgent().pridajZakaznikDoRaduTerm1(sprava.getZakaznik());
+    }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	public void init()
-	{
-	}
+    //meta! userInfo="Process messages defined in code", id="0"
+    public void processDefault(MessageForm message) {
+        switch (message.code()) {
+        }
+    }
 
-	@Override
-	public void processMessage(MessageForm message)
-	{
-		switch (message.code())
-		{
-		case Mc.nastupZakaznikovTerm1:
-			processNastupZakaznikovTerm1(message);
-		break;
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    public void init() {
+        throw new UnsupportedOperationException("Vykonal sa default v ManagerPrichodov.");
+    }
 
-		case Mc.prichodZakaznikaTerm2:
-			processPrichodZakaznikaTerm2(message);
-		break;
+    @Override
+    public void processMessage(MessageForm message) {
+        switch (message.code()) {
+            case Mc.nastupZakaznikovTerm1:
+                processNastupZakaznikovTerm1(message);
+                break;
 
-		case Mc.prichodZakaznikaTerm1:
-			processPrichodZakaznikaTerm1(message);
-		break;
+            case Mc.prichodZakaznikaTerm2:
+                processPrichodZakaznikaTerm2(message);
+                break;
 
-		case Mc.nastupZakaznikovTerm2:
-			processNastupZakaznikovTerm2(message);
-		break;
+            case Mc.prichodZakaznikaTerm1:
+                processPrichodZakaznikaTerm1(message);
+                break;
 
-		default:
-			processDefault(message);
-		break;
-		}
-	}
-	//meta! tag="end"
+            case Mc.nastupZakaznikovTerm2:
+                processNastupZakaznikovTerm2(message);
+                break;
 
-	@Override
-	public AgentPrichodov myAgent()
-	{
-		return (AgentPrichodov)super.myAgent();
-	}
+            default:
+                processDefault(message);
+                break;
+        }
+    }
+    //meta! tag="end"
+
+    @Override
+    public AgentPrichodov myAgent() {
+        return (AgentPrichodov) super.myAgent();
+    }
 
 }
