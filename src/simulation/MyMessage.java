@@ -14,9 +14,9 @@ public class MyMessage extends MessageForm {
         super(original);
     }
 
-    public MyMessage(Zakaznik zakaznik, MyMessage original) {
-        super(original);
-        this.zakaznik = original.getZakaznik();
+    public MyMessage(Zakaznik zakaznik, Simulation sim) {
+        super(sim);
+        this.zakaznik = zakaznik;
     }
 
     @Override
