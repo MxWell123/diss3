@@ -24,8 +24,8 @@ public class ProcesPrechodMedziTerminalmi extends Process {
         // Setup component for the next replication
     }
 
-    //meta! sender="AgentMinibus", id="104", type="Start"
-    public void processStart(MessageForm message) {
+	//meta! sender="AgentMinibus", id="104", type="Start"
+	public void processStart(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         if (sprava.getMinibus().getPolohaMinibusu() == 0) {
             sprava.getMinibus().setPolohaMinibusu(1);
@@ -52,34 +52,36 @@ public class ProcesPrechodMedziTerminalmi extends Process {
         }
     }
 
-    //meta! userInfo="Process messages defined in code", id="0"
-    public void processDefault(MessageForm message) {
+	//meta! userInfo="Process messages defined in code", id="0"
+	public void processDefault(MessageForm message) {
         throw new UnsupportedOperationException("Vykonal sa default v ProcesPrechodMedziTerminalmi.");
     }
 
-    //meta! sender="AgentMinibus", id="178", type="Notice"
-    public void processKoniecPrechodu(MessageForm message) {
+	//meta! sender="AgentMinibus", id="178", type="Notice"
+	public void processKoniecPrechodu(MessageForm message) {
         assistantFinished(message);
     }
 
-    //meta! userInfo="Generated code: do not modify", tag="begin"
-    @Override
-    public void processMessage(MessageForm message) {
-        switch (message.code()) {
-            case Mc.start:
-                processStart(message);
-                break;
+	//meta! userInfo="Generated code: do not modify", tag="begin"
+	@Override
+	public void processMessage(MessageForm message)
+	{
+		switch (message.code())
+		{
+		case Mc.koniecPrechodu:
+			processKoniecPrechodu(message);
+		break;
 
-            case Mc.koniecPrechodu:
-                processKoniecPrechodu(message);
-                break;
+		case Mc.start:
+			processStart(message);
+		break;
 
-            default:
-                processDefault(message);
-                break;
-        }
-    }
-    //meta! tag="end"
+		default:
+			processDefault(message);
+		break;
+		}
+	}
+	//meta! tag="end"
 
     @Override
     public AgentMinibus myAgent() {

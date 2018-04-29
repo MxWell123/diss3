@@ -20,6 +20,7 @@ public class Mc extends IdList
 	public static final int koniecVystupu = 1051;
 	public static final int vystupZakaznikaDoObsluhy = 1019;
 	public static final int koniecPrechodu = 1052;
+	public static final int odosliZakaznikaDoRadu = 1053;
 	public static final int nastupZakaznikovTerm1 = 1021;
 	//meta! tag="end"
 

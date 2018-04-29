@@ -48,7 +48,7 @@ public class MySimulation extends Simulation
 		setAgentObsluhy(new AgentObsluhy(Id.agentObsluhy, this, agentSpolocnosti()));
 		setAgentMinibus(new AgentMinibus(Id.agentMinibus, this, agentSpolocnosti()));
 		setAgentPrichodov(new AgentPrichodov(Id.agentPrichodov, this, agentSpolocnosti()));
-		setAgentOdchodu(new AgentOdchodu(Id.agentOdchodu, this, agentSpolocnosti()));                
+		setAgentOdchodu(new AgentOdchodu(Id.agentOdchodu, this, agentSpolocnosti()));
 	}
 
 	private AgentModelu _agentModelu;

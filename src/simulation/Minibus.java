@@ -40,14 +40,14 @@ public class Minibus {
     }
 
     public void pridajZakaznikaDoMinibusu(Zakaznik zak) {
-        if (zakazniciVMinibuse.size() < pocetMiest) {
+        if (pocetObsadenychMiest < pocetMiest) {
             zakazniciVMinibuse.add(zak);
             pocetObsadenychMiest += zak.getPocetSpolucestujucich();
         }
     }
 
     public Zakaznik vyberZakaznikaZMinibusu() {
-        if (zakazniciVMinibuse.size() > 0) {
+        if (pocetObsadenychMiest > 0) {
             Zakaznik zak = zakazniciVMinibuse.poll();
             pocetObsadenychMiest -= zak.getPocetSpolucestujucich();
             return zak;
