@@ -10,12 +10,16 @@ import continualAssistants.*;
 public class AgentObsluhy extends Agent {
 
     private SimQueue<Zakaznik> frontZakaznikovPredObsluhou;
-    private boolean isWorking;
+    private int pocetVytazenychPracovnikov;
+    private int pocetPracovnikov;
 
     public AgentObsluhy(int id, Simulation mySim, Agent parent) {
         super(id, mySim, parent);
-
         init();
+    }
+
+    public void setPocetPracovnikov(int pocetPracovnikov) {
+        this.pocetPracovnikov = pocetPracovnikov;
     }
 
     public void pridajZakaznikDoRadu(Zakaznik zak) {
@@ -33,28 +37,39 @@ public class AgentObsluhy extends Agent {
     @Override
     public void prepareReplication() {
         super.prepareReplication();
-        isWorking = false;
+        pocetVytazenychPracovnikov = 0;
         frontZakaznikovPredObsluhou = new SimQueue<>();
         // Setup component for the next replication
     }
 
-    public boolean isWorking() {
-        return isWorking;
+    public void pripocitajVytazenychPrac() {
+        pocetVytazenychPracovnikov++;
     }
 
-    public void setWorking(boolean isWorking) {
-        this.isWorking = isWorking;
+    public void odpocitajVytazenychPrac() {
+        pocetVytazenychPracovnikov--;
     }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	private void init()
-	{
-		new ManagerObsluhy(Id.managerObsluhy, mySim(), this);
-		new ProcesObsluhaZakaznika(Id.procesObsluhaZakaznika, mySim(), this);
-		addOwnMessage(Mc.nastupZakaznikovZObsluhy);
-		addOwnMessage(Mc.vystupZakaznikaDoObsluhy);
-		addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
-		addOwnMessage(Mc.koniecObsluhy);
-	}
-	//meta! tag="end"
+    public int getPocetVytazenychPracovnikov() {
+        return pocetVytazenychPracovnikov;
+    }
+
+    public boolean jeVolnyPracovnik() {
+        if (pocetVytazenychPracovnikov < pocetPracovnikov) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    private void init() {
+        new ManagerObsluhy(Id.managerObsluhy, mySim(), this);
+        new ProcesObsluhaZakaznika(Id.procesObsluhaZakaznika, mySim(), this);
+        addOwnMessage(Mc.nastupZakaznikovZObsluhy);
+        addOwnMessage(Mc.vystupZakaznikaDoObsluhy);
+        addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
+        addOwnMessage(Mc.koniecObsluhy);
+    }
+    //meta! tag="end"
 }

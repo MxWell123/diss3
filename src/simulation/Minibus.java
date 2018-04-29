@@ -58,6 +58,8 @@ public class Minibus {
     public int getPolohaMinibusu() {
         return polohaMinibusu;
     }
+    
+    
 
     public void setPolohaMinibusu(int polohaMinibusu) {
         this.polohaMinibusu = polohaMinibusu;

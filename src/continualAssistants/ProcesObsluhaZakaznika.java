@@ -16,9 +16,11 @@ public class ProcesObsluhaZakaznika extends Process {
     UniformContinuousRNG rovnOut = new UniformContinuousRNG(1.3, 2.5);
     Random nasada = new Random();
     Random rnd = new Random(nasada.nextLong());
+    private MySimulation mySim;
 
     public ProcesObsluhaZakaznika(int id, Simulation mySim, CommonAgent myAgent) {
         super(id, mySim, myAgent);
+        this.mySim = (MySimulation) mySim;
     }
 
     @Override
@@ -47,7 +49,7 @@ public class ProcesObsluhaZakaznika extends Process {
             }
             hold(pom, message);
         }
-
+        mySim.refreshGUI();
     }
 
     //meta! userInfo="Process messages defined in code", id="0"

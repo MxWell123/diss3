@@ -29,7 +29,8 @@ public class PlanovacMinibusov extends Scheduler {
     public void processStart(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         sprava.setCode(Mc.novyMinibus);
-        sprava.setMinibus(new Minibus(counter, myAgent().getTypMinibusu()));
+        Minibus minibus = new Minibus(counter, myAgent().getTypMinibusu());
+        sprava.setMinibus(minibus);
         counter++;
         this.hold(CAS_MEDZERY, sprava);
     }

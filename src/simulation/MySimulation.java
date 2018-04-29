@@ -2,23 +2,38 @@ package simulation;
 
 import OSPABA.*;
 import agents.*;
+import diss3.Obs;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MySimulation extends Simulation {
 
-    public MySimulation() {
+    private int pocetMinibusov;
+    private int pocetPracovnikov;
+    private int typMinibusu;
+    private List<Obs> delegates;
+
+    public MySimulation(int pocetMinibusov, int pocetPracovnikov, int typMinibusu) {
         init();
+        this.pocetMinibusov = pocetMinibusov;
+        this.pocetPracovnikov = pocetPracovnikov;
+        this.typMinibusu = typMinibusu;
+        delegates = new ArrayList<>();
     }
 
     @Override
     public void prepareSimulation() {
         super.prepareSimulation();
+        refreshGUI();
         // Create global statistcis
     }
 
     @Override
     public void prepareReplication() {
         super.prepareReplication();
-        agentModelu().spustiSimulaciu(2, 2, 0);
+        agentObsluhy().setPocetPracovnikov(pocetPracovnikov);
+        agentModelu().spustiSimulaciu(pocetMinibusov, typMinibusu);
+
         // Reset entities, queues, local statistics, etc...
     }
 
@@ -43,6 +58,10 @@ public class MySimulation extends Simulation {
         setAgentMinibus(new AgentMinibus(Id.agentMinibus, this, agentSpolocnosti()));
         setAgentPrichodov(new AgentPrichodov(Id.agentPrichodov, this, agentSpolocnosti()));
         setAgentOdchodu(new AgentOdchodu(Id.agentOdchodu, this, agentSpolocnosti()));
+    }
+
+    public void registerDelegate(Obs delegate) {
+        delegates.add(delegate);
     }
 
     private AgentModelu _agentModelu;
@@ -85,6 +104,12 @@ public class MySimulation extends Simulation {
         _agentObsluhy = agentObsluhy;
     }
 
+    public void refreshGUI() {
+        for (Obs delegate : delegates) {
+            delegate.refresh(this);
+        }
+    }
+
     private AgentMinibus _agentMinibus;
 
     public AgentMinibus agentMinibus() {
@@ -115,4 +140,8 @@ public class MySimulation extends Simulation {
         _agentOdchodu = agentOdchodu;
     }
     //meta! tag="end"
+
+    public Minibus[] getMinibusy() {
+        return agentModelu().getMinibusy();
+    }
 }

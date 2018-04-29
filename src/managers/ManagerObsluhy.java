@@ -37,17 +37,18 @@ public class ManagerObsluhy extends Manager {
             nextMessage.setCode(Mc.nastupZakaznikovZObsluhy);
             notice(nextMessage);
         }
-        myAgent().setWorking(false);
+        myAgent().odpocitajVytazenychPrac();
         if (0 < myAgent().velkostRadu()) {
             nextMessage.setZakaznik(myAgent().vyberZakaznikaZRadu());
             startWork(nextMessage);
         }
+        
     }
 
     //meta! sender="AgentSpolocnosti", id="83", type="Notice"
     public void processPrichodZakaznikaNaVratenieAuta(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
-        if (myAgent().isWorking()) {
+        if (!myAgent().jeVolnyPracovnik()) {
             myAgent().pridajZakaznikDoRadu(sprava.getZakaznik());
         } else {
             startWork(message);
@@ -63,7 +64,7 @@ public class ManagerObsluhy extends Manager {
     //meta! sender="AgentSpolocnosti", id="114", type="Notice"
     public void processVystupZakaznikaDoObsluhy(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
-        if (myAgent().isWorking()) {
+        if (!myAgent().jeVolnyPracovnik()) {
             myAgent().pridajZakaznikDoRadu(sprava.getZakaznik());
         } else {
             startWork(message);
@@ -111,7 +112,7 @@ public class ManagerObsluhy extends Manager {
     }
 
     private void startWork(MessageForm message) {
-        myAgent().setWorking(true);
+        myAgent().pripocitajVytazenychPrac();
         message.setAddressee(myAgent().findAssistant(Id.procesObsluhaZakaznika));
         startContinualAssistant(message);
     }

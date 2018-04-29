@@ -12,9 +12,14 @@ public class AgentModelu extends Agent {
     private int pocetMinibusov;
     private int typMinibusu;
     private int pocetPracovnikov;
+    private int pocetVypustenychMinbusov;
+
+    private Minibus[] minibusy;
 
     public AgentModelu(int id, Simulation mySim, Agent parent) {
         super(id, mySim, parent);
+        minibusy = new Minibus[pocetMinibusov];
+        pocetVypustenychMinbusov = 0;
         init();
     }
 
@@ -37,14 +42,22 @@ public class AgentModelu extends Agent {
     }
     //meta! tag="end"
 
-    public void spustiSimulaciu(int pocetMinibusov, int pocetPracovnikov, int typMinibusu) {
+    public void spustiSimulaciu(int pocetMinibusov, int typMinibusu) {
         this.pocetMinibusov = pocetMinibusov;
-        this.pocetPracovnikov = pocetPracovnikov;
         this.typMinibusu = typMinibusu;
         MyMessage message = new MyMessage(mySim());
         message.setCode(Mc.initPrichodyZakaznikov);
         message.setAddressee(Id.agentOkolia);
         manager().notice(message);
+    }
+
+    public void vlozDoPolaMinibus(Minibus minibus) {
+        minibusy[pocetVypustenychMinbusov] = minibus;
+        pocetVypustenychMinbusov++;
+    }
+
+    public Minibus[] getMinibusy() {
+        return minibusy;
     }
 
     public int getPocetMinibusov() {

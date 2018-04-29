@@ -5,22 +5,13 @@
  */
 package diss3;
 
-import java.util.Random;
-import simulation.Mc;
 import simulation.MySimulation;
 
 /**
  *
  * @author davidecek
  */
-public class DiSS3 {
+public interface Obs {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        MySimulation sim = new MySimulation();
-        sim.simulate(10, 90000000d);
-    }
-
+    public void refresh(MySimulation simJadro);
 }
