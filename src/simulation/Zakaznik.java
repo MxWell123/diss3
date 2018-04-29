@@ -16,7 +16,7 @@ public class Zakaznik {
     private int pocetSpolucestujucich;
     private boolean typ; //false = z term1/term2 ...... true = vracia auto
 
-    public Zakaznik(int pocetSpolucestujucich, boolean typ) {
+    public Zakaznik(boolean typ) {
         this.zaciatokCakania = 0;
         this.celkoveCakanie = 0;
         this.pocetSpolucestujucich = 1 + pocetSpolucestujucich;

@@ -32,7 +32,7 @@ public class PlanovacPrichodZakaznikovTerm1 extends Scheduler {
 	public void processStart(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         sprava.setCode(Mc.novyZakaznik);
-        sprava.setZakaznik(new Zakaznik(0, false));        
+        sprava.setZakaznik(new Zakaznik(false));        
         this.hold(myAgent().dajTrvanie(generatory, vstupy), sprava);
     }
 
@@ -48,7 +48,7 @@ public class PlanovacPrichodZakaznikovTerm1 extends Scheduler {
             this.assistantFinished(message);
         } else {
             MyMessage kopia = (MyMessage)message.createCopy();
-            kopia.setZakaznik(new Zakaznik(0, false));
+            kopia.setZakaznik(new Zakaznik(false));
             this.hold(myAgent().dajTrvanie(generatory, vstupy), kopia);
             this.assistantFinished(message);
         }

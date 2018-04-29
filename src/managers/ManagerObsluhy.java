@@ -23,15 +23,15 @@ public class ManagerObsluhy extends Manager {
         }
     }
 
-	//meta! sender="AgentSpolocnosti", id="113", type="Notice"
-	public void processNastupZakaznikovZObsluhy(MessageForm message) {
+    //meta! sender="AgentSpolocnosti", id="113", type="Notice"
+    public void processNastupZakaznikovZObsluhy(MessageForm message) {
         message.setAddressee(Id.agentSpolocnosti);
         notice(message);
     }
 
-	//meta! sender="ProcesObsluhaZakaznika", id="87", type="Finish"
-	public void processFinish(MessageForm message) {
-        MyMessage nextMessage = (MyMessage) message.createCopy();
+    //meta! sender="ProcesObsluhaZakaznika", id="87", type="Finish"
+    public void processFinish(MessageForm message) {
+        MyMessage nextMessage = (MyMessage) message;
         if (nextMessage.getZakaznik().isTyp()) {
             nextMessage.createCopy().setAddressee(this);
             nextMessage.setCode(Mc.nastupZakaznikovZObsluhy);
@@ -44,8 +44,8 @@ public class ManagerObsluhy extends Manager {
         }
     }
 
-	//meta! sender="AgentSpolocnosti", id="83", type="Notice"
-	public void processPrichodZakaznikaNaVratenieAuta(MessageForm message) {
+    //meta! sender="AgentSpolocnosti", id="83", type="Notice"
+    public void processPrichodZakaznikaNaVratenieAuta(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         if (myAgent().isWorking()) {
             myAgent().pridajZakaznikDoRadu(sprava.getZakaznik());
@@ -54,14 +54,14 @@ public class ManagerObsluhy extends Manager {
         }
     }
 
-	//meta! userInfo="Process messages defined in code", id="0"
-	public void processDefault(MessageForm message) {
+    //meta! userInfo="Process messages defined in code", id="0"
+    public void processDefault(MessageForm message) {
         switch (message.code()) {
         }
     }
 
-	//meta! sender="AgentSpolocnosti", id="114", type="Notice"
-	public void processVystupZakaznikaDoObsluhy(MessageForm message) {
+    //meta! sender="AgentSpolocnosti", id="114", type="Notice"
+    public void processVystupZakaznikaDoObsluhy(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         if (myAgent().isWorking()) {
             myAgent().pridajZakaznikDoRadu(sprava.getZakaznik());
@@ -71,43 +71,39 @@ public class ManagerObsluhy extends Manager {
 
     }
 
-	//meta! userInfo="Removed from model"
-	public void processKoniecObsluhy(MessageForm message)
-	{
-	}
+    //meta! userInfo="Removed from model"
+    public void processKoniecObsluhy(MessageForm message) {
+    }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	public void init()
-	{
-	}
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    public void init() {
+    }
 
-	@Override
-	public void processMessage(MessageForm message)
-	{
-		switch (message.code())
-		{
-		case Mc.prichodZakaznikaNaVratenieAuta:
-			processPrichodZakaznikaNaVratenieAuta(message);
-		break;
+    @Override
+    public void processMessage(MessageForm message) {
+        switch (message.code()) {
+            case Mc.prichodZakaznikaNaVratenieAuta:
+                processPrichodZakaznikaNaVratenieAuta(message);
+                break;
 
-		case Mc.nastupZakaznikovZObsluhy:
-			processNastupZakaznikovZObsluhy(message);
-		break;
+            case Mc.nastupZakaznikovZObsluhy:
+                processNastupZakaznikovZObsluhy(message);
+                break;
 
-		case Mc.vystupZakaznikaDoObsluhy:
-			processVystupZakaznikaDoObsluhy(message);
-		break;
+            case Mc.vystupZakaznikaDoObsluhy:
+                processVystupZakaznikaDoObsluhy(message);
+                break;
 
-		case Mc.finish:
-			processFinish(message);
-		break;
+            case Mc.finish:
+                processFinish(message);
+                break;
 
-		default:
-			processDefault(message);
-		break;
-		}
-	}
-	//meta! tag="end"
+            default:
+                processDefault(message);
+                break;
+        }
+    }
+    //meta! tag="end"
 
     @Override
     public AgentObsluhy myAgent() {

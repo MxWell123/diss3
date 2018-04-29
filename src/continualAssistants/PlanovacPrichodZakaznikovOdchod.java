@@ -28,57 +28,58 @@ public class PlanovacPrichodZakaznikovOdchod extends Scheduler {
         // Setup component for the next replication
     }
 
-	//meta! sender="AgentOkolia", id="79", type="Start"
-	public void processStart(MessageForm message) {
-        message.setCode(Mc.novyZakaznik);
-        this.hold(myAgent().dajTrvanie(generatory, vstupy), message);
+    //meta! sender="AgentOkolia", id="79", type="Start"
+    public void processStart(MessageForm message) {
+        MyMessage sprava = (MyMessage) message;
+        sprava.setCode(Mc.novyZakaznik);
+        sprava.setZakaznik(new Zakaznik(true));
+        this.hold(myAgent().dajTrvanie(generatory, vstupy), sprava);
     }
 
-	//meta! userInfo="Process messages defined in code", id="0"
-	public void processDefault(MessageForm message) {
+    //meta! userInfo="Process messages defined in code", id="0"
+    public void processDefault(MessageForm message) {
         throw new UnsupportedOperationException("Vykonal sa default v PlanovacPrichodZakaznikovOdchod.");
     }
 
-	//meta! sender="AgentOkolia", id="134", type="Notice"
-	public void processNovyZakaznik(MessageForm message) {
+    //meta! sender="AgentOkolia", id="134", type="Notice"
+    public void processNovyZakaznik(MessageForm message) {
         if (mySim().currentTime() >= myAgent().KONIEC_PRICHODOV) {
             message.setCode(Mc.koniec);
             this.assistantFinished(message);
         } else {
-            MessageForm kopia = message.createCopy();
+            MyMessage kopia = (MyMessage)message.createCopy();
+            kopia.setZakaznik(new Zakaznik(true));
             this.hold(myAgent().dajTrvanie(generatory, vstupy), kopia);
             this.assistantFinished(message);
         }
     }
 
-	//meta! sender="AgentOkolia", id="141", type="Notice"
-	public void processKoniec(MessageForm message) {
+    //meta! sender="AgentOkolia", id="141", type="Notice"
+    public void processKoniec(MessageForm message) {
     }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	@Override
-	public void processMessage(MessageForm message)
-	{
-		switch (message.code())
-		{
-		case Mc.start:
-			processStart(message);
-		break;
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    @Override
+    public void processMessage(MessageForm message) {
+        switch (message.code()) {
+            case Mc.start:
+                processStart(message);
+                break;
 
-		case Mc.novyZakaznik:
-			processNovyZakaznik(message);
-		break;
+            case Mc.novyZakaznik:
+                processNovyZakaznik(message);
+                break;
 
-		case Mc.koniec:
-			processKoniec(message);
-		break;
+            case Mc.koniec:
+                processKoniec(message);
+                break;
 
-		default:
-			processDefault(message);
-		break;
-		}
-	}
-	//meta! tag="end"
+            default:
+                processDefault(message);
+                break;
+        }
+    }
+    //meta! tag="end"
 
     @Override
     public AgentOkolia myAgent() {
