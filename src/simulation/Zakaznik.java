@@ -19,8 +19,7 @@ public class Zakaznik {
     public Zakaznik(int pocetSpolucestujucich, boolean typ) {
         this.zaciatokCakania = 0;
         this.celkoveCakanie = 0;
-        this.pocetSpolucestujucich = pocetSpolucestujucich;
-        this.typ = typ;
+        this.pocetSpolucestujucich = 1 + pocetSpolucestujucich;
     }
 
     public int getPocetSpolucestujucich() {

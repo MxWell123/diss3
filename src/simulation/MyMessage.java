@@ -5,6 +5,7 @@ import OSPABA.*;
 public class MyMessage extends MessageForm {
 
     private Zakaznik zakaznik;
+    private Minibus minibus;
 
     public MyMessage(Simulation sim) {
         super(sim);
@@ -17,6 +18,13 @@ public class MyMessage extends MessageForm {
     public MyMessage(Zakaznik zakaznik, Simulation sim) {
         super(sim);
         this.zakaznik = zakaznik;
+        this.minibus = null;
+    }
+
+    public MyMessage(Minibus minibus, Simulation sim) {
+        super(sim);
+        this.zakaznik = null;
+        this.minibus = minibus;
     }
 
     @Override
@@ -37,6 +45,14 @@ public class MyMessage extends MessageForm {
 
     public void setZakaznik(Zakaznik zakaznik) {
         this.zakaznik = zakaznik;
+    }
+
+    public Minibus getMinibus() {
+        return minibus;
+    }
+
+    public void setMinibus(Minibus minibus) {
+        this.minibus = minibus;
     }
 
 }

@@ -33,6 +33,11 @@ public class ProcesVystupZakaznikaZMinibusu extends Process
 		}
 	}
 
+	//meta! sender="AgentMinibus", id="177", type="Notice"
+	public void processKoniecVystupu(MessageForm message)
+	{
+	}
+
 	//meta! userInfo="Generated code: do not modify", tag="begin"
 	@Override
 	public void processMessage(MessageForm message)
@@ -41,6 +46,10 @@ public class ProcesVystupZakaznikaZMinibusu extends Process
 		{
 		case Mc.start:
 			processStart(message);
+		break;
+
+		case Mc.koniecVystupu:
+			processKoniecVystupu(message);
 		break;
 
 		default:

@@ -5,6 +5,8 @@
  */
 package simulation;
 
+import OSPDataStruct.SimQueue;
+
 /**
  *
  * @author davidecek
@@ -15,6 +17,8 @@ public class Minibus {
     private int typMinibusu;
     private int pocetMiest;
     private double cenaZaKm;
+    private SimQueue<Zakaznik> zakazniciVMinibuse;
+    private int polohaMinibusu; // 0-term1, 1-term2, 2-AirCarRental, 3-term3
 
     public Minibus(int cisloMinibusu, int typMinibusu) {
         this.cisloMinibusu = cisloMinibusu;
@@ -29,6 +33,40 @@ public class Minibus {
             pocetMiest = 30;
             cenaZaKm = 0.54;
         }
+        zakazniciVMinibuse = new SimQueue<>();
+        polohaMinibusu = 0;
+    }
+
+    public void pridajZakaznikaDoMinibusu(Zakaznik zak) {
+        if (zakazniciVMinibuse.size() < pocetMiest) {
+            zakazniciVMinibuse.add(zak);
+        }
+    }
+
+    public Zakaznik vyberZakaznikaZMinibusu() {
+        if (zakazniciVMinibuse.size() > 0) {
+            return zakazniciVMinibuse.poll();
+        }
+        return null;
+    }
+
+    public int getPolohaMinibusu() {
+        return polohaMinibusu;
+    }
+
+    public void setPolohaMinibusu(int polohaMinibusu) {
+        this.polohaMinibusu = polohaMinibusu;
+    }
+
+    public boolean jeMinibusPrazdny() {
+        return zakazniciVMinibuse.isEmpty();
+    }
+
+    public boolean jeMinibusPlny() {
+        if (pocetMiest == zakazniciVMinibuse.size()) {
+            return true;
+        }
+        return false;
     }
 
     public int getCisloMinibusu() {

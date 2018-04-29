@@ -36,7 +36,6 @@ public class ManagerOkolia extends Manager {
         MessageForm kopia3 = message.createCopy();
         kopia3.setAddressee(myAgent().findAssistant(Id.planovacPrichodZakaznikovOdchod));
         MyMessage pom = (MyMessage) kopia3;
-        pom.getZakaznik().setTyp(true);
         startContinualAssistant(pom);
 
     }
@@ -80,16 +79,16 @@ public class ManagerOkolia extends Manager {
 		case Mc.finish:
 			switch (message.sender().id())
 			{
-			case Id.planovacPrichodZakaznikovTerm1:
-				processFinishPlanovacPrichodZakaznikovTerm1(message);
+			case Id.planovacPrichodZakaznikovTerm2:
+				processFinishPlanovacPrichodZakaznikovTerm2(message);
 			break;
 
 			case Id.planovacPrichodZakaznikovOdchod:
 				processFinishPlanovacPrichodZakaznikovOdchod(message);
 			break;
 
-			case Id.planovacPrichodZakaznikovTerm2:
-				processFinishPlanovacPrichodZakaznikovTerm2(message);
+			case Id.planovacPrichodZakaznikovTerm1:
+				processFinishPlanovacPrichodZakaznikovTerm1(message);
 			break;
 			}
 		break;

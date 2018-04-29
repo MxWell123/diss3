@@ -112,8 +112,8 @@ public class ManagerSpolocnosti extends Manager {
 	{
 		switch (message.code())
 		{
-		case Mc.vystupZakaznikaTerm3:
-			processVystupZakaznikaTerm3(message);
+		case Mc.prichodZakaznikaTerm1:
+			processPrichodZakaznikaTerm1(message);
 		break;
 
 		case Mc.nastupZakaznikovTerm1:
@@ -129,6 +129,10 @@ public class ManagerSpolocnosti extends Manager {
 			}
 		break;
 
+		case Mc.prichodZakaznikaTerm2:
+			processPrichodZakaznikaTerm2(message);
+		break;
+
 		case Mc.nastupZakaznikovTerm2:
 			switch (message.sender().id())
 			{
@@ -142,8 +146,20 @@ public class ManagerSpolocnosti extends Manager {
 			}
 		break;
 
-		case Mc.prichodZakaznikaTerm2:
-			processPrichodZakaznikaTerm2(message);
+		case Mc.vystupZakaznikaDoObsluhy:
+			processVystupZakaznikaDoObsluhy(message);
+		break;
+
+		case Mc.initPrichodMinibusov:
+			processInitPrichodMinibusov(message);
+		break;
+
+		case Mc.vystupZakaznikaTerm3:
+			processVystupZakaznikaTerm3(message);
+		break;
+
+		case Mc.prichodZakaznikaNaVratenieAuta:
+			processPrichodZakaznikaNaVratenieAuta(message);
 		break;
 
 		case Mc.nastupZakaznikovZObsluhy:
@@ -157,22 +173,6 @@ public class ManagerSpolocnosti extends Manager {
 				processNastupZakaznikovZObsluhyAgentMinibus(message);
 			break;
 			}
-		break;
-
-		case Mc.vystupZakaznikaDoObsluhy:
-			processVystupZakaznikaDoObsluhy(message);
-		break;
-
-		case Mc.prichodZakaznikaTerm1:
-			processPrichodZakaznikaTerm1(message);
-		break;
-
-		case Mc.prichodZakaznikaNaVratenieAuta:
-			processPrichodZakaznikaNaVratenieAuta(message);
-		break;
-
-		case Mc.initPrichodMinibusov:
-			processInitPrichodMinibusov(message);
 		break;
 
 		default:

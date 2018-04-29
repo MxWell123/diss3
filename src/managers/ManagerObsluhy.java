@@ -31,7 +31,7 @@ public class ManagerObsluhy extends Manager {
 
 	//meta! sender="ProcesObsluhaZakaznika", id="87", type="Finish"
 	public void processFinish(MessageForm message) {
-        MyMessage nextMessage = (MyMessage) message;
+        MyMessage nextMessage = (MyMessage) message.createCopy();
         if (nextMessage.getZakaznik().isTyp()) {
             nextMessage.createCopy().setAddressee(this);
             nextMessage.setCode(Mc.nastupZakaznikovZObsluhy);
@@ -86,16 +86,16 @@ public class ManagerObsluhy extends Manager {
 	{
 		switch (message.code())
 		{
-		case Mc.finish:
-			processFinish(message);
+		case Mc.prichodZakaznikaNaVratenieAuta:
+			processPrichodZakaznikaNaVratenieAuta(message);
 		break;
 
 		case Mc.nastupZakaznikovZObsluhy:
 			processNastupZakaznikovZObsluhy(message);
 		break;
 
-		case Mc.prichodZakaznikaNaVratenieAuta:
-			processPrichodZakaznikaNaVratenieAuta(message);
+		case Mc.finish:
+			processFinish(message);
 		break;
 
 		case Mc.vystupZakaznikaDoObsluhy:

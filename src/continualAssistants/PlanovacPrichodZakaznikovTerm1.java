@@ -61,12 +61,12 @@ public class PlanovacPrichodZakaznikovTerm1 extends Scheduler {
 	{
 		switch (message.code())
 		{
-		case Mc.start:
-			processStart(message);
-		break;
-
 		case Mc.koniec:
 			processKoniec(message);
+		break;
+
+		case Mc.start:
+			processStart(message);
 		break;
 
 		case Mc.novyZakaznik:
