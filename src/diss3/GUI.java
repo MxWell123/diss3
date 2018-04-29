@@ -9,12 +9,15 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import simulation.Minibus;
 import simulation.MySimulation;
+import OSPABA.ISimDelegate;
+import OSPABA.SimState;
+import OSPABA.Simulation;
 
 /**
  *
  * @author davidecek
  */
-public class GUI extends javax.swing.JFrame implements Obs {
+public class GUI extends javax.swing.JFrame implements ISimDelegate {
 
     private DefaultTableModel dtm;
     private MySimulation mySim;
@@ -25,6 +28,8 @@ public class GUI extends javax.swing.JFrame implements Obs {
     public GUI() {
         String col[] = {"Cislo Minibusu", "Pozicia 1"};
         dtm = new DefaultTableModel(col, 0);
+        mySim = new MySimulation();
+        mySim.registerDelegate(this);
         initComponents();
     }
 
@@ -612,9 +617,11 @@ public class GUI extends javax.swing.JFrame implements Obs {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int pocetAut = Integer.parseInt(pocMinSim.getText());
         int pocetPracovnikov = Integer.parseInt(pocetZamSim.getText());
-        int pocetReplikacii = 1;//Integer.parseInt(pocReplText.getText());
-        mySim = new MySimulation(pocetAut, pocetPracovnikov, 1);
-        mySim.registerDelegate(this);
+        int pocetReplikacii = 1;//Integer.parseInt(pocReplText.getText());      
+
+        mySim.setPocetMinibusov(pocetAut);
+        mySim.setPocetPracovnikov(pocetPracovnikov);
+        
         for (int i = 0; i < pocetAut; i++) {
             dtm.addRow(new Object[]{i, "", "", ""});
             dtm.setValueAt(i, i, 0);
@@ -740,34 +747,38 @@ public class GUI extends javax.swing.JFrame implements Obs {
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void refresh(MySimulation simJadro) {
-        this.vyslVytazenost.setText(String.valueOf(Integer.valueOf(mySim.agentObsluhy().getPocetVytazenychPracovnikov())));
-        Minibus[] minibusy = mySim.getMinibusy();
-
-        if (minibusy != null) {
-            for (int i = 0; i < minibusy.length; i++) {
-                dtm.setValueAt(minibusy[i].getCisloMinibusu(), i, 1);
-                int pom = minibusy[i].getPolohaMinibusu();
-                String pom2 = "";
-                if (pom == 0) {
-                    pom2 = "Terminal-1";
-                } else if (pom == 1) {
-                    pom2 = "Terminal-2";
-                } else if (pom == 2) {
-                    pom2 = "Arcar";
-                } else if (pom == 3) {
-                    pom2 = "Terminal-3";
-                }
-                dtm.setValueAt(pom2, i, 3);
-            }
-            this.jTable1.setModel(dtm);
-        } else {
-            JOptionPane.showMessageDialog(null, "Nezadali ste všetky potrebne udaje");
-        }
+    public void refresh(Simulation simulation) {
+        this.vyslVytazenost.setText(String.valueOf(mySim.agentObsluhy().getPocetVytazenychPracovnikov()));
+//        Minibus[] minibusy = mySim.getMinibusy();
+//
+//        if (minibusy != null) {
+//            for (int i = 0; i < minibusy.length; i++) {
+//                dtm.setValueAt(minibusy[i].getCisloMinibusu(), i, 1);
+//                int pom = minibusy[i].getPolohaMinibusu();
+//                String pom2 = "";
+//                if (pom == 0) {
+//                    pom2 = "Terminal-1";
+//                } else if (pom == 1) {
+//                    pom2 = "Terminal-2";
+//                } else if (pom == 2) {
+//                    pom2 = "Arcar";
+//                } else if (pom == 3) {
+//                    pom2 = "Terminal-3";
+//                }
+//                dtm.setValueAt(pom2, i, 3);
+//            }
+//            this.jTable1.setModel(dtm);
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Nezadali ste všetky potrebne udaje");
+//        }
     }
 
     public void vykresli(double priemer, double counter, double horna, double spodna) {
 
+    }
+
+    @Override
+    public void simStateChanged(Simulation smltn, SimState ss) {
     }
 
 }

@@ -49,7 +49,6 @@ public class ProcesObsluhaZakaznika extends Process {
             }
             hold(pom, message);
         }
-        mySim.refreshGUI();
     }
 
 	//meta! userInfo="Process messages defined in code", id="0"
