@@ -84,12 +84,12 @@ public class ManagerOkolia extends Manager {
 				processFinishPlanovacPrichodZakaznikovTerm1(message);
 			break;
 
-			case Id.planovacPrichodZakaznikovTerm2:
-				processFinishPlanovacPrichodZakaznikovTerm2(message);
-			break;
-
 			case Id.planovacPrichodZakaznikovOdchod:
 				processFinishPlanovacPrichodZakaznikovOdchod(message);
+			break;
+
+			case Id.planovacPrichodZakaznikovTerm2:
+				processFinishPlanovacPrichodZakaznikovTerm2(message);
 			break;
 			}
 		break;

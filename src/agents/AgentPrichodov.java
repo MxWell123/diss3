@@ -24,6 +24,9 @@ public class AgentPrichodov extends Agent {
     }
 
     public Zakaznik vyberZakaznikaZRaduTerm1() {
+        if (frontZakaznikovTerm1.isEmpty()) {
+            return null;
+        }
         return frontZakaznikovTerm1.poll();
     }
 
@@ -32,6 +35,9 @@ public class AgentPrichodov extends Agent {
     }
 
     public Zakaznik vyberZakaznikaZRaduTerm2() {
+        if (frontZakaznikovTerm2.isEmpty()) {
+            return null;
+        }
         return frontZakaznikovTerm2.poll();
     }
 
@@ -41,14 +47,13 @@ public class AgentPrichodov extends Agent {
         // Setup component for the next replication
     }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	private void init()
-	{
-		new ManagerPrichodov(Id.managerPrichodov, mySim(), this);
-		addOwnMessage(Mc.prichodZakaznikaTerm2);
-		addOwnMessage(Mc.nastupZakaznikovTerm2);
-		addOwnMessage(Mc.nastupZakaznikovTerm1);
-		addOwnMessage(Mc.prichodZakaznikaTerm1);
-	}
-	//meta! tag="end"
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    private void init() {
+        new ManagerPrichodov(Id.managerPrichodov, mySim(), this);
+        addOwnMessage(Mc.nastupZakaznikovTerm2);
+        addOwnMessage(Mc.prichodZakaznikaTerm2);
+        addOwnMessage(Mc.nastupZakaznikovTerm1);
+        addOwnMessage(Mc.prichodZakaznikaTerm1);
+    }
+    //meta! tag="end"
 }

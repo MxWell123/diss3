@@ -112,29 +112,21 @@ public class ManagerSpolocnosti extends Manager {
 	{
 		switch (message.code())
 		{
-		case Mc.prichodZakaznikaTerm1:
-			processPrichodZakaznikaTerm1(message);
+		case Mc.vystupZakaznikaTerm3:
+			processVystupZakaznikaTerm3(message);
 		break;
 
 		case Mc.nastupZakaznikovTerm1:
 			switch (message.sender().id())
 			{
-			case Id.agentPrichodov:
-				processNastupZakaznikovTerm1AgentPrichodov(message);
-			break;
-
 			case Id.agentMinibus:
 				processNastupZakaznikovTerm1AgentMinibus(message);
 			break;
+
+			case Id.agentPrichodov:
+				processNastupZakaznikovTerm1AgentPrichodov(message);
+			break;
 			}
-		break;
-
-		case Mc.prichodZakaznikaTerm2:
-			processPrichodZakaznikaTerm2(message);
-		break;
-
-		case Mc.vystupZakaznikaDoObsluhy:
-			processVystupZakaznikaDoObsluhy(message);
 		break;
 
 		case Mc.nastupZakaznikovTerm2:
@@ -150,12 +142,8 @@ public class ManagerSpolocnosti extends Manager {
 			}
 		break;
 
-		case Mc.prichodZakaznikaNaVratenieAuta:
-			processPrichodZakaznikaNaVratenieAuta(message);
-		break;
-
-		case Mc.initPrichodMinibusov:
-			processInitPrichodMinibusov(message);
+		case Mc.prichodZakaznikaTerm2:
+			processPrichodZakaznikaTerm2(message);
 		break;
 
 		case Mc.nastupZakaznikovZObsluhy:
@@ -171,8 +159,20 @@ public class ManagerSpolocnosti extends Manager {
 			}
 		break;
 
-		case Mc.vystupZakaznikaTerm3:
-			processVystupZakaznikaTerm3(message);
+		case Mc.vystupZakaznikaDoObsluhy:
+			processVystupZakaznikaDoObsluhy(message);
+		break;
+
+		case Mc.prichodZakaznikaTerm1:
+			processPrichodZakaznikaTerm1(message);
+		break;
+
+		case Mc.prichodZakaznikaNaVratenieAuta:
+			processPrichodZakaznikaNaVratenieAuta(message);
+		break;
+
+		case Mc.initPrichodMinibusov:
+			processInitPrichodMinibusov(message);
 		break;
 
 		default:

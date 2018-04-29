@@ -29,6 +29,7 @@ public class ManagerOdchodu extends Manager
 	//meta! sender="AgentSpolocnosti", id="84", type="Notice"
 	public void processVystupZakaznikaTerm3(MessageForm message)
 	{
+            //statistiky
 	}
 
 	//meta! userInfo="Process messages defined in code", id="0"

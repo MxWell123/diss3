@@ -70,7 +70,7 @@ public class ManagerMinibus extends Manager
 		}
 	}
 
-	//meta! sender="PlanovacMinibusov", id="151", type="Finish"
+	//meta! userInfo="Removed from model"
 	public void processFinishPlanovacMinibusov(MessageForm message)
 	{
 	}
@@ -85,17 +85,13 @@ public class ManagerMinibus extends Manager
 	{
 		switch (message.code())
 		{
+		case Mc.nastupZakaznikovTerm2:
+			processNastupZakaznikovTerm2(message);
+		break;
+
 		case Mc.finish:
 			switch (message.sender().id())
 			{
-			case Id.procesPrechodMedziTerminalmi:
-				processFinishProcesPrechodMedziTerminalmi(message);
-			break;
-
-			case Id.planovacMinibusov:
-				processFinishPlanovacMinibusov(message);
-			break;
-
 			case Id.procesNastupZakaznikaDoMinibusu:
 				processFinishProcesNastupZakaznikaDoMinibusu(message);
 			break;
@@ -103,7 +99,15 @@ public class ManagerMinibus extends Manager
 			case Id.procesVystupZakaznikaZMinibusu:
 				processFinishProcesVystupZakaznikaZMinibusu(message);
 			break;
+
+			case Id.procesPrechodMedziTerminalmi:
+				processFinishProcesPrechodMedziTerminalmi(message);
+			break;
 			}
+		break;
+
+		case Mc.nastupZakaznikovTerm1:
+			processNastupZakaznikovTerm1(message);
 		break;
 
 		case Mc.initPrichodMinibusov:
@@ -112,14 +116,6 @@ public class ManagerMinibus extends Manager
 
 		case Mc.nastupZakaznikovZObsluhy:
 			processNastupZakaznikovZObsluhy(message);
-		break;
-
-		case Mc.nastupZakaznikovTerm1:
-			processNastupZakaznikovTerm1(message);
-		break;
-
-		case Mc.nastupZakaznikovTerm2:
-			processNastupZakaznikovTerm2(message);
 		break;
 
 		default:
