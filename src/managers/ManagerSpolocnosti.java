@@ -68,12 +68,6 @@ public class ManagerSpolocnosti extends Manager {
         notice(message);
     }
 
-    //meta! sender="AgentMinibus", id="50", type="Notice"
-    public void processVystupZakaznikaDoObsluhy(MessageForm message) {
-        message.setAddressee(Id.agentObsluhy);
-        notice(message);
-    }
-
     //meta! sender="AgentModelu", id="43", type="Notice"
     public void processPrichodZakaznikaNaVratenieAuta(MessageForm message) {
         message.setAddressee(Id.agentObsluhy);
@@ -91,16 +85,22 @@ public class ManagerSpolocnosti extends Manager {
         throw new UnsupportedOperationException("Vykonal sa default v ManagerSpolocnosti.");
     }
 
-    //meta! sender="AgentMinibus", id="203", type="Notice"
-    public void processVystupZakaznikaTerm3(MessageForm message) {
-        message.setAddressee(Id.agentOdchodu);
-        notice(message);
-    }
-
     //meta! sender="AgentObsluhy", id="211", type="Notice"
     public void processPrichodZakaznikovNaCakanieNaMinibus(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         myAgent().pridajZakaznikDoRaduNaMinibus(sprava.getZakaznik());
+    }
+
+    //meta! sender="AgentMinibus", id="214", type="Request"
+    public void processVystupZakaznikaDoObsluhy(MessageForm message) {
+        message.setAddressee(Id.agentObsluhy);
+        notice(message);
+    }
+
+    //meta! sender="AgentMinibus", id="213", type="Request"
+    public void processVystupZakaznikaTerm3(MessageForm message) {
+        message.setAddressee(Id.agentOdchodu);
+        notice(message);
     }
 
     //meta! userInfo="Generated code: do not modify", tag="begin"
@@ -134,16 +134,16 @@ public class ManagerSpolocnosti extends Manager {
                 processPrichodZakaznikaTerm1(message);
                 break;
 
-            case Mc.vystupZakaznikaDoObsluhy:
-                processVystupZakaznikaDoObsluhy(message);
-                break;
-
             case Mc.prichodZakaznikaNaVratenieAuta:
                 processPrichodZakaznikaNaVratenieAuta(message);
                 break;
 
             case Mc.initPrichodMinibusov:
                 processInitPrichodMinibusov(message);
+                break;
+
+            case Mc.vystupZakaznikaDoObsluhy:
+                processVystupZakaznikaDoObsluhy(message);
                 break;
 
             case Mc.vystupZakaznikaTerm3:

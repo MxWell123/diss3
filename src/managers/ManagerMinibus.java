@@ -87,32 +87,25 @@ public class ManagerMinibus extends Manager {
             sprava.setCode(Mc.nastupZakaznikovTerm1);
             request(sprava);
         }
-        sprava.setAddressee(Id.agentSpolocnosti);
-        sprava.setCode(Mc.nastupZakaznikovTerm1);
-        request(sprava);
+
     }
 
     //meta! sender="ProcesVystupZakaznikaZMinibusu", id="106", type="Finish"
     public void processFinishProcesVystupZakaznikaZMinibusu(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
-
         if (sprava.getMinibus().getPolohaMinibusu() == 2) { // ak je v arcar
             sprava.setAddressee(Id.agentSpolocnosti);
             sprava.setCode(Mc.vystupZakaznikaDoObsluhy);
-            notice(sprava);
+            request(sprava);
         } else if (sprava.getMinibus().getPolohaMinibusu() == 3) { // ak je v term3
             sprava.setAddressee(Id.agentSpolocnosti);
             sprava.setCode(Mc.vystupZakaznikaTerm3);
-            notice(sprava);
-        }
-        if (!sprava.getMinibus().jeMinibusPrazdny()) {
-            startVystup(sprava);
-        } else {
-            startPresun(sprava);
+            request(sprava);
         }
     }
-    //meta! sender="AgentSpolocnosti", id="56", type="Notice"
 
+    //meta! sender="AgentSpolocnosti", id="56", type="Notice"
+    //meta! sender="AgentSpolocnosti", id="56", type="Notice"
     public void processInitPrichodMinibusov(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         sprava.setMinibus(new Minibus(myAgent().getCounterMinibusov(), myAgent().getTypMinibusu()));
@@ -124,6 +117,26 @@ public class ManagerMinibus extends Manager {
     //meta! userInfo="Process messages defined in code", id="0"
     public void processDefault(MessageForm message) {
         throw new UnsupportedOperationException("Vykonal sa default v ManagerMinibus.");
+    }
+
+    //meta! sender="AgentSpolocnosti", id="214", type="Response"
+    public void processVystupZakaznikaDoObsluhy(MessageForm message) {
+        MyMessage sprava = (MyMessage) message;
+        if (!sprava.getMinibus().jeMinibusPrazdny()) {
+            startVystup(sprava);
+        } else {
+            startPresun(sprava);
+        }
+    }
+
+    //meta! sender="AgentSpolocnosti", id="213", type="Response"
+    public void processVystupZakaznikaTerm3(MessageForm message) {
+        MyMessage sprava = (MyMessage) message;
+        if (!sprava.getMinibus().jeMinibusPrazdny()) {
+            startVystup(sprava);
+        } else {
+            startPresun(sprava);
+        }
     }
 
     //meta! userInfo="Generated code: do not modify", tag="begin"
@@ -159,6 +172,14 @@ public class ManagerMinibus extends Manager {
                         processFinishProcesPrechodMedziTerminalmi(message);
                         break;
                 }
+                break;
+
+            case Mc.vystupZakaznikaDoObsluhy:
+                processVystupZakaznikaDoObsluhy(message);
+                break;
+
+            case Mc.vystupZakaznikaTerm3:
+                processVystupZakaznikaTerm3(message);
                 break;
 
             case Mc.nastupZakaznikovTerm2:

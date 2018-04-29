@@ -23,8 +23,8 @@ public class ManagerOkolia extends Manager {
         }
     }
 
-	//meta! sender="AgentModelu", id="4", type="Notice"
-	public void processInitPrichodyZakaznikov(MessageForm message) {
+    //meta! sender="AgentModelu", id="4", type="Notice"
+    public void processInitPrichodyZakaznikov(MessageForm message) {
 
         MessageForm kopia = message.createCopy();
         kopia.setAddressee(Id.agentModelu);
@@ -44,69 +44,65 @@ public class ManagerOkolia extends Manager {
         startContinualAssistant(kopia3);
     }
 
-	//meta! sender="PlanovacPrichodZakaznikovOdchod", id="79", type="Finish"
-	public void processFinishPlanovacPrichodZakaznikovOdchod(MessageForm message) {
+    //meta! sender="PlanovacPrichodZakaznikovOdchod", id="79", type="Finish"
+    public void processFinishPlanovacPrichodZakaznikovOdchod(MessageForm message) {
         message.setCode(Mc.prichodZakaznikaNaVratenieAuta);
         message.setAddressee(Id.agentModelu);
         notice(message);
     }
 
-	//meta! sender="PlanovacPrichodZakaznikovTerm2", id="77", type="Finish"
-	public void processFinishPlanovacPrichodZakaznikovTerm2(MessageForm message) {
+    //meta! sender="PlanovacPrichodZakaznikovTerm2", id="77", type="Finish"
+    public void processFinishPlanovacPrichodZakaznikovTerm2(MessageForm message) {
         message.setCode(Mc.prichodZakaznikaTerm1);
         message.setAddressee(Id.agentModelu);
         notice(message);
     }
 
-	//meta! sender="PlanovacPrichodZakaznikovTerm1", id="75", type="Finish"
-	public void processFinishPlanovacPrichodZakaznikovTerm1(MessageForm message) {
+    //meta! sender="PlanovacPrichodZakaznikovTerm1", id="75", type="Finish"
+    public void processFinishPlanovacPrichodZakaznikovTerm1(MessageForm message) {
         message.setCode(Mc.prichodZakaznikaTerm2);
         message.setAddressee(Id.agentModelu);
         notice(message);
     }
 
-	//meta! userInfo="Process messages defined in code", id="0"
-	public void processDefault(MessageForm message) {
+    //meta! userInfo="Process messages defined in code", id="0"
+    public void processDefault(MessageForm message) {
         throw new UnsupportedOperationException("Vykonal sa default v ManagerOkolia.");
     }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	public void init()
-	{
-	}
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    public void init() {
+    }
 
-	@Override
-	public void processMessage(MessageForm message)
-	{
-		switch (message.code())
-		{
-		case Mc.finish:
-			switch (message.sender().id())
-			{
-			case Id.planovacPrichodZakaznikovOdchod:
-				processFinishPlanovacPrichodZakaznikovOdchod(message);
-			break;
+    @Override
+    public void processMessage(MessageForm message) {
+        switch (message.code()) {
+            case Mc.finish:
+                switch (message.sender().id()) {
+                    case Id.planovacPrichodZakaznikovOdchod:
+                        processFinishPlanovacPrichodZakaznikovOdchod(message);
+                        break;
 
-			case Id.planovacPrichodZakaznikovTerm1:
-				processFinishPlanovacPrichodZakaznikovTerm1(message);
-			break;
+                    case Id.planovacPrichodZakaznikovTerm1:
+                        processFinishPlanovacPrichodZakaznikovTerm1(message);
+                        break;
 
-			case Id.planovacPrichodZakaznikovTerm2:
-				processFinishPlanovacPrichodZakaznikovTerm2(message);
-			break;
-			}
-		break;
+                    case Id.planovacPrichodZakaznikovTerm2:
+                        processFinishPlanovacPrichodZakaznikovTerm2(message);
+                        break;
+                }
+                break;
 
-		case Mc.initPrichodyZakaznikov:
-			processInitPrichodyZakaznikov(message);
-		break;
+            case Mc.initPrichodyZakaznikov:
+                processInitPrichodyZakaznikov(message);
+                break;
 
-		default:
-			processDefault(message);
-		break;
-		}
-	}
-	//meta! tag="end"
+            default:
+                processDefault(message);
+                break;
+        }
+    }
+    //meta! tag="end"
 
     @Override
     public AgentOkolia myAgent() {

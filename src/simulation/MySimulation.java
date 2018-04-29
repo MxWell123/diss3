@@ -24,7 +24,7 @@ public class MySimulation extends Simulation {
     @Override
     public void prepareSimulation() {
         super.prepareSimulation();
-        refreshGUI();
+        
         // Create global statistcis
     }
 

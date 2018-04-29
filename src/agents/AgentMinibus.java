@@ -48,6 +48,8 @@ public class AgentMinibus extends Agent {
 		new ProcesVystupZakaznikaZMinibusu(Id.procesVystupZakaznikaZMinibusu, mySim(), this);
 		addOwnMessage(Mc.koniecNastupu);
 		addOwnMessage(Mc.nastupZakaznikovZObsluhy);
+		addOwnMessage(Mc.vystupZakaznikaDoObsluhy);
+		addOwnMessage(Mc.vystupZakaznikaTerm3);
 		addOwnMessage(Mc.nastupZakaznikovTerm2);
 		addOwnMessage(Mc.nastupZakaznikovTerm1);
 		addOwnMessage(Mc.koniecVystupu);

@@ -43,7 +43,7 @@ public class PlanovacMinibusov extends Scheduler {
 	//meta! sender="AgentModelu", id="195", type="Notice"
 	public void processNovyMinibus(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
-        if (counter <= myAgent().getPocetMinibusov()) {
+        if (counter < myAgent().getPocetMinibusov()) {
             if (mySim().currentTime() >= counter * CAS_MEDZERY) {
                 sprava.setMinibus(new Minibus(counter, myAgent().getTypMinibusu()));
                 counter++;

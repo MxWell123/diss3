@@ -610,8 +610,8 @@ public class GUI extends javax.swing.JFrame implements Obs {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int pocetAut = Integer.parseInt(pocMinibusTextField.getText());
-        int pocetPracovnikov = Integer.parseInt(pocZamTextField.getText());
+        int pocetAut = Integer.parseInt(pocMinSim.getText());
+        int pocetPracovnikov = Integer.parseInt(pocetZamSim.getText());
         int pocetReplikacii = 1;//Integer.parseInt(pocReplText.getText());
         mySim = new MySimulation(pocetAut, pocetPracovnikov, 1);
         mySim.registerDelegate(this);
@@ -619,7 +619,7 @@ public class GUI extends javax.swing.JFrame implements Obs {
             dtm.addRow(new Object[]{i, "", "", ""});
             dtm.setValueAt(i, i, 0);
         }
-        mySim.simulate(pocetReplikacii);
+        mySim.simulate(pocetReplikacii, 4.5 * 60 * 60);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void pocetZamSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pocetZamSimActionPerformed
