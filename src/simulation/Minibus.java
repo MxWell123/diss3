@@ -19,6 +19,7 @@ public class Minibus {
     private double cenaZaKm;
     private SimQueue<Zakaznik> zakazniciVMinibuse;
     private int polohaMinibusu; // 0-term1, 1-term2, 2-AirCarRental, 3-term3
+    private int pocetObsadenychMiest;
 
     public Minibus(int cisloMinibusu, int typMinibusu) {
         this.cisloMinibusu = cisloMinibusu;
@@ -35,17 +36,21 @@ public class Minibus {
         }
         zakazniciVMinibuse = new SimQueue<>();
         polohaMinibusu = 0;
+        pocetObsadenychMiest = 0;
     }
 
     public void pridajZakaznikaDoMinibusu(Zakaznik zak) {
         if (zakazniciVMinibuse.size() < pocetMiest) {
             zakazniciVMinibuse.add(zak);
+            pocetObsadenychMiest += zak.getPocetSpolucestujucich();
         }
     }
 
     public Zakaznik vyberZakaznikaZMinibusu() {
         if (zakazniciVMinibuse.size() > 0) {
-            return zakazniciVMinibuse.poll();
+            Zakaznik zak = zakazniciVMinibuse.poll();
+            pocetObsadenychMiest -= zak.getPocetSpolucestujucich();
+            return zak;
         }
         return null;
     }
@@ -59,11 +64,14 @@ public class Minibus {
     }
 
     public boolean jeMinibusPrazdny() {
-        return zakazniciVMinibuse.isEmpty();
+        if (pocetObsadenychMiest == 0) {
+            return true;
+        }
+        return false;
     }
 
     public boolean jeMinibusPlny() {
-        if (pocetMiest == zakazniciVMinibuse.size()) {
+        if (pocetMiest == pocetObsadenychMiest) {
             return true;
         }
         return false;
