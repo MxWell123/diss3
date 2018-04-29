@@ -8,8 +8,11 @@ import continualAssistants.*;
 //meta! id="45"
 public class ManagerObsluhy extends Manager {
 
+    private MySimulation mySim;
+
     public ManagerObsluhy(int id, Simulation mySim, Agent myAgent) {
         super(id, mySim, myAgent);
+        this.mySim = (MySimulation) mySim;
         init();
     }
 
@@ -32,10 +35,11 @@ public class ManagerObsluhy extends Manager {
             notice(nextMessage);
         }
         myAgent().odpocitajVytazenychPrac();
+        mySim.refreshGUI();
         if (0 < myAgent().velkostRadu()) {
             nextMessage.setZakaznik(myAgent().vyberZakaznikaZRadu());
-            startWork(nextMessage);
-        }
+            startWork(nextMessage);            
+        }        
 
     }
 
@@ -45,7 +49,7 @@ public class ManagerObsluhy extends Manager {
         if (!myAgent().jeVolnyPracovnik()) {
             myAgent().pridajZakaznikDoRadu(sprava.getZakaznik());
         } else {
-            startWork(message);
+            startWork(message);            
         }
     }
 
@@ -104,6 +108,7 @@ public class ManagerObsluhy extends Manager {
 
     private void startWork(MessageForm message) {
         myAgent().pripocitajVytazenychPrac();
+        mySim.refreshGUI();
         message.setAddressee(myAgent().findAssistant(Id.procesObsluhaZakaznika));
         startContinualAssistant(message);
     }
