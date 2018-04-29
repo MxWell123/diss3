@@ -3,41 +3,37 @@ package simulation;
 import OSPABA.*;
 import agents.*;
 
-public class MySimulation extends Simulation
-{
-	public MySimulation()
-	{
-		init();
-                
-	}
+public class MySimulation extends Simulation {
 
-	@Override
-	public void prepareSimulation()
-	{
-		super.prepareSimulation();
-		// Create global statistcis
-	}
+    public MySimulation() {
+        init();
+    }
+  
 
-	@Override
-	public void prepareReplication()
-	{
-		super.prepareReplication();
-		// Reset entities, queues, local statistics, etc...
-	}
+    @Override
+    public void prepareSimulation() {
+        super.prepareSimulation();
+        // Create global statistcis
+    }
 
-	@Override
-	public void replicationFinished()
-	{
-		// Collect local statistics into global, update UI, etc...
-		super.replicationFinished();
-	}
+    @Override
+    public void prepareReplication() {
+        super.prepareReplication();
+        agentModelu().spustiSimulaciu();
+        // Reset entities, queues, local statistics, etc...
+    }
 
-	@Override
-	public void simulationFinished()
-	{
-		// Dysplay simulation results
-		super.simulationFinished();
-	}
+    @Override
+    public void replicationFinished() {
+        // Collect local statistics into global, update UI, etc...
+        super.replicationFinished();
+    }
+
+    @Override
+    public void simulationFinished() {
+        // Dysplay simulation results
+        super.simulationFinished();
+    }
 
 	//meta! userInfo="Generated code: do not modify", tag="begin"
 	private void init()

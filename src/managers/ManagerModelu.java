@@ -10,7 +10,7 @@ import java.util.Random;
 public class ManagerModelu extends Manager {
 
     private Random rand;
-    private Random nasada;
+    private Random nasada = new Random();
 
     public ManagerModelu(int id, Simulation mySim, Agent myAgent) {
         super(id, mySim, myAgent);
@@ -51,6 +51,11 @@ public class ManagerModelu extends Manager {
         throw new UnsupportedOperationException("Vykonal sa default v ManagerModelu.");
     }
 
+	//meta! sender="AgentOkolia", id="184", type="Notice"
+	public void processInitPrichodMinibusov(MessageForm message)
+	{
+	}
+
 	//meta! userInfo="Generated code: do not modify", tag="begin"
 	public void init()
 	{
@@ -61,12 +66,16 @@ public class ManagerModelu extends Manager {
 	{
 		switch (message.code())
 		{
-		case Mc.prichodZakaznikaTerm2:
-			processPrichodZakaznikaTerm2(message);
-		break;
-
 		case Mc.prichodZakaznikaNaVratenieAuta:
 			processPrichodZakaznikaNaVratenieAuta(message);
+		break;
+
+		case Mc.initPrichodMinibusov:
+			processInitPrichodMinibusov(message);
+		break;
+
+		case Mc.prichodZakaznikaTerm2:
+			processPrichodZakaznikaTerm2(message);
 		break;
 
 		case Mc.prichodZakaznikaTerm1:

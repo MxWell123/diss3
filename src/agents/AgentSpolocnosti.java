@@ -35,8 +35,8 @@ public class AgentSpolocnosti extends Agent {
 	private void init()
 	{
 		new ManagerSpolocnosti(Id.managerSpolocnosti, mySim(), this);
-		addOwnMessage(Mc.nastupZakaznikovZObsluhy);
 		addOwnMessage(Mc.vystupZakaznikaTerm3);
+		addOwnMessage(Mc.nastupZakaznikovZObsluhy);
 		addOwnMessage(Mc.vystupZakaznikaDoObsluhy);
 		addOwnMessage(Mc.nastupZakaznikovTerm2);
 		addOwnMessage(Mc.prichodZakaznikaTerm2);

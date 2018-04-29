@@ -7,6 +7,7 @@ package diss3;
 
 import java.util.Random;
 import simulation.Mc;
+import simulation.MySimulation;
 
 /**
  *
@@ -18,7 +19,8 @@ public class DiSS3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        MySimulation sim = new MySimulation();
+        sim.simulate(10, 90000000d);
     }
 
 }

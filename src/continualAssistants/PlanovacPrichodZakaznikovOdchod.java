@@ -65,12 +65,12 @@ public class PlanovacPrichodZakaznikovOdchod extends Scheduler {
 			processNovyZakaznik(message);
 		break;
 
-		case Mc.start:
-			processStart(message);
-		break;
-
 		case Mc.koniec:
 			processKoniec(message);
+		break;
+
+		case Mc.start:
+			processStart(message);
 		break;
 
 		default:

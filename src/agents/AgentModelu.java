@@ -9,7 +9,6 @@ import java.util.Random;
 //meta! id="1"
 public class AgentModelu extends Agent {
 
-
     public AgentModelu(int id, Simulation mySim, Agent parent) {
         super(id, mySim, parent);
         init();
@@ -28,6 +27,14 @@ public class AgentModelu extends Agent {
 		addOwnMessage(Mc.prichodZakaznikaTerm2);
 		addOwnMessage(Mc.prichodZakaznikaTerm1);
 		addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
+		addOwnMessage(Mc.initPrichodMinibusov);
 	}
 	//meta! tag="end"
+
+    public void spustiSimulaciu() {
+        MyMessage message = new MyMessage(mySim());
+        message.setCode(Mc.initPrichodyZakaznikov);        
+        message.setAddressee(Id.agentOkolia);
+        manager().notice(message);
+    }
 }

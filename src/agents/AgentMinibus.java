@@ -25,8 +25,8 @@ public class AgentMinibus extends Agent {
 	{
 		new ManagerMinibus(Id.managerMinibus, mySim(), this);
 		new ProcesPrechodMedziTerminalmi(Id.procesPrechodMedziTerminalmi, mySim(), this);
-		new ProcesVystupZakaznikaZMinibusu(Id.procesVystupZakaznikaZMinibusu, mySim(), this);
 		new ProcesNastupZakaznikaDoMinibusu(Id.procesNastupZakaznikaDoMinibusu, mySim(), this);
+		new ProcesVystupZakaznikaZMinibusu(Id.procesVystupZakaznikaZMinibusu, mySim(), this);
 		addOwnMessage(Mc.koniecNastupu);
 		addOwnMessage(Mc.nastupZakaznikovZObsluhy);
 		addOwnMessage(Mc.nastupZakaznikovTerm2);

@@ -66,12 +66,12 @@ public class ProcesObsluhaZakaznika extends Process {
 	{
 		switch (message.code())
 		{
-		case Mc.koniecObsluhy:
-			processKoniecObsluhy(message);
-		break;
-
 		case Mc.start:
 			processStart(message);
+		break;
+
+		case Mc.koniecObsluhy:
+			processKoniecObsluhy(message);
 		break;
 
 		default:

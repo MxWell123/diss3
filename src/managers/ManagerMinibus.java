@@ -23,8 +23,8 @@ public class ManagerMinibus extends Manager {
         }
     }
 
-    //meta! sender="AgentSpolocnosti", id="101", type="Response"
-    public void processNastupZakaznikovZObsluhy(MessageForm message) {
+	//meta! sender="AgentSpolocnosti", id="101", type="Response"
+	public void processNastupZakaznikovZObsluhy(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         if (sprava.getZakaznik() != null && !sprava.getMinibus().jeMinibusPlny()) {
             startNastup(message);
@@ -33,8 +33,8 @@ public class ManagerMinibus extends Manager {
         }
     }
 
-    //meta! sender="AgentSpolocnosti", id="71", type="Response"
-    public void processNastupZakaznikovTerm2(MessageForm message) {
+	//meta! sender="AgentSpolocnosti", id="71", type="Response"
+	public void processNastupZakaznikovTerm2(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         if (sprava.getZakaznik() != null && !sprava.getMinibus().jeMinibusPlny()) {
             startNastup(message);
@@ -43,8 +43,8 @@ public class ManagerMinibus extends Manager {
         }
     }
 
-    //meta! sender="AgentSpolocnosti", id="55", type="Response"
-    public void processNastupZakaznikovTerm1(MessageForm message) {
+	//meta! sender="AgentSpolocnosti", id="55", type="Response"
+	public void processNastupZakaznikovTerm1(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         if (sprava.getZakaznik() != null && !sprava.getMinibus().jeMinibusPlny()) {
             startNastup(message);
@@ -53,16 +53,15 @@ public class ManagerMinibus extends Manager {
         }
     }
 
-    //meta! sender="ProcesNastupZakaznikaDoMinibusu", id="89", type="Finish"
-    //meta! sender="ProcesNastupZakaznikaDoMinibusu", id="89", type="Finish"
-    public void processFinishProcesNastupZakaznikaDoMinibusu(MessageForm message) {
+	//meta! sender="ProcesNastupZakaznikaDoMinibusu", id="89", type="Finish"
+	public void processFinishProcesNastupZakaznikaDoMinibusu(MessageForm message) {
         message.setAddressee(Id.agentSpolocnosti);
         message.setCode(Mc.nastupZakaznikovTerm1);
         request(message);
     }
 
-    //meta! sender="ProcesPrechodMedziTerminalmi", id="104", type="Finish"
-    public void processFinishProcesPrechodMedziTerminalmi(MessageForm message) {
+	//meta! sender="ProcesPrechodMedziTerminalmi", id="104", type="Finish"
+	public void processFinishProcesPrechodMedziTerminalmi(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         int polohaMinibus = sprava.getMinibus().getPolohaMinibusu();
         if (polohaMinibus == 1) { // ak sa nachadza v terminale 2
@@ -88,73 +87,73 @@ public class ManagerMinibus extends Manager {
         request(sprava);
     }
 
-    //meta! sender="ProcesVystupZakaznikaZMinibusu", id="106", type="Finish"
-    public void processFinishProcesVystupZakaznikaZMinibusu(MessageForm message) {
+	//meta! sender="ProcesVystupZakaznikaZMinibusu", id="106", type="Finish"
+	public void processFinishProcesVystupZakaznikaZMinibusu(MessageForm message) {
 
     }
 
-    //meta! sender="AgentSpolocnosti", id="56", type="Notice"
-    public void processInitPrichodMinibusov(MessageForm message) {
+	//meta! sender="AgentSpolocnosti", id="56", type="Notice"
+	public void processInitPrichodMinibusov(MessageForm message) {
         message.setAddressee(Id.agentSpolocnosti);
         message.setCode(Mc.nastupZakaznikovTerm1);
         request(message);
     }
 
-    //meta! userInfo="Process messages defined in code", id="0"
-    public void processDefault(MessageForm message) {
+	//meta! userInfo="Process messages defined in code", id="0"
+	public void processDefault(MessageForm message) {
         switch (message.code()) {
         }
     }
 
-    //meta! userInfo="Removed from model"
-    public void processFinishPlanovacMinibusov(MessageForm message) {
-    }
+	//meta! userInfo="Generated code: do not modify", tag="begin"
+	public void init()
+	{
+	}
 
-    //meta! userInfo="Generated code: do not modify", tag="begin"
-    public void init() {
-    }
+	@Override
+	public void processMessage(MessageForm message)
+	{
+		switch (message.code())
+		{
+		case Mc.nastupZakaznikovTerm2:
+			processNastupZakaznikovTerm2(message);
+		break;
 
-    @Override
-    public void processMessage(MessageForm message) {
-        switch (message.code()) {
-            case Mc.nastupZakaznikovTerm1:
-                processNastupZakaznikovTerm1(message);
-                break;
+		case Mc.nastupZakaznikovTerm1:
+			processNastupZakaznikovTerm1(message);
+		break;
 
-            case Mc.finish:
-                switch (message.sender().id()) {
-                    case Id.procesPrechodMedziTerminalmi:
-                        processFinishProcesPrechodMedziTerminalmi(message);
-                        break;
+		case Mc.finish:
+			switch (message.sender().id())
+			{
+			case Id.procesVystupZakaznikaZMinibusu:
+				processFinishProcesVystupZakaznikaZMinibusu(message);
+			break;
 
-                    case Id.procesNastupZakaznikaDoMinibusu:
-                        processFinishProcesNastupZakaznikaDoMinibusu(message);
-                        break;
+			case Id.procesPrechodMedziTerminalmi:
+				processFinishProcesPrechodMedziTerminalmi(message);
+			break;
 
-                    case Id.procesVystupZakaznikaZMinibusu:
-                        processFinishProcesVystupZakaznikaZMinibusu(message);
-                        break;
-                }
-                break;
+			case Id.procesNastupZakaznikaDoMinibusu:
+				processFinishProcesNastupZakaznikaDoMinibusu(message);
+			break;
+			}
+		break;
 
-            case Mc.nastupZakaznikovZObsluhy:
-                processNastupZakaznikovZObsluhy(message);
-                break;
+		case Mc.nastupZakaznikovZObsluhy:
+			processNastupZakaznikovZObsluhy(message);
+		break;
 
-            case Mc.nastupZakaznikovTerm2:
-                processNastupZakaznikovTerm2(message);
-                break;
+		case Mc.initPrichodMinibusov:
+			processInitPrichodMinibusov(message);
+		break;
 
-            case Mc.initPrichodMinibusov:
-                processInitPrichodMinibusov(message);
-                break;
-
-            default:
-                processDefault(message);
-                break;
-        }
-    }
-    //meta! tag="end"
+		default:
+			processDefault(message);
+		break;
+		}
+	}
+	//meta! tag="end"
 
     @Override
     public AgentMinibus myAgent() {

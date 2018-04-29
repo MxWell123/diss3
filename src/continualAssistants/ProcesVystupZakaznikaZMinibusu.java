@@ -23,8 +23,8 @@ public class ProcesVystupZakaznikaZMinibusu extends Process {
         // Setup component for the next replication
     }
 
-    //meta! sender="AgentMinibus", id="106", type="Start"
-    public void processStart(MessageForm message) {
+	//meta! sender="AgentMinibus", id="106", type="Start"
+	public void processStart(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         sprava.setCode(Mc.odosliZakaznikaDoRadu);
         sprava.setZakaznik(sprava.getMinibus().vyberZakaznikaZMinibusu());
@@ -32,18 +32,18 @@ public class ProcesVystupZakaznikaZMinibusu extends Process {
 
     }
 
-    //meta! userInfo="Process messages defined in code", id="0"
-    public void processDefault(MessageForm message) {
+	//meta! userInfo="Process messages defined in code", id="0"
+	public void processDefault(MessageForm message) {
         throw new UnsupportedOperationException("Vykonal sa default v ProcesVystupZakaznikaZMinibusu.");
     }
 
-    //meta! sender="AgentMinibus", id="177", type="Notice"
-    public void processKoniecVystupu(MessageForm message) {
+	//meta! sender="AgentMinibus", id="177", type="Notice"
+	public void processKoniecVystupu(MessageForm message) {
         assistantFinished(message);
     }
 
-    //meta! sender="AgentMinibus", id="182", type="Notice"
-    public void processOdosliZakaznikaDoRadu(MessageForm message) {
+	//meta! sender="AgentMinibus", id="182", type="Notice"
+	public void processOdosliZakaznikaDoRadu(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         if (sprava.getMinibus().getPolohaMinibusu() == 2) { // minibus sa nachadza v Arcar
             sprava.setCode(Mc.vystupZakaznikaDoObsluhy);
@@ -65,28 +65,30 @@ public class ProcesVystupZakaznikaZMinibusu extends Process {
         }
     }
 
-    //meta! userInfo="Generated code: do not modify", tag="begin"
-    @Override
-    public void processMessage(MessageForm message) {
-        switch (message.code()) {
-            case Mc.koniecVystupu:
-                processKoniecVystupu(message);
-                break;
+	//meta! userInfo="Generated code: do not modify", tag="begin"
+	@Override
+	public void processMessage(MessageForm message)
+	{
+		switch (message.code())
+		{
+		case Mc.koniecVystupu:
+			processKoniecVystupu(message);
+		break;
 
-            case Mc.odosliZakaznikaDoRadu:
-                processOdosliZakaznikaDoRadu(message);
-                break;
+		case Mc.start:
+			processStart(message);
+		break;
 
-            case Mc.start:
-                processStart(message);
-                break;
+		case Mc.odosliZakaznikaDoRadu:
+			processOdosliZakaznikaDoRadu(message);
+		break;
 
-            default:
-                processDefault(message);
-                break;
-        }
-    }
-    //meta! tag="end"
+		default:
+			processDefault(message);
+		break;
+		}
+	}
+	//meta! tag="end"
 
     @Override
     public AgentMinibus myAgent() {
