@@ -40,7 +40,6 @@ public class ProcesVystupZakaznikaZMinibusu extends Process {
     //meta! sender="AgentMinibus", id="177", type="Notice"
     public void processKoniecVystupu(MessageForm message) {
         assistantFinished(message);
-
     }
 
     //meta! sender="AgentMinibus", id="182", type="Notice"
