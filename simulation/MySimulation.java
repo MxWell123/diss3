@@ -2,53 +2,41 @@ package simulation;
 
 import OSPABA.*;
 import agents.*;
-import diss3.Obs;
-import java.util.ArrayList;
-import java.util.List;
 
-public class MySimulation extends Simulation {
+public class MySimulation extends Simulation
+{
+	public MySimulation()
+	{
+		init();
+	}
 
-    private int pocetMinibusov;
-    private int pocetPracovnikov;
-    private int typMinibusu;
-    private List<Obs> delegates;
+	@Override
+	public void prepareSimulation()
+	{
+		super.prepareSimulation();
+		// Create global statistcis
+	}
 
-    public MySimulation(int pocetMinibusov, int pocetPracovnikov, int typMinibusu) {
-        init();
-        this.pocetMinibusov = pocetMinibusov;
-        this.pocetPracovnikov = pocetPracovnikov;
-        this.typMinibusu = typMinibusu;
-        delegates = new ArrayList<>();
-    }
+	@Override
+	public void prepareReplication()
+	{
+		super.prepareReplication();
+		// Reset entities, queues, local statistics, etc...
+	}
 
-    @Override
-    public void prepareSimulation() {
-        super.prepareSimulation();
-        refreshGUI();
-        // Create global statistcis
-    }
+	@Override
+	public void replicationFinished()
+	{
+		// Collect local statistics into global, update UI, etc...
+		super.replicationFinished();
+	}
 
-    @Override
-    public void prepareReplication() {
-        super.prepareReplication();
-        agentObsluhy().setPocetPracovnikov(pocetPracovnikov);
-        agentMinibus().setTypMinibusu(typMinibusu);
-        agentModelu().spustiSimulaciu(pocetMinibusov, typMinibusu);
-
-        // Reset entities, queues, local statistics, etc...
-    }
-
-    @Override
-    public void replicationFinished() {
-        // Collect local statistics into global, update UI, etc...
-        super.replicationFinished();
-    }
-
-    @Override
-    public void simulationFinished() {
-        // Dysplay simulation results
-        super.simulationFinished();
-    }
+	@Override
+	public void simulationFinished()
+	{
+		// Dysplay simulation results
+		super.simulationFinished();
+	}
 
 	//meta! userInfo="Generated code: do not modify", tag="begin"
 	private void init()
@@ -61,10 +49,6 @@ public class MySimulation extends Simulation {
 		setAgentPrichodov(new AgentPrichodov(Id.agentPrichodov, this, agentSpolocnosti()));
 		setAgentOdchodu(new AgentOdchodu(Id.agentOdchodu, this, agentSpolocnosti()));
 	}
-
-    public void registerDelegate(Obs delegate) {
-        delegates.add(delegate);
-    }
 
 	private AgentModelu _agentModelu;
 
@@ -98,12 +82,6 @@ public AgentObsluhy agentObsluhy()
 	public void setAgentObsluhy(AgentObsluhy agentObsluhy)
 	{_agentObsluhy = agentObsluhy; }
 
-    public void refreshGUI() {
-        for (Obs delegate : delegates) {
-            delegate.refresh(this);
-        }
-    }
-
 	private AgentMinibus _agentMinibus;
 
 public AgentMinibus agentMinibus()
@@ -128,8 +106,4 @@ public AgentOdchodu agentOdchodu()
 	public void setAgentOdchodu(AgentOdchodu agentOdchodu)
 	{_agentOdchodu = agentOdchodu; }
 	//meta! tag="end"
-
-    public Minibus[] getMinibusy() {
-        return agentModelu().getMinibusy();
-    }
 }

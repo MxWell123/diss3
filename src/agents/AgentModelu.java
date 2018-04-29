@@ -29,18 +29,19 @@ public class AgentModelu extends Agent {
         // Setup component for the next replication
     }
 
-    //meta! userInfo="Generated code: do not modify", tag="begin"
-    private void init() {
-        new ManagerModelu(Id.managerModelu, mySim(), this);
-        new PlanovacMinibusov(Id.planovacMinibusov, mySim(), this);
-        addOwnMessage(Mc.prichodZakaznikaTerm2);
-        addOwnMessage(Mc.prichodZakaznikaTerm1);
-        addOwnMessage(Mc.koniec);
-        addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
-        addOwnMessage(Mc.initPrichodMinibusov);
-        addOwnMessage(Mc.novyMinibus);
-    }
-    //meta! tag="end"
+	//meta! userInfo="Generated code: do not modify", tag="begin"
+	private void init()
+	{
+		new ManagerModelu(Id.managerModelu, mySim(), this);
+		new PlanovacMinibusov(Id.planovacMinibusov, mySim(), this);
+		addOwnMessage(Mc.prichodZakaznikaTerm2);
+		addOwnMessage(Mc.prichodZakaznikaTerm1);
+		addOwnMessage(Mc.koniec);
+		addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
+		addOwnMessage(Mc.initPrichodMinibusov);
+		addOwnMessage(Mc.novyMinibus);
+	}
+	//meta! tag="end"
 
     public void spustiSimulaciu(int pocetMinibusov, int typMinibusu) {
         this.pocetMinibusov = pocetMinibusov;

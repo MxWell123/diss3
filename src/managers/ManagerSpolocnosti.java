@@ -24,17 +24,12 @@ public class ManagerSpolocnosti extends Manager {
     }
 
     //meta! sender="AgentMinibus", id="101", type="Request"
-    public void processNastupZakaznikovZObsluhyAgentMinibus(MessageForm message) {
+    public void processNastupZakaznikovZObsluhy(MessageForm message) {
         MyMessage sprava = (MyMessage) message.createCopy();
         sprava.setAddressee(Id.agentMinibus);
+        sprava.setCode(Mc.nastupZakaznikovZObsluhy);
         sprava.setZakaznik(myAgent().vyberZakaznikaZRaduNaMinibus());
         response(sprava);
-    }
-
-    //meta! sender="AgentMinibus", id="116", type="Notice"
-    public void processVystupZakaznikaTerm3(MessageForm message) {
-        message.setAddressee(Id.agentOdchodu);
-        notice(message);
     }
 
     //meta! sender="AgentModelu", id="42", type="Notice"
@@ -96,8 +91,14 @@ public class ManagerSpolocnosti extends Manager {
         throw new UnsupportedOperationException("Vykonal sa default v ManagerSpolocnosti.");
     }
 
-    //meta! sender="AgentObsluhy", id="158", type="Notice"
-    public void processNastupZakaznikovZObsluhyAgentObsluhy(MessageForm message) {
+    //meta! sender="AgentMinibus", id="203", type="Notice"
+    public void processVystupZakaznikaTerm3(MessageForm message) {
+        message.setAddressee(Id.agentOdchodu);
+        notice(message);
+    }
+
+    //meta! sender="AgentObsluhy", id="211", type="Notice"
+    public void processPrichodZakaznikovNaCakanieNaMinibus(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         myAgent().pridajZakaznikDoRaduNaMinibus(sprava.getZakaznik());
     }
@@ -121,24 +122,8 @@ public class ManagerSpolocnosti extends Manager {
                 }
                 break;
 
-            case Mc.prichodZakaznikaNaVratenieAuta:
-                processPrichodZakaznikaNaVratenieAuta(message);
-                break;
-
             case Mc.nastupZakaznikovZObsluhy:
-                switch (message.sender().id()) {
-                    case Id.agentMinibus:
-                        processNastupZakaznikovZObsluhyAgentMinibus(message);
-                        break;
-
-                    case Id.agentObsluhy:
-                        processNastupZakaznikovZObsluhyAgentObsluhy(message);
-                        break;
-                }
-                break;
-
-            case Mc.initPrichodMinibusov:
-                processInitPrichodMinibusov(message);
+                processNastupZakaznikovZObsluhy(message);
                 break;
 
             case Mc.prichodZakaznikaTerm2:
@@ -147,6 +132,22 @@ public class ManagerSpolocnosti extends Manager {
 
             case Mc.prichodZakaznikaTerm1:
                 processPrichodZakaznikaTerm1(message);
+                break;
+
+            case Mc.vystupZakaznikaDoObsluhy:
+                processVystupZakaznikaDoObsluhy(message);
+                break;
+
+            case Mc.prichodZakaznikaNaVratenieAuta:
+                processPrichodZakaznikaNaVratenieAuta(message);
+                break;
+
+            case Mc.initPrichodMinibusov:
+                processInitPrichodMinibusov(message);
+                break;
+
+            case Mc.vystupZakaznikaTerm3:
+                processVystupZakaznikaTerm3(message);
                 break;
 
             case Mc.nastupZakaznikovTerm2:
@@ -161,12 +162,8 @@ public class ManagerSpolocnosti extends Manager {
                 }
                 break;
 
-            case Mc.vystupZakaznikaDoObsluhy:
-                processVystupZakaznikaDoObsluhy(message);
-                break;
-
-            case Mc.vystupZakaznikaTerm3:
-                processVystupZakaznikaTerm3(message);
+            case Mc.prichodZakaznikovNaCakanieNaMinibus:
+                processPrichodZakaznikovNaCakanieNaMinibus(message);
                 break;
 
             default:

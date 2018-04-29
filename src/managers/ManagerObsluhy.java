@@ -23,12 +23,6 @@ public class ManagerObsluhy extends Manager {
         }
     }
 
-    //meta! sender="AgentSpolocnosti", id="113", type="Notice"
-    public void processNastupZakaznikovZObsluhy(MessageForm message) {
-        message.setAddressee(Id.agentSpolocnosti);
-        notice(message);
-    }
-
     //meta! sender="ProcesObsluhaZakaznika", id="87", type="Finish"
     public void processFinish(MessageForm message) {
         MyMessage nextMessage = (MyMessage) message;
@@ -42,7 +36,7 @@ public class ManagerObsluhy extends Manager {
             nextMessage.setZakaznik(myAgent().vyberZakaznikaZRadu());
             startWork(nextMessage);
         }
-        
+
     }
 
     //meta! sender="AgentSpolocnosti", id="83", type="Notice"
@@ -57,8 +51,7 @@ public class ManagerObsluhy extends Manager {
 
     //meta! userInfo="Process messages defined in code", id="0"
     public void processDefault(MessageForm message) {
-        switch (message.code()) {
-        }
+        throw new UnsupportedOperationException("Vykonal sa default v ManagerObsluhy.");
     }
 
     //meta! sender="AgentSpolocnosti", id="114", type="Notice"
@@ -73,7 +66,9 @@ public class ManagerObsluhy extends Manager {
     }
 
     //meta! userInfo="Removed from model"
-    public void processKoniecObsluhy(MessageForm message) {
+    public void processNastupZakaznikovZObsluhy(MessageForm message) {
+        message.setAddressee(Id.agentSpolocnosti);
+        notice(message);
     }
 
     //meta! userInfo="Generated code: do not modify", tag="begin"
@@ -85,10 +80,6 @@ public class ManagerObsluhy extends Manager {
         switch (message.code()) {
             case Mc.prichodZakaznikaNaVratenieAuta:
                 processPrichodZakaznikaNaVratenieAuta(message);
-                break;
-
-            case Mc.nastupZakaznikovZObsluhy:
-                processNastupZakaznikovZObsluhy(message);
                 break;
 
             case Mc.vystupZakaznikaDoObsluhy:

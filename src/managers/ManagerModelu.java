@@ -54,7 +54,7 @@ public class ManagerModelu extends Manager {
 	//meta! sender="AgentOkolia", id="184", type="Notice"
 	public void processInitPrichodMinibusov(MessageForm message) {
         message.setAddressee(myAgent().findAssistant(Id.planovacMinibusov));
-        startContinualAssistant(message);
+        startContinualAssistant(message);        
     }
 
 	//meta! sender="PlanovacMinibusov", id="188", type="Finish"

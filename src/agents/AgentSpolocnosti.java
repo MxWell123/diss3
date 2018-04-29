@@ -42,6 +42,7 @@ public class AgentSpolocnosti extends Agent {
 		addOwnMessage(Mc.nastupZakaznikovTerm2);
 		addOwnMessage(Mc.nastupZakaznikovTerm1);
 		addOwnMessage(Mc.prichodZakaznikaTerm1);
+		addOwnMessage(Mc.prichodZakaznikovNaCakanieNaMinibus);
 		addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
 		addOwnMessage(Mc.initPrichodMinibusov);
 	}
