@@ -58,8 +58,8 @@ public class AgentOkolia extends Agent {
 	{
 		new ManagerOkolia(Id.managerOkolia, mySim(), this);
 		new PlanovacPrichodZakaznikovOdchod(Id.planovacPrichodZakaznikovOdchod, mySim(), this);
-		new PlanovacPrichodZakaznikovTerm1(Id.planovacPrichodZakaznikovTerm1, mySim(), this);
 		new PlanovacPrichodZakaznikovTerm2(Id.planovacPrichodZakaznikovTerm2, mySim(), this);
+		new PlanovacPrichodZakaznikovTerm1(Id.planovacPrichodZakaznikovTerm1, mySim(), this);
 		addOwnMessage(Mc.koniec);
 		addOwnMessage(Mc.initPrichodyZakaznikov);
 		addOwnMessage(Mc.novyZakaznik);

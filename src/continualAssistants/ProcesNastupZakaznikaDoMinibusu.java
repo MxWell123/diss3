@@ -47,12 +47,12 @@ public class ProcesNastupZakaznikaDoMinibusu extends Process {
 	{
 		switch (message.code())
 		{
-		case Mc.koniecNastupu:
-			processKoniecNastupu(message);
-		break;
-
 		case Mc.start:
 			processStart(message);
+		break;
+
+		case Mc.koniecNastupu:
+			processKoniecNastupu(message);
 		break;
 
 		default:

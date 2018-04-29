@@ -28,64 +28,75 @@ public class ManagerModelu extends Manager {
         }
     }
 
-    //meta! sender="AgentOkolia", id="98", type="Notice"
-    public void processPrichodZakaznikaTerm2(MessageForm message) {
+	//meta! sender="AgentOkolia", id="98", type="Notice"
+	public void processPrichodZakaznikaTerm2(MessageForm message) {
         message.setAddressee(Id.agentSpolocnosti);
         notice(message);
     }
 
-    //meta! sender="AgentOkolia", id="27", type="Notice"
-    public void processPrichodZakaznikaTerm1(MessageForm message) {
+	//meta! sender="AgentOkolia", id="27", type="Notice"
+	public void processPrichodZakaznikaTerm1(MessageForm message) {
         message.setAddressee(Id.agentSpolocnosti);
         notice(message);
     }
 
-    //meta! sender="AgentOkolia", id="100", type="Notice"
-    public void processPrichodZakaznikaNaVratenieAuta(MessageForm message) {
+	//meta! sender="AgentOkolia", id="100", type="Notice"
+	public void processPrichodZakaznikaNaVratenieAuta(MessageForm message) {
         message.setAddressee(Id.agentSpolocnosti);
         notice(message);
     }
 
-    //meta! userInfo="Process messages defined in code", id="0"
-    public void processDefault(MessageForm message) {
+	//meta! userInfo="Process messages defined in code", id="0"
+	public void processDefault(MessageForm message) {
         throw new UnsupportedOperationException("Vykonal sa default v ManagerModelu.");
     }
 
-    //meta! sender="AgentOkolia", id="184", type="Notice"
-    public void processInitPrichodMinibusov(MessageForm message) {
-        message.setAddressee(Id.agentMinibus);
-        notice(message);
+	//meta! sender="AgentOkolia", id="184", type="Notice"
+	public void processInitPrichodMinibusov(MessageForm message) {
+        message.setAddressee(myAgent().findAssistant(Id.planovacMinibusov));
+        startContinualAssistant(message);
     }
 
-    //meta! userInfo="Generated code: do not modify", tag="begin"
-    public void init() {
+	//meta! sender="PlanovacMinibusov", id="188", type="Finish"
+	public void processFinish(MessageForm message) {
     }
 
-    @Override
-    public void processMessage(MessageForm message) {
-        switch (message.code()) {
-            case Mc.prichodZakaznikaNaVratenieAuta:
-                processPrichodZakaznikaNaVratenieAuta(message);
-                break;
+	//meta! userInfo="Generated code: do not modify", tag="begin"
+	public void init()
+	{
+	}
 
-            case Mc.initPrichodMinibusov:
-                processInitPrichodMinibusov(message);
-                break;
+	@Override
+	public void processMessage(MessageForm message)
+	{
+		switch (message.code())
+		{
+		case Mc.prichodZakaznikaTerm1:
+			processPrichodZakaznikaTerm1(message);
+		break;
 
-            case Mc.prichodZakaznikaTerm2:
-                processPrichodZakaznikaTerm2(message);
-                break;
+		case Mc.prichodZakaznikaNaVratenieAuta:
+			processPrichodZakaznikaNaVratenieAuta(message);
+		break;
 
-            case Mc.prichodZakaznikaTerm1:
-                processPrichodZakaznikaTerm1(message);
-                break;
+		case Mc.finish:
+			processFinish(message);
+		break;
 
-            default:
-                processDefault(message);
-                break;
-        }
-    }
-    //meta! tag="end"
+		case Mc.initPrichodMinibusov:
+			processInitPrichodMinibusov(message);
+		break;
+
+		case Mc.prichodZakaznikaTerm2:
+			processPrichodZakaznikaTerm2(message);
+		break;
+
+		default:
+			processDefault(message);
+		break;
+		}
+	}
+	//meta! tag="end"
 
     @Override
     public AgentModelu myAgent() {

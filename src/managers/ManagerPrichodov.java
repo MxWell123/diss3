@@ -70,16 +70,16 @@ public class ManagerPrichodov extends Manager {
 			processPrichodZakaznikaTerm2(message);
 		break;
 
-		case Mc.nastupZakaznikovTerm1:
-			processNastupZakaznikovTerm1(message);
+		case Mc.nastupZakaznikovTerm2:
+			processNastupZakaznikovTerm2(message);
 		break;
 
 		case Mc.prichodZakaznikaTerm1:
 			processPrichodZakaznikaTerm1(message);
 		break;
 
-		case Mc.nastupZakaznikovTerm2:
-			processNastupZakaznikovTerm2(message);
+		case Mc.nastupZakaznikovTerm1:
+			processNastupZakaznikovTerm1(message);
 		break;
 
 		default:

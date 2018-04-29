@@ -68,12 +68,12 @@ public class ProcesPrechodMedziTerminalmi extends Process {
 	{
 		switch (message.code())
 		{
-		case Mc.start:
-			processStart(message);
-		break;
-
 		case Mc.koniecPrechodu:
 			processKoniecPrechodu(message);
+		break;
+
+		case Mc.start:
+			processStart(message);
 		break;
 
 		default:

@@ -71,16 +71,16 @@ public class ProcesVystupZakaznikaZMinibusu extends Process {
 	{
 		switch (message.code())
 		{
+		case Mc.odosliZakaznikaDoRadu:
+			processOdosliZakaznikaDoRadu(message);
+		break;
+
 		case Mc.koniecVystupu:
 			processKoniecVystupu(message);
 		break;
 
 		case Mc.start:
 			processStart(message);
-		break;
-
-		case Mc.odosliZakaznikaDoRadu:
-			processOdosliZakaznikaDoRadu(message);
 		break;
 
 		default:

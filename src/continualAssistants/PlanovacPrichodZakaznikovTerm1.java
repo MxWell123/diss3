@@ -30,8 +30,10 @@ public class PlanovacPrichodZakaznikovTerm1 extends Scheduler {
 
 	//meta! sender="AgentOkolia", id="75", type="Start"
 	public void processStart(MessageForm message) {
-        message.setCode(Mc.novyZakaznik);
-        this.hold(myAgent().dajTrvanie(generatory, vstupy), message);
+        MyMessage sprava = (MyMessage) message;
+        sprava.setCode(Mc.novyZakaznik);
+        sprava.setZakaznik(new Zakaznik(0, false));        
+        this.hold(myAgent().dajTrvanie(generatory, vstupy), sprava);
     }
 
 	//meta! userInfo="Process messages defined in code", id="0"
@@ -45,7 +47,8 @@ public class PlanovacPrichodZakaznikovTerm1 extends Scheduler {
             message.setCode(Mc.koniec);
             this.assistantFinished(message);
         } else {
-            MessageForm kopia = message.createCopy();
+            MyMessage kopia = (MyMessage)message.createCopy();
+            kopia.setZakaznik(new Zakaznik(0, false));
             this.hold(myAgent().dajTrvanie(generatory, vstupy), kopia);
             this.assistantFinished(message);
         }
@@ -61,12 +64,12 @@ public class PlanovacPrichodZakaznikovTerm1 extends Scheduler {
 	{
 		switch (message.code())
 		{
-		case Mc.start:
-			processStart(message);
-		break;
-
 		case Mc.koniec:
 			processKoniec(message);
+		break;
+
+		case Mc.start:
+			processStart(message);
 		break;
 
 		case Mc.novyZakaznik:

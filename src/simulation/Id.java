@@ -26,5 +26,6 @@ public class Id extends IdList
 	public static final int planovacPrichodZakaznikovOdchod = 1003;
 	public static final int procesObsluhaZakaznika = 1005;
 	public static final int procesNastupZakaznikaDoMinibusu = 1006;
+	public static final int planovacMinibusov = 1010;
 	//meta! tag="end"
 }

@@ -86,10 +86,6 @@ public class ManagerObsluhy extends Manager {
 	{
 		switch (message.code())
 		{
-		case Mc.finish:
-			processFinish(message);
-		break;
-
 		case Mc.prichodZakaznikaNaVratenieAuta:
 			processPrichodZakaznikaNaVratenieAuta(message);
 		break;
@@ -100,6 +96,10 @@ public class ManagerObsluhy extends Manager {
 
 		case Mc.vystupZakaznikaDoObsluhy:
 			processVystupZakaznikaDoObsluhy(message);
+		break;
+
+		case Mc.finish:
+			processFinish(message);
 		break;
 
 		default:

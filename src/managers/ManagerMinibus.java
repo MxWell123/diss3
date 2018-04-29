@@ -94,9 +94,11 @@ public class ManagerMinibus extends Manager {
 
 	//meta! sender="AgentSpolocnosti", id="56", type="Notice"
 	public void processInitPrichodMinibusov(MessageForm message) {
-        message.setAddressee(Id.agentSpolocnosti);
-        message.setCode(Mc.nastupZakaznikovTerm1);
-        request(message);
+        MyMessage sprava = (MyMessage) message;
+        sprava.setMinibus(new Minibus(_id, _id));
+        sprava.setAddressee(Id.agentSpolocnosti);
+        sprava.setCode(Mc.nastupZakaznikovTerm1);
+        request(sprava);
     }
 
 	//meta! userInfo="Process messages defined in code", id="0"
@@ -115,12 +117,16 @@ public class ManagerMinibus extends Manager {
 	{
 		switch (message.code())
 		{
-		case Mc.nastupZakaznikovTerm2:
-			processNastupZakaznikovTerm2(message);
-		break;
-
 		case Mc.nastupZakaznikovTerm1:
 			processNastupZakaznikovTerm1(message);
+		break;
+
+		case Mc.nastupZakaznikovZObsluhy:
+			processNastupZakaznikovZObsluhy(message);
+		break;
+
+		case Mc.initPrichodMinibusov:
+			processInitPrichodMinibusov(message);
 		break;
 
 		case Mc.finish:
@@ -130,22 +136,18 @@ public class ManagerMinibus extends Manager {
 				processFinishProcesVystupZakaznikaZMinibusu(message);
 			break;
 
-			case Id.procesPrechodMedziTerminalmi:
-				processFinishProcesPrechodMedziTerminalmi(message);
-			break;
-
 			case Id.procesNastupZakaznikaDoMinibusu:
 				processFinishProcesNastupZakaznikaDoMinibusu(message);
+			break;
+
+			case Id.procesPrechodMedziTerminalmi:
+				processFinishProcesPrechodMedziTerminalmi(message);
 			break;
 			}
 		break;
 
-		case Mc.nastupZakaznikovZObsluhy:
-			processNastupZakaznikovZObsluhy(message);
-		break;
-
-		case Mc.initPrichodMinibusov:
-			processInitPrichodMinibusov(message);
+		case Mc.nastupZakaznikovTerm2:
+			processNastupZakaznikovTerm2(message);
 		break;
 
 		default:

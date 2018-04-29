@@ -6,6 +6,7 @@ public class MyMessage extends MessageForm {
 
     private Zakaznik zakaznik;
     private Minibus minibus;
+    
 
     public MyMessage(Simulation sim) {
         super(sim);
