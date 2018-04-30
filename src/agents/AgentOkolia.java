@@ -28,15 +28,18 @@ public class AgentOkolia extends Agent {
         final double aktualnyCas = mySim().currentTime();
         int aktualnyInterval = dajCisloIntervalu(aktualnyCas);
         double aktualneTrvanie = generatory[aktualnyInterval].sample();
+        if (aktualneTrvanie > 15 * MINUTA) {
+            aktualneTrvanie = 15 * MINUTA;
+        }
         int nasledujuciInterval = dajCisloIntervalu(aktualnyCas + aktualneTrvanie);
         if (nasledujuciInterval > aktualnyInterval
                 && vstupy[aktualnyInterval] < vstupy[nasledujuciInterval]) {
 
             double zaciatokNasledujucehoIntervalu = nasledujuciInterval * 15 * MINUTA + HODINA;
             double trvanieVNasledujucom = (aktualnyCas + aktualneTrvanie) % (zaciatokNasledujucehoIntervalu);
-            double tvanieVAktualnom = aktualneTrvanie - trvanieVNasledujucom;
+            double trvanieVAktualnom = aktualneTrvanie - trvanieVNasledujucom;
             double nasledujuceTrvanie = generatory[nasledujuciInterval].sample();
-            return tvanieVAktualnom + ((trvanieVNasledujucom + nasledujuceTrvanie) / 2);
+            return trvanieVAktualnom + ((trvanieVNasledujucom + nasledujuceTrvanie) / 2);
         } else {
             return aktualneTrvanie;
         }
@@ -49,20 +52,20 @@ public class AgentOkolia extends Agent {
         } else {
             double zvysokSekund = aktualnyCas % HODINA;
             int aktualnaMinuta = (int) (zvysokSekund / (15 * MINUTA));
-            return ((aktualnaHodina - 1) * 4) + aktualnaMinuta;
+            int pomocna = ((aktualnaHodina - 1) * 4) + aktualnaMinuta;
+            return pomocna;
         }
     }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	private void init()
-	{
-		new ManagerOkolia(Id.managerOkolia, mySim(), this);
-		new PlanovacPrichodZakaznikovOdchod(Id.planovacPrichodZakaznikovOdchod, mySim(), this);
-		new PlanovacPrichodZakaznikovTerm2(Id.planovacPrichodZakaznikovTerm2, mySim(), this);
-		new PlanovacPrichodZakaznikovTerm1(Id.planovacPrichodZakaznikovTerm1, mySim(), this);
-		addOwnMessage(Mc.koniec);
-		addOwnMessage(Mc.initPrichodyZakaznikov);
-		addOwnMessage(Mc.novyZakaznik);
-	}
-	//meta! tag="end"
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    private void init() {
+        new ManagerOkolia(Id.managerOkolia, mySim(), this);
+        new PlanovacPrichodZakaznikovOdchod(Id.planovacPrichodZakaznikovOdchod, mySim(), this);
+        new PlanovacPrichodZakaznikovTerm2(Id.planovacPrichodZakaznikovTerm2, mySim(), this);
+        new PlanovacPrichodZakaznikovTerm1(Id.planovacPrichodZakaznikovTerm1, mySim(), this);
+        addOwnMessage(Mc.koniec);
+        addOwnMessage(Mc.initPrichodyZakaznikov);
+        addOwnMessage(Mc.novyZakaznik);
+    }
+    //meta! tag="end"
 }

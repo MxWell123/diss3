@@ -10,9 +10,9 @@ public class PlanovacPrichodZakaznikovTerm2 extends Scheduler {
 
     private static final double HODINA = 3600D;
     private final ExponentialRNG[] generatory = new ExponentialRNG[18];
-    private static final double[] vstupy = {3 / HODINA, 6 / HODINA, 9 / HODINA, 15 / HODINA, 17 / HODINA, 19 / HODINA,
-        14 / HODINA, 6 / HODINA, 3 / HODINA, 4 / HODINA, 21 / HODINA, 14 / HODINA, 19 / HODINA,
-        12 / HODINA, 5 / HODINA, 2 / HODINA, 3 / HODINA, 3 / HODINA};
+    private static final double[] vstupy = {HODINA / 3, HODINA / 6, HODINA / 9, HODINA / 15, HODINA / 17, HODINA / 19,
+        HODINA / 14, HODINA / 6, HODINA / 3, HODINA / 4, HODINA / 21, HODINA / 14, HODINA / 19,
+        HODINA / 12, HODINA / 5, HODINA / 2, HODINA / 3, HODINA / 3};
 
     public PlanovacPrichodZakaznikovTerm2(int id, Simulation mySim, CommonAgent myAgent) {
         super(id, mySim, myAgent);
@@ -28,21 +28,21 @@ public class PlanovacPrichodZakaznikovTerm2 extends Scheduler {
         // Setup component for the next replication
     }
 
-	//meta! sender="AgentOkolia", id="77", type="Start"
-	public void processStart(MessageForm message) {
+    //meta! sender="AgentOkolia", id="77", type="Start"
+    public void processStart(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         sprava.setCode(Mc.novyZakaznik);
         sprava.setZakaznik(new Zakaznik(false));
         this.hold(myAgent().dajTrvanie(generatory, vstupy), sprava);
     }
 
-	//meta! userInfo="Process messages defined in code", id="0"
-	public void processDefault(MessageForm message) {
+    //meta! userInfo="Process messages defined in code", id="0"
+    public void processDefault(MessageForm message) {
         throw new UnsupportedOperationException("Vykonal sa default v PlanovacPrichodZakaznikovTerm2.");
     }
 
-	//meta! sender="AgentOkolia", id="135", type="Notice"
-	public void processNovyZakaznik(MessageForm message) {
+    //meta! sender="AgentOkolia", id="135", type="Notice"
+    public void processNovyZakaznik(MessageForm message) {
         if (mySim().currentTime() >= myAgent().KONIEC_PRICHODOV) {
             message.setCode(Mc.koniec);
             this.assistantFinished(message);
@@ -54,34 +54,32 @@ public class PlanovacPrichodZakaznikovTerm2 extends Scheduler {
         }
     }
 
-	//meta! sender="AgentOkolia", id="142", type="Notice"
-	public void processKoniec(MessageForm message) {
+    //meta! sender="AgentOkolia", id="142", type="Notice"
+    public void processKoniec(MessageForm message) {
     }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	@Override
-	public void processMessage(MessageForm message)
-	{
-		switch (message.code())
-		{
-		case Mc.koniec:
-			processKoniec(message);
-		break;
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    @Override
+    public void processMessage(MessageForm message) {
+        switch (message.code()) {
+            case Mc.koniec:
+                processKoniec(message);
+                break;
 
-		case Mc.novyZakaznik:
-			processNovyZakaznik(message);
-		break;
+            case Mc.novyZakaznik:
+                processNovyZakaznik(message);
+                break;
 
-		case Mc.start:
-			processStart(message);
-		break;
+            case Mc.start:
+                processStart(message);
+                break;
 
-		default:
-			processDefault(message);
-		break;
-		}
-	}
-	//meta! tag="end"
+            default:
+                processDefault(message);
+                break;
+        }
+    }
+    //meta! tag="end"
 
     @Override
     public AgentOkolia myAgent() {

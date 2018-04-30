@@ -52,7 +52,7 @@ public class MySimulation extends Simulation {
         // Collect local statistics into global, update UI, etc...
         super.replicationFinished();
         casCakaniaStat.addSample(agentObsluhy().getCasCakaniaStat().mean());
-        System.out.println("R" + currentReplication() +  "(" + casCakaniaStat + ")");
+        System.out.println("R" + currentReplication() +  "(" + casCakaniaStat.mean() + ")");
         
     }
 

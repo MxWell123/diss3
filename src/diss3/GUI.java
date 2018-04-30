@@ -12,6 +12,7 @@ import simulation.MySimulation;
 import OSPABA.ISimDelegate;
 import OSPABA.SimState;
 import OSPABA.Simulation;
+import java.util.function.Consumer;
 
 /**
  *
@@ -617,16 +618,27 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int pocetAut = Integer.parseInt(pocMinSim.getText());
         int pocetPracovnikov = Integer.parseInt(pocetZamSim.getText());
-        int pocetReplikacii = 1;//Integer.parseInt(pocReplText.getText());      
+        int pocetReplikacii = 10000;//Integer.parseInt(pocReplText.getText());      
 
         mySim.setPocetMinibusov(pocetAut);
         mySim.setPocetPracovnikov(pocetPracovnikov);
-        
-        for (int i = 0; i < pocetAut; i++) {
+        mySim.onReplicationWillStart(new Consumer<Simulation>() {
+            @Override
+            public void accept(Simulation sim) {
+                sim.setSimSpeed(0, 0);
+            }
+        }
+        );
+
+        for (int i = 0;
+                i < pocetAut;
+                i++) {
             dtm.addRow(new Object[]{i, "", "", ""});
             dtm.setValueAt(i, i, 0);
         }
-        mySim.simulate(pocetReplikacii, 4.5 * 60 * 60);
+
+        mySim.simulate(pocetReplikacii,
+                4.5 * 60 * 60);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void pocetZamSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pocetZamSimActionPerformed
@@ -748,6 +760,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
 
     @Override
     public void refresh(Simulation simulation) {
+        MySimulation mySim = (MySimulation) simulation;
         this.vyslVytazenost.setText(String.valueOf(mySim.agentObsluhy().getPocetVytazenychPracovnikov()));
 //        Minibus[] minibusy = mySim.getMinibusy();
 //

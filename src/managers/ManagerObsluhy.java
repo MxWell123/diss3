@@ -10,7 +10,6 @@ public class ManagerObsluhy extends Manager {
 
     public ManagerObsluhy(int id, Simulation mySim, Agent myAgent) {
         super(id, mySim, myAgent);
-
         init();
     }
 
@@ -33,11 +32,15 @@ public class ManagerObsluhy extends Manager {
             notice(nextMessage);
         }
         myAgent().odpocitajVytazenychPrac();
-        System.out.println(myAgent().getPocetVytazenychPracovnikov());
 
         if (0 < myAgent().velkostRadu()) {
             nextMessage.setZakaznik(myAgent().vyberZakaznikaZRadu());
             startWork(nextMessage);
+        }
+        if (!nextMessage.getZakaznik().isTyp()) {
+            double pom = mySim().currentTime() - nextMessage.getZakaznik().getZaciatokCakania();
+            nextMessage.getZakaznik().setCelkoveCakanie(pom);
+            myAgent().getCasCakaniaStat().addSample(pom);
         }
 
     }
@@ -107,7 +110,7 @@ public class ManagerObsluhy extends Manager {
 
     private void startWork(MessageForm message) {
         myAgent().pripocitajVytazenychPrac();
-        System.out.println(myAgent().getPocetVytazenychPracovnikov());
+        //System.out.println(myAgent().getPocetVytazenychPracovnikov());
         message.setAddressee(myAgent().findAssistant(Id.procesObsluhaZakaznika));
         startContinualAssistant(message);
     }
