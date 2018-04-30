@@ -59,7 +59,7 @@ public class ManagerModelu extends Manager {
 
     //meta! sender="PlanovacMinibusov", id="188", type="Finish"
     public void processFinish(MessageForm message) {
-        message.setAddressee(Id.agentMinibus);
+        message.setAddressee(Id.agentSpolocnosti);
         message.setCode(Mc.initPrichodMinibusov);
         notice(message);
     }

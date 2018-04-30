@@ -27,15 +27,18 @@ public class ManagerObsluhy extends Manager {
     public void processFinish(MessageForm message) {
         MyMessage nextMessage = (MyMessage) message;
         if (nextMessage.getZakaznik().isTyp()) {
-            nextMessage.createCopy().setAddressee(this);
-            nextMessage.setCode(Mc.nastupZakaznikovZObsluhy);
+            nextMessage.setAddressee(Id.agentSpolocnosti);
+            nextMessage.setCode(Mc.prichodZakaznikovNaCakanieNaMinibus);
             notice(nextMessage);
         }
         myAgent().odpocitajVytazenychPrac();
 
         if (0 < myAgent().velkostRadu()) {
-            nextMessage.setZakaznik(myAgent().vyberZakaznikaZRadu());
-            startWork(nextMessage);
+            MyMessage kopia = (MyMessage) nextMessage.createCopy();
+            Zakaznik zak = myAgent().vyberZakaznikaZRadu();
+            kopia.setZakaznik(zak);            
+            
+            startWork(kopia);
         }
         if (!nextMessage.getZakaznik().isTyp()) {
             double pom = mySim().currentTime() - nextMessage.getZakaznik().getZaciatokCakania();
@@ -51,7 +54,7 @@ public class ManagerObsluhy extends Manager {
         if (!myAgent().jeVolnyPracovnik()) {
             myAgent().pridajZakaznikDoRadu(sprava.getZakaznik());
         } else {
-            startWork(message);
+            startWork(sprava);
         }
     }
 
@@ -68,14 +71,8 @@ public class ManagerObsluhy extends Manager {
         } else {
             startWork(message);
         }
-
     }
 
-    //meta! userInfo="Removed from model"
-    public void processNastupZakaznikovZObsluhy(MessageForm message) {
-        message.setAddressee(Id.agentSpolocnosti);
-        notice(message);
-    }
 
     //meta! userInfo="Generated code: do not modify", tag="begin"
     public void init() {
@@ -109,6 +106,7 @@ public class ManagerObsluhy extends Manager {
     }
 
     private void startWork(MessageForm message) {
+        MyMessage sprava = (MyMessage) message;
         myAgent().pripocitajVytazenychPrac();
         //System.out.println(myAgent().getPocetVytazenychPracovnikov());
         message.setAddressee(myAgent().findAssistant(Id.procesObsluhaZakaznika));

@@ -618,14 +618,14 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int pocetAut = Integer.parseInt(pocMinSim.getText());
         int pocetPracovnikov = Integer.parseInt(pocetZamSim.getText());
-        int pocetReplikacii = 10000;//Integer.parseInt(pocReplText.getText());      
+        int pocetReplikacii = 1;//Integer.parseInt(pocReplText.getText());      
 
         mySim.setPocetMinibusov(pocetAut);
         mySim.setPocetPracovnikov(pocetPracovnikov);
         mySim.onReplicationWillStart(new Consumer<Simulation>() {
             @Override
             public void accept(Simulation sim) {
-                sim.setSimSpeed(0, 0);
+                sim.setSimSpeed(100, 1);
             }
         }
         );
@@ -637,8 +637,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
             dtm.setValueAt(i, i, 0);
         }
 
-        mySim.simulate(pocetReplikacii,
-                4.5 * 60 * 60);
+        mySim.simulateAsync(pocetReplikacii, 4.5 * 60 * 60);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void pocetZamSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pocetZamSimActionPerformed
@@ -762,28 +761,28 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     public void refresh(Simulation simulation) {
         MySimulation mySim = (MySimulation) simulation;
         this.vyslVytazenost.setText(String.valueOf(mySim.agentObsluhy().getPocetVytazenychPracovnikov()));
-//        Minibus[] minibusy = mySim.getMinibusy();
-//
-//        if (minibusy != null) {
-//            for (int i = 0; i < minibusy.length; i++) {
-//                dtm.setValueAt(minibusy[i].getCisloMinibusu(), i, 1);
-//                int pom = minibusy[i].getPolohaMinibusu();
-//                String pom2 = "";
-//                if (pom == 0) {
-//                    pom2 = "Terminal-1";
-//                } else if (pom == 1) {
-//                    pom2 = "Terminal-2";
-//                } else if (pom == 2) {
-//                    pom2 = "Arcar";
-//                } else if (pom == 3) {
-//                    pom2 = "Terminal-3";
-//                }
-//                dtm.setValueAt(pom2, i, 3);
-//            }
-//            this.jTable1.setModel(dtm);
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Nezadali ste všetky potrebne udaje");
-//        }
+        Minibus[] minibusy = mySim.getMinibusy();
+
+        if (minibusy != null) {
+            for (int i = 0; i < minibusy.length; i++) {
+                dtm.setValueAt(minibusy[i].getCisloMinibusu(), i, 0);
+                int pom = minibusy[i].getPolohaMinibusu();
+                String pom2 = "";
+                if (pom == 0) {
+                    pom2 = "Terminal-1";
+                } else if (pom == 1) {
+                    pom2 = "Terminal-2";
+                } else if (pom == 2) {
+                    pom2 = "Arcar";
+                } else if (pom == 3) {
+                    pom2 = "Terminal-3";
+                }
+                dtm.setValueAt(pom2, i, 1);
+            }
+            this.jTable1.setModel(dtm);
+        } else {
+            JOptionPane.showMessageDialog(null, "Nezadali ste všetky potrebne udaje");
+        }
     }
 
     public void vykresli(double priemer, double counter, double horna, double spodna) {

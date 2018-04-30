@@ -60,6 +60,7 @@ public class ProcesObsluhaZakaznika extends Process {
 
     //meta! sender="AgentObsluhy", id="169", type="Notice"
     public void processKoniecObsluhy(MessageForm message) {
+        MyMessage kopia = (MyMessage) message;
         assistantFinished(message);
     }
 

@@ -8,7 +8,7 @@ import agents.*;
 public class PlanovacMinibusov extends Scheduler {
 
     private int counter;
-    private static final double CAS_MEDZERY = 30 * 60D;
+    private static final double CAS_MEDZERY = 10 * 60D;
 
     public PlanovacMinibusov(int id, Simulation mySim, CommonAgent myAgent) {
         super(id, mySim, myAgent);
@@ -21,64 +21,64 @@ public class PlanovacMinibusov extends Scheduler {
         counter = 0;
     }
 
-	//meta! sender="AgentModelu", id="189", type="Notice"
-	public void processKoniec(MessageForm message) {
+    //meta! sender="AgentModelu", id="189", type="Notice"
+    public void processKoniec(MessageForm message) {
+
     }
 
-	//meta! sender="AgentModelu", id="188", type="Start"
-	public void processStart(MessageForm message) {
+    //meta! sender="AgentModelu", id="188", type="Start"
+    public void processStart(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
-        sprava.setCode(Mc.novyMinibus);
         Minibus minibus = new Minibus(counter, myAgent().getTypMinibusu());
         sprava.setMinibus(minibus);
+        myAgent().vlozDoPolaMinibus(minibus);
         counter++;
+        sprava.setCode(Mc.novyMinibus);
         this.hold(CAS_MEDZERY, sprava);
     }
 
-	//meta! userInfo="Process messages defined in code", id="0"
-	public void processDefault(MessageForm message) {
+    //meta! userInfo="Process messages defined in code", id="0"
+    public void processDefault(MessageForm message) {
         throw new UnsupportedOperationException("Vykonal sa default v PlanovacMinibusov.");
     }
 
-	//meta! sender="AgentModelu", id="195", type="Notice"
-	public void processNovyMinibus(MessageForm message) {
-        MyMessage sprava = (MyMessage) message;
+    //meta! sender="AgentModelu", id="195", type="Notice"
+    public void processNovyMinibus(MessageForm message) {
+
         if (counter < myAgent().getPocetMinibusov()) {
-            if (mySim().currentTime() >= counter * CAS_MEDZERY) {
-                sprava.setMinibus(new Minibus(counter, myAgent().getTypMinibusu()));
-                counter++;
-                this.hold(CAS_MEDZERY, sprava);
-            }
-        } else {
-            message.setCode(Mc.koniec);
-            this.assistantFinished(message);
+            MyMessage kopia = (MyMessage) message.createCopy();
+            Minibus minibus = new Minibus(counter, myAgent().getTypMinibusu());
+            kopia.setMinibus(minibus);
+            myAgent().vlozDoPolaMinibus(minibus);
+            counter++;
+            this.hold(CAS_MEDZERY, kopia);
         }
+        this.assistantFinished(message);
+
     }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	@Override
-	public void processMessage(MessageForm message)
-	{
-		switch (message.code())
-		{
-		case Mc.koniec:
-			processKoniec(message);
-		break;
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    @Override
+    public void processMessage(MessageForm message) {
+        switch (message.code()) {
+            case Mc.koniec:
+                processKoniec(message);
+                break;
 
-		case Mc.start:
-			processStart(message);
-		break;
+            case Mc.start:
+                processStart(message);
+                break;
 
-		case Mc.novyMinibus:
-			processNovyMinibus(message);
-		break;
+            case Mc.novyMinibus:
+                processNovyMinibus(message);
+                break;
 
-		default:
-			processDefault(message);
-		break;
-		}
-	}
-	//meta! tag="end"
+            default:
+                processDefault(message);
+                break;
+        }
+    }
+    //meta! tag="end"
 
     @Override
     public AgentModelu myAgent() {

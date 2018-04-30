@@ -26,7 +26,7 @@ public class ProcesPrechodMedziTerminalmi extends Process {
 
 	//meta! sender="AgentMinibus", id="104", type="Start"
 	public void processStart(MessageForm message) {
-        MyMessage sprava = (MyMessage) message;      
+        MyMessage sprava = (MyMessage) message;     
         
         if (sprava.getMinibus().getPolohaMinibusu() == 0) {
             sprava.getMinibus().setPolohaMinibusu(1);

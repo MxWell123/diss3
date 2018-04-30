@@ -7,12 +7,12 @@ import continualAssistants.*;
 
 //meta! id="38"
 public class ManagerSpolocnosti extends Manager {
-
+    
     public ManagerSpolocnosti(int id, Simulation mySim, Agent myAgent) {
         super(id, mySim, myAgent);
         init();
     }
-
+    
     @Override
     public void prepareReplication() {
         super.prepareReplication();
@@ -106,7 +106,7 @@ public class ManagerSpolocnosti extends Manager {
     //meta! userInfo="Generated code: do not modify", tag="begin"
     public void init() {
     }
-
+    
     @Override
     public void processMessage(MessageForm message) {
         switch (message.code()) {
@@ -115,57 +115,57 @@ public class ManagerSpolocnosti extends Manager {
                     case Id.agentMinibus:
                         processNastupZakaznikovTerm1AgentMinibus(message);
                         break;
-
+                    
                     case Id.agentPrichodov:
                         processNastupZakaznikovTerm1AgentPrichodov(message);
                         break;
                 }
                 break;
-
+            
             case Mc.nastupZakaznikovZObsluhy:
                 processNastupZakaznikovZObsluhy(message);
                 break;
-
+            
             case Mc.prichodZakaznikaTerm2:
                 processPrichodZakaznikaTerm2(message);
                 break;
-
+            
             case Mc.prichodZakaznikaTerm1:
                 processPrichodZakaznikaTerm1(message);
                 break;
-
+            
             case Mc.prichodZakaznikaNaVratenieAuta:
                 processPrichodZakaznikaNaVratenieAuta(message);
                 break;
-
+            
             case Mc.initPrichodMinibusov:
                 processInitPrichodMinibusov(message);
                 break;
-
+            
             case Mc.vystupZakaznikaDoObsluhy:
                 processVystupZakaznikaDoObsluhy(message);
                 break;
-
+            
             case Mc.vystupZakaznikaTerm3:
                 processVystupZakaznikaTerm3(message);
                 break;
-
+            
             case Mc.nastupZakaznikovTerm2:
                 switch (message.sender().id()) {
                     case Id.agentMinibus:
                         processNastupZakaznikovTerm2AgentMinibus(message);
                         break;
-
+                    
                     case Id.agentPrichodov:
                         processNastupZakaznikovTerm2AgentPrichodov(message);
                         break;
                 }
                 break;
-
+            
             case Mc.prichodZakaznikovNaCakanieNaMinibus:
                 processPrichodZakaznikovNaCakanieNaMinibus(message);
                 break;
-
+            
             default:
                 processDefault(message);
                 break;
@@ -177,5 +177,5 @@ public class ManagerSpolocnosti extends Manager {
     public AgentSpolocnosti myAgent() {
         return (AgentSpolocnosti) super.myAgent();
     }
-
+    
 }

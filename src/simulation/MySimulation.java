@@ -30,7 +30,8 @@ public class MySimulation extends Simulation {
         super.prepareReplication();
         agentObsluhy().setPocetPracovnikov(pocetPracovnikov);
         agentMinibus().setTypMinibusu(typMinibusu);
-        agentModelu().spustiSimulaciu(pocetMinibusov, typMinibusu);
+        agentModelu().setPocetMinibusov(pocetMinibusov);
+        agentModelu().spustiSimulaciu(pocetMinibusov, typMinibusu);       
 
         // Reset entities, queues, local statistics, etc...
     }
@@ -52,8 +53,8 @@ public class MySimulation extends Simulation {
         // Collect local statistics into global, update UI, etc...
         super.replicationFinished();
         casCakaniaStat.addSample(agentObsluhy().getCasCakaniaStat().mean());
-        System.out.println("R" + currentReplication() +  "(" + casCakaniaStat.mean() + ")");
-        
+        System.out.println("R" + currentReplication() +  "(" + agentObsluhy().getCasCakaniaStat().mean() + ")");
+        System.out.println(this.currentTime());        
     }
 
     @Override

@@ -79,7 +79,9 @@ public class ManagerMinibus extends Manager {
             sprava.setCode(Mc.nastupZakaznikovTerm2);
             request(sprava);
         } else if (polohaMinibus == 2) { // ak sa nachadza Arcar
-            startVystup(sprava);
+            if (!sprava.getMinibus().jeMinibusPrazdny()) {
+                startVystup(sprava);
+            }
         } else if (polohaMinibus == 3) { // ak sa nachadza v terminale3
             startVystup(sprava);
         } else if (polohaMinibus == 0) { // ak sa nachadza v terminale1
@@ -108,7 +110,6 @@ public class ManagerMinibus extends Manager {
     //meta! sender="AgentSpolocnosti", id="56", type="Notice"
     public void processInitPrichodMinibusov(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
-        sprava.setMinibus(new Minibus(myAgent().getCounterMinibusov(), myAgent().getTypMinibusu()));
         sprava.setAddressee(Id.agentSpolocnosti);
         sprava.setCode(Mc.nastupZakaznikovTerm1);
         request(sprava);
