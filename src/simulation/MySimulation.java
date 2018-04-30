@@ -1,6 +1,7 @@
 package simulation;
 
 import OSPABA.*;
+import OSPStat.Stat;
 import agents.*;
 import diss3.Obs;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class MySimulation extends Simulation {
     private int pocetMinibusov;
     private int pocetPracovnikov;
     private int typMinibusu;
+    private Stat casCakaniaStat;
 
     public MySimulation() {
         init();
@@ -19,7 +21,7 @@ public class MySimulation extends Simulation {
     @Override
     public void prepareSimulation() {
         super.prepareSimulation();
-
+        casCakaniaStat = new Stat();
         // Create global statistcis
     }
 
@@ -49,12 +51,16 @@ public class MySimulation extends Simulation {
     public void replicationFinished() {
         // Collect local statistics into global, update UI, etc...
         super.replicationFinished();
+        casCakaniaStat.addSample(agentObsluhy().getCasCakaniaStat().mean());
+        System.out.println("R" + currentReplication() +  "(" + casCakaniaStat + ")");
+        
     }
 
     @Override
     public void simulationFinished() {
         // Dysplay simulation results
         super.simulationFinished();
+        System.out.println("Waiting time mean:  " + (casCakaniaStat.mean() / 60));
     }
 
     //meta! userInfo="Generated code: do not modify", tag="begin"
