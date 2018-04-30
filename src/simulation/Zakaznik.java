@@ -20,6 +20,7 @@ public class Zakaznik {
         this.zaciatokCakania = 0;
         this.celkoveCakanie = 0;
         this.pocetSpolucestujucich = 1 + pocetSpolucestujucich;
+        this.typ = typ;
     }
 
     public int getPocetSpolucestujucich() {
