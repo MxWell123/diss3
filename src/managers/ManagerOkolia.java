@@ -53,14 +53,14 @@ public class ManagerOkolia extends Manager {
 
     //meta! sender="PlanovacPrichodZakaznikovTerm2", id="77", type="Finish"
     public void processFinishPlanovacPrichodZakaznikovTerm2(MessageForm message) {
-        message.setCode(Mc.prichodZakaznikaTerm1);
+        message.setCode(Mc.prichodZakaznikaTerm2);
         message.setAddressee(Id.agentModelu);
         notice(message);
     }
 
     //meta! sender="PlanovacPrichodZakaznikovTerm1", id="75", type="Finish"
     public void processFinishPlanovacPrichodZakaznikovTerm1(MessageForm message) {
-        message.setCode(Mc.prichodZakaznikaTerm2);
+        message.setCode(Mc.prichodZakaznikaTerm1);
         message.setAddressee(Id.agentModelu);
         notice(message);
     }
@@ -68,6 +68,22 @@ public class ManagerOkolia extends Manager {
     //meta! userInfo="Process messages defined in code", id="0"
     public void processDefault(MessageForm message) {
         throw new UnsupportedOperationException("Vykonal sa default v ManagerOkolia.");
+    }
+
+    //meta! sender="AgentModelu", id="224", type="Request"
+    public void processVystupZakaznikaTerm3(MessageForm message) {
+        MyMessage sprava = (MyMessage) message;
+        double pom = mySim().currentTime() - sprava.getZakaznik().getZaciatokCakania();
+        sprava.getZakaznik().setCelkoveCakanie(pom);
+        sprava.setAddressee(Id.agentModelu);
+        response(sprava);
+    }
+
+    //meta! sender="AgentModelu", id="226", type="Notice"
+    public void processOdchodZakaznikov(MessageForm message) {
+        MyMessage sprava = (MyMessage) message;
+        double pom = mySim().currentTime() - sprava.getZakaznik().getZaciatokCakania();
+        sprava.getZakaznik().setCelkoveCakanie(pom);
     }
 
     //meta! userInfo="Generated code: do not modify", tag="begin"
@@ -79,6 +95,10 @@ public class ManagerOkolia extends Manager {
         switch (message.code()) {
             case Mc.finish:
                 switch (message.sender().id()) {
+                    case Id.planovacPrichodZakaznikovTerm2:
+                        processFinishPlanovacPrichodZakaznikovTerm2(message);
+                        break;
+
                     case Id.planovacPrichodZakaznikovOdchod:
                         processFinishPlanovacPrichodZakaznikovOdchod(message);
                         break;
@@ -86,11 +106,15 @@ public class ManagerOkolia extends Manager {
                     case Id.planovacPrichodZakaznikovTerm1:
                         processFinishPlanovacPrichodZakaznikovTerm1(message);
                         break;
-
-                    case Id.planovacPrichodZakaznikovTerm2:
-                        processFinishPlanovacPrichodZakaznikovTerm2(message);
-                        break;
                 }
+                break;
+
+            case Mc.vystupZakaznikaTerm3:
+                processVystupZakaznikaTerm3(message);
+                break;
+
+            case Mc.odchodZakaznikov:
+                processOdchodZakaznikov(message);
                 break;
 
             case Mc.initPrichodyZakaznikov:

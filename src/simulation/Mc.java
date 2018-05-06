@@ -19,9 +19,10 @@ public class Mc extends IdList
 	public static final int nastupZakaznikovTerm1 = 1021;
 	public static final int nastupZakaznikovTerm2 = 1024;
 	public static final int novyMinibus = 1056;
-	public static final int prichodZakaznikovNaCakanieNaMinibus = 1060;
-	public static final int vystupZakaznikaTerm3 = 1030;
+	public static final int vystupZakaznikaTerm3 = 1061;
 	public static final int vystupZakaznikaDoObsluhy = 1062;
+	public static final int prichodZakaznikovNaCakanieNaMinibus = 1065;
+	public static final int odchodZakaznikov = 1068;
 	public static final int nastupZakaznikovZObsluhy = 1034;
 	//meta! tag="end"
 

@@ -42,8 +42,15 @@ public class Minibus {
     public void pridajZakaznikaDoMinibusu(Zakaznik zak) {
         if (pocetObsadenychMiest < pocetMiest) {
             zakazniciVMinibuse.add(zak);
-            pocetObsadenychMiest += zak.getPocetSpolucestujucich();
         }
+    }
+
+    public int getPocetObsadenychMiest() {
+        return pocetObsadenychMiest;
+    }
+
+    public void setPocetObsadenychMiest(int pocetObsadenychMiest) {
+        this.pocetObsadenychMiest = pocetObsadenychMiest;
     }
 
     public Zakaznik vyberZakaznikaZMinibusu() {
@@ -58,8 +65,6 @@ public class Minibus {
     public int getPolohaMinibusu() {
         return polohaMinibusu;
     }
-    
-    
 
     public void setPolohaMinibusu(int polohaMinibusu) {
         this.polohaMinibusu = polohaMinibusu;

@@ -26,9 +26,18 @@ public class ProcesNastupZakaznikaDoMinibusu extends Process {
     //meta! sender="AgentMinibus", id="89", type="Start"
     public void processStart(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
-        sprava.getMinibus().pridajZakaznikaDoMinibusu(sprava.getZakaznik());
+        Zakaznik zak = sprava.getZakaznik();
+        Minibus minibus = sprava.getMinibus();
+        minibus.pridajZakaznikaDoMinibusu(zak);
+        minibus.setPocetObsadenychMiest(zak.getPocetSpolucestujucich());
+
+        double trvanie = 0.0;
+        for (int i = 0; i < zak.getPocetSpolucestujucich(); i++) {
+            trvanie += 10 + ((14 - 10) * rnd1.nextDouble());
+        }
+
         sprava.setCode(Mc.koniecNastupu);
-        hold(10 + ((14 - 10) * rnd1.nextDouble()), sprava);
+        hold(trvanie, sprava);
     }
 
     //meta! userInfo="Process messages defined in code", id="0"
@@ -45,12 +54,12 @@ public class ProcesNastupZakaznikaDoMinibusu extends Process {
     @Override
     public void processMessage(MessageForm message) {
         switch (message.code()) {
-            case Mc.start:
-                processStart(message);
-                break;
-
             case Mc.koniecNastupu:
                 processKoniecNastupu(message);
+                break;
+
+            case Mc.start:
+                processStart(message);
                 break;
 
             default:

@@ -107,7 +107,6 @@ public class ManagerMinibus extends Manager {
     }
 
     //meta! sender="AgentSpolocnosti", id="56", type="Notice"
-    //meta! sender="AgentSpolocnosti", id="56", type="Notice"
     public void processInitPrichodMinibusov(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         sprava.setAddressee(Id.agentSpolocnosti);
@@ -147,36 +146,24 @@ public class ManagerMinibus extends Manager {
     @Override
     public void processMessage(MessageForm message) {
         switch (message.code()) {
-            case Mc.nastupZakaznikovTerm1:
-                processNastupZakaznikovTerm1(message);
-                break;
-
-            case Mc.nastupZakaznikovZObsluhy:
-                processNastupZakaznikovZObsluhy(message);
-                break;
-
-            case Mc.initPrichodMinibusov:
-                processInitPrichodMinibusov(message);
-                break;
-
             case Mc.finish:
                 switch (message.sender().id()) {
                     case Id.procesVystupZakaznikaZMinibusu:
                         processFinishProcesVystupZakaznikaZMinibusu(message);
                         break;
 
-                    case Id.procesNastupZakaznikaDoMinibusu:
-                        processFinishProcesNastupZakaznikaDoMinibusu(message);
-                        break;
-
                     case Id.procesPrechodMedziTerminalmi:
                         processFinishProcesPrechodMedziTerminalmi(message);
+                        break;
+
+                    case Id.procesNastupZakaznikaDoMinibusu:
+                        processFinishProcesNastupZakaznikaDoMinibusu(message);
                         break;
                 }
                 break;
 
-            case Mc.vystupZakaznikaDoObsluhy:
-                processVystupZakaznikaDoObsluhy(message);
+            case Mc.nastupZakaznikovZObsluhy:
+                processNastupZakaznikovZObsluhy(message);
                 break;
 
             case Mc.vystupZakaznikaTerm3:
@@ -185,6 +172,18 @@ public class ManagerMinibus extends Manager {
 
             case Mc.nastupZakaznikovTerm2:
                 processNastupZakaznikovTerm2(message);
+                break;
+
+            case Mc.nastupZakaznikovTerm1:
+                processNastupZakaznikovTerm1(message);
+                break;
+
+            case Mc.initPrichodMinibusov:
+                processInitPrichodMinibusov(message);
+                break;
+
+            case Mc.vystupZakaznikaDoObsluhy:
+                processVystupZakaznikaDoObsluhy(message);
                 break;
 
             default:

@@ -5,6 +5,8 @@
  */
 package simulation;
 
+import java.util.Random;
+
 /**
  *
  * @author davidecek
@@ -15,20 +17,18 @@ public class Zakaznik {
     private double celkoveCakanie;
     private int pocetSpolucestujucich;
     private boolean typ; //false = z term1/term2 ...... true = vracia auto
+    private Random nasada;
+    private Random gen;
 
     public Zakaznik(boolean typ) {
         this.zaciatokCakania = 0;
         this.celkoveCakanie = 0;
-        this.pocetSpolucestujucich = 1 + pocetSpolucestujucich;
+        this.pocetSpolucestujucich = 1 + vygenerujPocetSpolucestujucich();
         this.typ = typ;
     }
 
     public int getPocetSpolucestujucich() {
         return pocetSpolucestujucich;
-    }
-
-    public void setPocetSpolucestujucich(int pocetSpolucestujucich) {
-        this.pocetSpolucestujucich = pocetSpolucestujucich;
     }
 
     public boolean isTyp() {
@@ -53,6 +53,21 @@ public class Zakaznik {
 
     public void setCelkoveCakanie(double celkoveCakanie) {
         this.celkoveCakanie = celkoveCakanie;
+    }
+
+    private int vygenerujPocetSpolucestujucich() {
+        nasada = new Random();
+        gen = new Random(nasada.nextLong());
+        double cislo = gen.nextDouble();
+        if (cislo < 0.6) {
+            return 0;
+        } else if (cislo < 0.80) {
+            return 1;
+        } else if (cislo < 0.95) {
+            return 2;
+        } else {
+            return 3;
+        }
     }
 
 }

@@ -39,21 +39,22 @@ public class AgentMinibus extends Agent {
         this.typMinibusu = typMinibusu;
     }
 
-    //meta! userInfo="Generated code: do not modify", tag="begin"
-    private void init() {
-        new ManagerMinibus(Id.managerMinibus, mySim(), this);
-        new ProcesNastupZakaznikaDoMinibusu(Id.procesNastupZakaznikaDoMinibusu, mySim(), this);
-        new ProcesPrechodMedziTerminalmi(Id.procesPrechodMedziTerminalmi, mySim(), this);
-        new ProcesVystupZakaznikaZMinibusu(Id.procesVystupZakaznikaZMinibusu, mySim(), this);
-        addOwnMessage(Mc.koniecNastupu);
-        addOwnMessage(Mc.nastupZakaznikovZObsluhy);
-        addOwnMessage(Mc.vystupZakaznikaDoObsluhy);
-        addOwnMessage(Mc.vystupZakaznikaTerm3);
-        addOwnMessage(Mc.nastupZakaznikovTerm2);
-        addOwnMessage(Mc.nastupZakaznikovTerm1);
-        addOwnMessage(Mc.koniecVystupu);
-        addOwnMessage(Mc.initPrichodMinibusov);
-        addOwnMessage(Mc.koniecPrechodu);
-    }
-    //meta! tag="end"
+	//meta! userInfo="Generated code: do not modify", tag="begin"
+	private void init()
+	{
+		new ManagerMinibus(Id.managerMinibus, mySim(), this);
+		new ProcesNastupZakaznikaDoMinibusu(Id.procesNastupZakaznikaDoMinibusu, mySim(), this);
+		new ProcesVystupZakaznikaZMinibusu(Id.procesVystupZakaznikaZMinibusu, mySim(), this);
+		new ProcesPrechodMedziTerminalmi(Id.procesPrechodMedziTerminalmi, mySim(), this);
+		addOwnMessage(Mc.koniecNastupu);
+		addOwnMessage(Mc.nastupZakaznikovZObsluhy);
+		addOwnMessage(Mc.vystupZakaznikaTerm3);
+		addOwnMessage(Mc.vystupZakaznikaDoObsluhy);
+		addOwnMessage(Mc.nastupZakaznikovTerm2);
+		addOwnMessage(Mc.nastupZakaznikovTerm1);
+		addOwnMessage(Mc.koniecVystupu);
+		addOwnMessage(Mc.initPrichodMinibusov);
+		addOwnMessage(Mc.koniecPrechodu);
+	}
+	//meta! tag="end"
 }

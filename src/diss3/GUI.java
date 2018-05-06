@@ -625,7 +625,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         mySim.onReplicationWillStart(new Consumer<Simulation>() {
             @Override
             public void accept(Simulation sim) {
-                sim.setSimSpeed(100, 1);
+                sim.setSimSpeed(100, 0);
             }
         }
         );

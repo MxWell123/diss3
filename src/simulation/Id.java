@@ -11,14 +11,12 @@ public class Id extends IdList
 	public static final int agentObsluhy = 10;
 	public static final int agentMinibus = 11;
 	public static final int agentPrichodov = 12;
-	public static final int agentOdchodu = 13;
 	public static final int managerModelu = 101;
 	public static final int managerOkolia = 102;
 	public static final int managerSpolocnosti = 108;
 	public static final int managerObsluhy = 110;
 	public static final int managerMinibus = 111;
 	public static final int managerPrichodov = 112;
-	public static final int managerOdchodu = 113;
 	public static final int procesPrechodMedziTerminalmi = 1008;
 	public static final int procesVystupZakaznikaZMinibusu = 1009;
 	public static final int planovacPrichodZakaznikovTerm1 = 1001;

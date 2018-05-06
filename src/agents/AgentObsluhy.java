@@ -70,13 +70,14 @@ public class AgentObsluhy extends Agent {
         }
     }
 
-    //meta! userInfo="Generated code: do not modify", tag="begin"
-    private void init() {
-        new ManagerObsluhy(Id.managerObsluhy, mySim(), this);
-        new ProcesObsluhaZakaznika(Id.procesObsluhaZakaznika, mySim(), this);
-        addOwnMessage(Mc.vystupZakaznikaDoObsluhy);
-        addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
-        addOwnMessage(Mc.koniecObsluhy);
-    }
-    //meta! tag="end"
+	//meta! userInfo="Generated code: do not modify", tag="begin"
+	private void init()
+	{
+		new ManagerObsluhy(Id.managerObsluhy, mySim(), this);
+		new ProcesObsluhaZakaznika(Id.procesObsluhaZakaznika, mySim(), this);
+		addOwnMessage(Mc.vystupZakaznikaDoObsluhy);
+		addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
+		addOwnMessage(Mc.koniecObsluhy);
+	}
+	//meta! tag="end"
 }

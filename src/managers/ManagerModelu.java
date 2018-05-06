@@ -64,6 +64,24 @@ public class ManagerModelu extends Manager {
         notice(message);
     }
 
+    //meta! sender="AgentSpolocnosti", id="222", type="Request"
+    public void processVystupZakaznikaTerm3AgentSpolocnosti(MessageForm message) {
+        message.setAddressee(Id.agentOkolia);
+        request(message);
+    }
+
+    //meta! sender="AgentSpolocnosti", id="225", type="Notice"
+    public void processOdchodZakaznikov(MessageForm message) {
+        message.setAddressee(Id.agentOkolia);
+        notice(message);
+    }
+
+    //meta! sender="AgentOkolia", id="224", type="Response"
+    public void processVystupZakaznikaTerm3AgentOkolia(MessageForm message) {
+        message.setAddressee(Id.agentOkolia);
+        response(message);
+    }
+
     //meta! userInfo="Generated code: do not modify", tag="begin"
     public void init() {
     }
@@ -71,16 +89,32 @@ public class ManagerModelu extends Manager {
     @Override
     public void processMessage(MessageForm message) {
         switch (message.code()) {
-            case Mc.prichodZakaznikaTerm1:
-                processPrichodZakaznikaTerm1(message);
-                break;
+            case Mc.vystupZakaznikaTerm3:
+                switch (message.sender().id()) {
+                    case Id.agentOkolia:
+                        processVystupZakaznikaTerm3AgentOkolia(message);
+                        break;
 
-            case Mc.prichodZakaznikaNaVratenieAuta:
-                processPrichodZakaznikaNaVratenieAuta(message);
+                    case Id.agentSpolocnosti:
+                        processVystupZakaznikaTerm3AgentSpolocnosti(message);
+                        break;
+                }
                 break;
 
             case Mc.finish:
                 processFinish(message);
+                break;
+
+            case Mc.prichodZakaznikaTerm1:
+                processPrichodZakaznikaTerm1(message);
+                break;
+
+            case Mc.odchodZakaznikov:
+                processOdchodZakaznikov(message);
+                break;
+
+            case Mc.prichodZakaznikaNaVratenieAuta:
+                processPrichodZakaznikaNaVratenieAuta(message);
                 break;
 
             case Mc.initPrichodMinibusov:
