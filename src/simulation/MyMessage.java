@@ -30,7 +30,10 @@ public class MyMessage extends MessageForm {
 
     @Override
     public MessageForm createCopy() {
-        return new MyMessage(this);
+        MyMessage sprava = new MyMessage(this);
+        sprava.setMinibus(this.getMinibus());
+        sprava.setZakaznik(this.getZakaznik());
+        return sprava;
     }
 
     @Override

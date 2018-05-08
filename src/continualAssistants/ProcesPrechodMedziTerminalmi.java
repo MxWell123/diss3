@@ -24,19 +24,18 @@ public class ProcesPrechodMedziTerminalmi extends Process {
         // Setup component for the next replication
     }
 
-	//meta! sender="AgentMinibus", id="104", type="Start"
-	public void processStart(MessageForm message) {
-        MyMessage sprava = (MyMessage) message;     
-        
-        if (sprava.getMinibus().getPolohaMinibusu() == 0) {
+    //meta! sender="AgentMinibus", id="104", type="Start"
+    public void processStart(MessageForm message) {
+        MyMessage sprava = (MyMessage) message;
+        if (sprava.getMinibus().getPolohaMinibusu() == 0) { // term 1
             sprava.getMinibus().setPolohaMinibusu(1);
             sprava.setCode(Mc.koniecPrechodu);
             hold(PRECHOD_TERM1_TERM2, message);
-        } else if (sprava.getMinibus().getPolohaMinibusu() == 1) {
+        } else if (sprava.getMinibus().getPolohaMinibusu() == 1) { // term2
             sprava.getMinibus().setPolohaMinibusu(2);
             sprava.setCode(Mc.koniecPrechodu);
             hold(PRECHOD_TERM2_ARCAR, message);
-        } else if (sprava.getMinibus().getPolohaMinibusu() == 2) {
+        } else if (sprava.getMinibus().getPolohaMinibusu() == 2) { // arcar
             if (!sprava.getMinibus().jeMinibusPrazdny()) { // ide do term3
                 sprava.getMinibus().setPolohaMinibusu(3);
                 sprava.setCode(Mc.koniecPrechodu);
@@ -46,43 +45,41 @@ public class ProcesPrechodMedziTerminalmi extends Process {
                 sprava.setCode(Mc.koniecPrechodu);
                 hold(PRECHOD_ARCAR_TERM1, message);
             }
-        } else if (sprava.getMinibus().getPolohaMinibusu() == 3) {
+        } else if (sprava.getMinibus().getPolohaMinibusu() == 3) { // term3 
             sprava.getMinibus().setPolohaMinibusu(0);
             sprava.setCode(Mc.koniecPrechodu);
             hold(PRECHOD_TERM3_TERM1, message);
         }
     }
 
-	//meta! userInfo="Process messages defined in code", id="0"
-	public void processDefault(MessageForm message) {
+    //meta! userInfo="Process messages defined in code", id="0"
+    public void processDefault(MessageForm message) {
         throw new UnsupportedOperationException("Vykonal sa default v ProcesPrechodMedziTerminalmi.");
     }
 
-	//meta! sender="AgentMinibus", id="178", type="Notice"
-	public void processKoniecPrechodu(MessageForm message) {
+    //meta! sender="AgentMinibus", id="178", type="Notice"
+    public void processKoniecPrechodu(MessageForm message) {
         assistantFinished(message);
     }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	@Override
-	public void processMessage(MessageForm message)
-	{
-		switch (message.code())
-		{
-		case Mc.koniecPrechodu:
-			processKoniecPrechodu(message);
-		break;
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    @Override
+    public void processMessage(MessageForm message) {
+        switch (message.code()) {
+            case Mc.koniecPrechodu:
+                processKoniecPrechodu(message);
+                break;
 
-		case Mc.start:
-			processStart(message);
-		break;
+            case Mc.start:
+                processStart(message);
+                break;
 
-		default:
-			processDefault(message);
-		break;
-		}
-	}
-	//meta! tag="end"
+            default:
+                processDefault(message);
+                break;
+        }
+    }
+    //meta! tag="end"
 
     @Override
     public AgentMinibus myAgent() {

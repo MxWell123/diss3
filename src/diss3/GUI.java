@@ -46,6 +46,35 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         jLabel4 = new javax.swing.JLabel();
         nadpis = new javax.swing.JLabel();
         Turbo = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        pocZamTextField = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        pocMinibusTextField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        pocReplText = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        priemCasTerm1Lab = new javax.swing.JLabel();
+        priemCasTerm2Lab = new javax.swing.JLabel();
+        priemCasObsluhaLab = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        celkCasVSysteme = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        obsluhaLabel = new javax.swing.JLabel();
+        term2Label = new javax.swing.JLabel();
+        term1Label = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        vytPracovnikov = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        intSpol = new javax.swing.JLabel();
+        panelGraf1 = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -76,35 +105,13 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         jLabel25 = new javax.swing.JLabel();
         spomalenie = new javax.swing.JSlider();
         jButton4 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        pocZamTextField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        pocMinibusTextField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
-        pocReplText = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        priemCasTerm1Lab = new javax.swing.JLabel();
-        priemCasTerm2Lab = new javax.swing.JLabel();
-        priemCasObsluhaLab = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        celkCasVSysteme = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        obsluhaLabel = new javax.swing.JLabel();
-        term2Label = new javax.swing.JLabel();
-        term1Label = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        vytPracovnikov = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        intSpol = new javax.swing.JLabel();
-        panelGraf1 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
+        spojitost = new javax.swing.JSlider();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        poAuto = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        vratAuto = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
 
@@ -121,237 +128,6 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
                 TurboMousePressed(evt);
             }
         });
-
-        jLabel14.setText("Pocet zamestnancov:");
-
-        jLabel15.setText("Pocet minibusov:");
-
-        pocetZamSim.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        pocetZamSim.setText("1");
-        pocetZamSim.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pocetZamSimActionPerformed(evt);
-            }
-        });
-
-        pocMinSim.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        pocMinSim.setText("1");
-        pocMinSim.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pocMinSimActionPerformed(evt);
-            }
-        });
-
-        jLabel16.setText("pocet ludi terminal 1:");
-
-        jLabel17.setText("pocet ludi terminal 2:");
-
-        jButton3.setText("Start");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        jLabel18.setText("pocet ludi pred obsluhou:");
-
-        jLabel19.setText("priemerny cas v rade term 1:");
-
-        jLabel20.setText("priemerny cas v rade term 2:");
-
-        jLabel21.setText("vytazenost pracovnikov:");
-
-        jLabel22.setText("priemerny cas v rade pred obsluhou:");
-
-        jLabel23.setText("celkovy cas cestujuceho v systeme:");
-
-        vyslTerm1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        vyslTerm1.setText("0");
-
-        vyslTerm2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        vyslTerm2.setText("0");
-
-        vyslTerm3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        vyslTerm3.setText("0");
-
-        vyslCasTerm1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        vyslCasTerm1.setText("0");
-
-        vyslCasTerm2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        vyslCasTerm2.setText("0");
-
-        vyslVytazenost.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        vyslVytazenost.setText("0");
-
-        vyslCasObsluha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        vyslCasObsluha.setText("0");
-
-        vyslCasSystem.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        vyslCasSystem.setText("0");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Cislo Minibusu", "Pozicia 1", "% z trate", "Pozicia 2"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        jLabel24.setText("Simulacny cas:");
-
-        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setText("00.00.00 - 00:00:00");
-
-        spomalenie.setValue(0);
-
-        jButton4.setText("prerus");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
-                        .addGap(26, 26, 26))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel14)
-                                            .addComponent(jLabel15))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(pocetZamSim)
-                                            .addComponent(pocMinSim, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel16)
-                                            .addComponent(jLabel23)
-                                            .addComponent(jLabel22)
-                                            .addComponent(jLabel20)
-                                            .addComponent(jLabel19)
-                                            .addComponent(jLabel18)
-                                            .addComponent(jLabel17)
-                                            .addComponent(jLabel21))
-                                        .addGap(118, 118, 118)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(vyslVytazenost, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(vyslTerm2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(vyslTerm3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(vyslCasTerm1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(vyslCasTerm2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(vyslCasObsluha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(vyslCasSystem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(vyslTerm1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(spomalenie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
-                        .addComponent(jLabel24)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane1)))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(pocetZamSim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(pocMinSim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(vyslTerm1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(vyslTerm2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(vyslTerm3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(vyslCasTerm1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(vyslCasTerm2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(vyslCasObsluha))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(vyslVytazenost))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
-                    .addComponent(vyslCasSystem))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jSeparator2)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel24)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(20, 20, 20))
-                    .addComponent(spomalenie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
-
-        Turbo.addTab("Simulacia", jPanel2);
 
         jLabel6.setText("Pocet Zamestnancov:");
 
@@ -478,7 +254,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
                             .addComponent(jLabel2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(term1Label, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(jLabel12)
@@ -490,7 +266,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
                     .addComponent(vytPracovnikov, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(priemCasObsluhaLab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(intSpol, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -533,7 +309,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(priemCasTerm2Lab))
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addContainerGap(275, Short.MAX_VALUE))
         );
 
         Turbo.addTab("Turbo mod", jPanel1);
@@ -552,17 +328,296 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
             .addGroup(panelGraf1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton5)
-                .addContainerGap(1007, Short.MAX_VALUE))
+                .addContainerGap(987, Short.MAX_VALUE))
         );
         panelGraf1Layout.setVerticalGroup(
             panelGraf1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelGraf1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton5)
-                .addContainerGap(428, Short.MAX_VALUE))
+                .addContainerGap(449, Short.MAX_VALUE))
         );
 
         Turbo.addTab("Graf zavislosti", panelGraf1);
+
+        jLabel14.setText("Pocet zamestnancov:");
+
+        jLabel15.setText("Pocet minibusov:");
+
+        pocetZamSim.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        pocetZamSim.setText("1");
+        pocetZamSim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pocetZamSimActionPerformed(evt);
+            }
+        });
+
+        pocMinSim.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        pocMinSim.setText("1");
+        pocMinSim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pocMinSimActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("pocet ludi terminal 1:");
+
+        jLabel17.setText("pocet ludi terminal 2:");
+
+        jButton3.setText("Start");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jLabel18.setText("pocet ludi pred obsluhou:");
+
+        jLabel19.setText("priemerny cas v rade term 1:");
+
+        jLabel20.setText("priemerny cas v rade term 2:");
+
+        jLabel21.setText("vytazenost pracovnikov:");
+
+        jLabel22.setText("priemerny cas v rade pred obsluhou:");
+
+        jLabel23.setText("celkovy cas cestujuceho v systeme:");
+
+        vyslTerm1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vyslTerm1.setText("0");
+
+        vyslTerm2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vyslTerm2.setText("0");
+
+        vyslTerm3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vyslTerm3.setText("0");
+
+        vyslCasTerm1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vyslCasTerm1.setText("0");
+
+        vyslCasTerm2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vyslCasTerm2.setText("0");
+
+        vyslVytazenost.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vyslVytazenost.setText("0");
+
+        vyslCasObsluha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vyslCasObsluha.setText("0");
+
+        vyslCasSystem.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vyslCasSystem.setText("0");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Cislo Minibusu", "Pozicia 1", "% z trate", "Pozicia 2"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel24.setText("Simulacny cas:");
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setText("00.00.00 - 00:00:00");
+
+        spomalenie.setValue(0);
+
+        jButton4.setText("prerus");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        spojitost.setToolTipText("");
+        spojitost.setValue(0);
+
+        jLabel26.setText("Spomalenie");
+
+        jLabel27.setText("Spojitost");
+
+        jLabel28.setText("pocet oblsuzenych ludi ktori si pozicali auto");
+
+        poAuto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        poAuto.setText("0");
+
+        jLabel29.setText("pocet obsluzenych ludi ktori vratili auto");
+
+        vratAuto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vratAuto.setText("0");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel15))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(pocetZamSim)
+                                    .addComponent(pocMinSim, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                                .addGap(63, 63, 63)
+                                .addComponent(jButton4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton3))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel29)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(vratAuto))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel28)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(poAuto))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel16)
+                                        .addComponent(jLabel23)
+                                        .addComponent(jLabel22)
+                                        .addComponent(jLabel20)
+                                        .addComponent(jLabel19)
+                                        .addComponent(jLabel18)
+                                        .addComponent(jLabel17)
+                                        .addComponent(jLabel21))
+                                    .addGap(118, 118, 118)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(vyslVytazenost, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(vyslTerm2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(vyslTerm3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(vyslCasTerm1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(vyslCasTerm2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(vyslCasObsluha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(vyslCasSystem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(vyslTerm1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spomalenie, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel26))
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel27)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(spojitost, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(pocetZamSim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(pocMinSim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton4)
+                        .addComponent(jButton3)))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(vyslTerm1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(vyslTerm2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(vyslTerm3))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(vyslCasTerm1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(vyslCasTerm2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(vyslCasObsluha))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(vyslVytazenost))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(vyslCasSystem))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(poAuto))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(vratAuto))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jSeparator2)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel27))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spojitost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spomalenie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
+        );
+
+        Turbo.addTab("Simulacia", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -570,9 +625,12 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nadpis)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(Turbo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Turbo)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(nadpis)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -625,7 +683,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         mySim.onReplicationWillStart(new Consumer<Simulation>() {
             @Override
             public void accept(Simulation sim) {
-                sim.setSimSpeed(100, 0);
+                sim.setSimSpeed(spojitost.getValue(), spomalenie.getValue() / 100);
             }
         }
         );
@@ -719,6 +777,10 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -735,6 +797,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     private javax.swing.JLabel nadpis;
     private javax.swing.JLabel obsluhaLabel;
     private javax.swing.JPanel panelGraf1;
+    private javax.swing.JLabel poAuto;
     private javax.swing.JTextField pocMinSim;
     private javax.swing.JTextField pocMinibusTextField;
     private javax.swing.JTextField pocReplText;
@@ -743,9 +806,11 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     private javax.swing.JLabel priemCasObsluhaLab;
     private javax.swing.JLabel priemCasTerm1Lab;
     private javax.swing.JLabel priemCasTerm2Lab;
+    private javax.swing.JSlider spojitost;
     private javax.swing.JSlider spomalenie;
     private javax.swing.JLabel term1Label;
     private javax.swing.JLabel term2Label;
+    private javax.swing.JLabel vratAuto;
     private javax.swing.JLabel vyslCasObsluha;
     private javax.swing.JLabel vyslCasSystem;
     private javax.swing.JLabel vyslCasTerm1;
@@ -761,23 +826,34 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     public void refresh(Simulation simulation) {
         MySimulation mySim = (MySimulation) simulation;
         this.vyslVytazenost.setText(String.valueOf(mySim.agentObsluhy().getPocetVytazenychPracovnikov()));
-        Minibus[] minibusy = mySim.getMinibusy();
+        this.vyslTerm1.setText(String.valueOf(mySim.agentPrichodov().getPocetZakRad1()));
+        this.vyslTerm2.setText(String.valueOf(mySim.agentPrichodov().getPocetZakRad2()));
+        this.vyslTerm3.setText(String.valueOf(mySim.agentObsluhy().velkostRadu()));
+        this.poAuto.setText(String.valueOf(mySim.agentOkolia().getPocetObsluzenychZakPoAuto()));
+        this.vratAuto.setText(String.valueOf(mySim.agentOkolia().getPocetObsluzenychZakVraciaAuto()));
 
+        Minibus[] minibusy = mySim.getMinibusy();
+        // dtm.setRowCount(0);
         if (minibusy != null) {
             for (int i = 0; i < minibusy.length; i++) {
-                dtm.setValueAt(minibusy[i].getCisloMinibusu(), i, 0);
-                int pom = minibusy[i].getPolohaMinibusu();
-                String pom2 = "";
-                if (pom == 0) {
-                    pom2 = "Terminal-1";
-                } else if (pom == 1) {
-                    pom2 = "Terminal-2";
-                } else if (pom == 2) {
-                    pom2 = "Arcar";
-                } else if (pom == 3) {
-                    pom2 = "Terminal-3";
+                if (minibusy[i] != null) {
+                    dtm.setValueAt(i, i, 0);
+                    int pom = minibusy[i].getPolohaMinibusu();
+                    String pom2 = "";
+                    if (pom == 0) {
+                        pom2 = "Terminal-1";
+                    } else if (pom == 1) {
+                        pom2 = "Terminal-2";
+                    } else if (pom == 2) {
+                        pom2 = "Arcar";
+                    } else if (pom == 3) {
+                        pom2 = "Terminal-3";
+                    }
+                    dtm.setValueAt(pom2, i, 1);
+                } else {
+                    dtm.setValueAt(i, i, 0);
+                    dtm.setValueAt("----", i, NORMAL);
                 }
-                dtm.setValueAt(pom2, i, 1);
             }
             this.jTable1.setModel(dtm);
         } else {

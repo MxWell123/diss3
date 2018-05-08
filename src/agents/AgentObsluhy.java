@@ -26,7 +26,7 @@ public class AgentObsluhy extends Agent {
 
     public void pridajZakaznikDoRadu(Zakaznik zak) {
         frontZakaznikovPredObsluhou.add(zak);
-       // System.out.println("DLzka Radu =" + frontZakaznikovPredObsluhou.size());
+        // System.out.println("DLzka Radu =" + frontZakaznikovPredObsluhou.size());
     }
 
     public Zakaznik vyberZakaznikaZRadu() {
@@ -80,4 +80,5 @@ public class AgentObsluhy extends Agent {
 		addOwnMessage(Mc.koniecObsluhy);
 	}
 	//meta! tag="end"
+
 }

@@ -12,15 +12,35 @@ public class AgentOkolia extends Agent {
     private static final double HODINA = 3600D;
     private static final int MINUTA = 60;
     public final double KONIEC_PRICHODOV = 5.5 * HODINA;
+    public int pocetObsluzenychZakPoAuto;
+    public int pocetObsluzenychZakVraciaAuto;
 
     public AgentOkolia(int id, Simulation mySim, Agent parent) {
         super(id, mySim, parent);
         init();
     }
 
+    public int getPocetObsluzenychZakPoAuto() {
+        return pocetObsluzenychZakPoAuto;
+    }
+
+    public void setPocetObsluzenychZakPoAuto(int pocetObsluzenychZakPoAuto) {
+        this.pocetObsluzenychZakPoAuto = pocetObsluzenychZakPoAuto;
+    }
+
+    public int getPocetObsluzenychZakVraciaAuto() {
+        return pocetObsluzenychZakVraciaAuto;
+    }
+
+    public void setPocetObsluzenychZakVraciaAuto(int pocetObsluzenychZakVraciaAuto) {
+        this.pocetObsluzenychZakVraciaAuto = pocetObsluzenychZakVraciaAuto;
+    }
+
     @Override
     public void prepareReplication() {
         super.prepareReplication();
+        pocetObsluzenychZakPoAuto = 0;
+        pocetObsluzenychZakVraciaAuto = 0;
         // Setup component for the next replication
     }
 
@@ -61,8 +81,8 @@ public class AgentOkolia extends Agent {
 	private void init()
 	{
 		new ManagerOkolia(Id.managerOkolia, mySim(), this);
-		new PlanovacPrichodZakaznikovTerm2(Id.planovacPrichodZakaznikovTerm2, mySim(), this);
 		new PlanovacPrichodZakaznikovOdchod(Id.planovacPrichodZakaznikovOdchod, mySim(), this);
+		new PlanovacPrichodZakaznikovTerm2(Id.planovacPrichodZakaznikovTerm2, mySim(), this);
 		new PlanovacPrichodZakaznikovTerm1(Id.planovacPrichodZakaznikovTerm1, mySim(), this);
 		addOwnMessage(Mc.vystupZakaznikaTerm3);
 		addOwnMessage(Mc.odchodZakaznikov);
@@ -71,4 +91,12 @@ public class AgentOkolia extends Agent {
 		addOwnMessage(Mc.novyZakaznik);
 	}
 	//meta! tag="end"
+
+    public void pripocitajZakPoAuto() {
+        pocetObsluzenychZakPoAuto++;
+    }
+    
+     public void pripocitajZakVratAuto() {
+       pocetObsluzenychZakVraciaAuto++;
+    }
 }

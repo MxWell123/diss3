@@ -41,6 +41,14 @@ public class AgentPrichodov extends Agent {
         return frontZakaznikovTerm2.poll();
     }
 
+    public int getPocetZakRad1() {
+        return frontZakaznikovTerm1.size();
+    }
+    
+    public int getPocetZakRad2() {
+        return frontZakaznikovTerm2.size();
+    }
+
     @Override
     public void prepareReplication() {
         super.prepareReplication();
@@ -51,8 +59,8 @@ public class AgentPrichodov extends Agent {
 	private void init()
 	{
 		new ManagerPrichodov(Id.managerPrichodov, mySim(), this);
-		addOwnMessage(Mc.prichodZakaznikaTerm2);
 		addOwnMessage(Mc.nastupZakaznikovTerm2);
+		addOwnMessage(Mc.prichodZakaznikaTerm2);
 		addOwnMessage(Mc.nastupZakaznikovTerm1);
 		addOwnMessage(Mc.prichodZakaznikaTerm1);
 	}

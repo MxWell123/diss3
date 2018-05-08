@@ -29,7 +29,6 @@ public class ProcesNastupZakaznikaDoMinibusu extends Process {
         Zakaznik zak = sprava.getZakaznik();
         Minibus minibus = sprava.getMinibus();
         minibus.pridajZakaznikaDoMinibusu(zak);
-        minibus.setPocetObsadenychMiest(zak.getPocetSpolucestujucich());
 
         double trvanie = 0.0;
         for (int i = 0; i < zak.getPocetSpolucestujucich(); i++) {
@@ -54,12 +53,12 @@ public class ProcesNastupZakaznikaDoMinibusu extends Process {
     @Override
     public void processMessage(MessageForm message) {
         switch (message.code()) {
-            case Mc.koniecNastupu:
-                processKoniecNastupu(message);
-                break;
-
             case Mc.start:
                 processStart(message);
+                break;
+
+            case Mc.koniecNastupu:
+                processKoniecNastupu(message);
                 break;
 
             default:

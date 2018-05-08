@@ -89,40 +89,40 @@ public class ManagerModelu extends Manager {
     @Override
     public void processMessage(MessageForm message) {
         switch (message.code()) {
-            case Mc.vystupZakaznikaTerm3:
-                switch (message.sender().id()) {
-                    case Id.agentOkolia:
-                        processVystupZakaznikaTerm3AgentOkolia(message);
-                        break;
-
-                    case Id.agentSpolocnosti:
-                        processVystupZakaznikaTerm3AgentSpolocnosti(message);
-                        break;
-                }
-                break;
-
-            case Mc.finish:
-                processFinish(message);
+            case Mc.prichodZakaznikaNaVratenieAuta:
+                processPrichodZakaznikaNaVratenieAuta(message);
                 break;
 
             case Mc.prichodZakaznikaTerm1:
                 processPrichodZakaznikaTerm1(message);
                 break;
 
-            case Mc.odchodZakaznikov:
-                processOdchodZakaznikov(message);
-                break;
-
-            case Mc.prichodZakaznikaNaVratenieAuta:
-                processPrichodZakaznikaNaVratenieAuta(message);
-                break;
-
             case Mc.initPrichodMinibusov:
                 processInitPrichodMinibusov(message);
                 break;
 
+            case Mc.finish:
+                processFinish(message);
+                break;
+
+            case Mc.vystupZakaznikaTerm3:
+                switch (message.sender().id()) {
+                    case Id.agentSpolocnosti:
+                        processVystupZakaznikaTerm3AgentSpolocnosti(message);
+                        break;
+
+                    case Id.agentOkolia:
+                        processVystupZakaznikaTerm3AgentOkolia(message);
+                        break;
+                }
+                break;
+
             case Mc.prichodZakaznikaTerm2:
                 processPrichodZakaznikaTerm2(message);
+                break;
+
+            case Mc.odchodZakaznikov:
+                processOdchodZakaznikov(message);
                 break;
 
             default:

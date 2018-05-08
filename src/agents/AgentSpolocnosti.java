@@ -22,6 +22,9 @@ public class AgentSpolocnosti extends Agent {
     }
 
     public Zakaznik vyberZakaznikaZRaduNaMinibus() {
+        if (frontZakaznikovNaMinibus.isEmpty()) {
+            return null;
+        }
         return frontZakaznikovNaMinibus.poll();
     }
 
@@ -31,21 +34,20 @@ public class AgentSpolocnosti extends Agent {
         // Setup component for the next replication
     }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	private void init()
-	{
-		new ManagerSpolocnosti(Id.managerSpolocnosti, mySim(), this);
-		addOwnMessage(Mc.nastupZakaznikovZObsluhy);
-		addOwnMessage(Mc.vystupZakaznikaTerm3);
-		addOwnMessage(Mc.vystupZakaznikaDoObsluhy);
-		addOwnMessage(Mc.prichodZakaznikaTerm2);
-		addOwnMessage(Mc.nastupZakaznikovTerm2);
-		addOwnMessage(Mc.prichodZakaznikaTerm1);
-		addOwnMessage(Mc.nastupZakaznikovTerm1);
-		addOwnMessage(Mc.odchodZakaznikov);
-		addOwnMessage(Mc.prichodZakaznikovNaCakanieNaMinibus);
-		addOwnMessage(Mc.initPrichodMinibusov);
-		addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
-	}
-	//meta! tag="end"
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    private void init() {
+        new ManagerSpolocnosti(Id.managerSpolocnosti, mySim(), this);
+        addOwnMessage(Mc.vystupZakaznikaDoObsluhy);
+        addOwnMessage(Mc.vystupZakaznikaTerm3);
+        addOwnMessage(Mc.nastupZakaznikovZObsluhy);
+        addOwnMessage(Mc.nastupZakaznikovTerm2);
+        addOwnMessage(Mc.prichodZakaznikaTerm2);
+        addOwnMessage(Mc.nastupZakaznikovTerm1);
+        addOwnMessage(Mc.prichodZakaznikaTerm1);
+        addOwnMessage(Mc.odchodZakaznikov);
+        addOwnMessage(Mc.prichodZakaznikovNaCakanieNaMinibus);
+        addOwnMessage(Mc.initPrichodMinibusov);
+        addOwnMessage(Mc.prichodZakaznikaNaVratenieAuta);
+    }
+    //meta! tag="end"
 }

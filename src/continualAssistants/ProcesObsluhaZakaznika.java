@@ -31,8 +31,8 @@ public class ProcesObsluhaZakaznika extends Process {
         // Setup component for the next replication
     }
 
-	//meta! sender="AgentObsluhy", id="87", type="Start"
-	public void processStart(MessageForm message) {
+    //meta! sender="AgentObsluhy", id="87", type="Start"
+    public void processStart(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         sprava.setCode(Mc.koniecObsluhy);
         double pom = 0.0;
@@ -42,48 +42,46 @@ public class ProcesObsluhaZakaznika extends Process {
             } else {
                 pom = rovn.sample();
             }
-            hold(pom, message);
+            hold(pom, sprava);
         } else {
             if (rnd.nextDouble() < 0.33) {
                 pom = exp.sample();
             } else {
                 pom = rovnOut.sample();
             }
-            hold(pom, message);
+            hold(pom, sprava);
         }
     }
 
-	//meta! userInfo="Process messages defined in code", id="0"
-	public void processDefault(MessageForm message) {
+    //meta! userInfo="Process messages defined in code", id="0"
+    public void processDefault(MessageForm message) {
         throw new UnsupportedOperationException("Vykonal sa default v ProcesObsluhaZakaznika.");
     }
 
-	//meta! sender="AgentObsluhy", id="169", type="Notice"
-	public void processKoniecObsluhy(MessageForm message) {
-        MyMessage kopia = (MyMessage) message;
-        assistantFinished(kopia);
+    //meta! sender="AgentObsluhy", id="169", type="Notice"
+    public void processKoniecObsluhy(MessageForm message) {
+        MyMessage sprava = (MyMessage) message;
+        assistantFinished(sprava);
     }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	@Override
-	public void processMessage(MessageForm message)
-	{
-		switch (message.code())
-		{
-		case Mc.start:
-			processStart(message);
-		break;
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    @Override
+    public void processMessage(MessageForm message) {
+        switch (message.code()) {
+            case Mc.start:
+                processStart(message);
+                break;
 
-		case Mc.koniecObsluhy:
-			processKoniecObsluhy(message);
-		break;
+            case Mc.koniecObsluhy:
+                processKoniecObsluhy(message);
+                break;
 
-		default:
-			processDefault(message);
-		break;
-		}
-	}
-	//meta! tag="end"
+            default:
+                processDefault(message);
+                break;
+        }
+    }
+    //meta! tag="end"
 
     @Override
     public AgentObsluhy myAgent() {

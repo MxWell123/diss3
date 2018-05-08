@@ -8,6 +8,8 @@ import continualAssistants.*;
 //meta! id="48"
 public class ManagerMinibus extends Manager {
 
+    private boolean vystupiliVsetci;
+
     public ManagerMinibus(int id, Simulation mySim, Agent myAgent) {
         super(id, mySim, myAgent);
         init();
@@ -17,7 +19,7 @@ public class ManagerMinibus extends Manager {
     public void prepareReplication() {
         super.prepareReplication();
         // Setup component for the next replication
-
+        vystupiliVsetci = false;
         if (petriNet() != null) {
             petriNet().clear();
         }
@@ -79,8 +81,10 @@ public class ManagerMinibus extends Manager {
             sprava.setCode(Mc.nastupZakaznikovTerm2);
             request(sprava);
         } else if (polohaMinibus == 2) { // ak sa nachadza Arcar
-            if (!sprava.getMinibus().jeMinibusPrazdny()) {
+            if (!sprava.getMinibus().jeMinibusPrazdny()) { // ak minibus nie je prazdny
                 startVystup(sprava);
+            } else {
+                startPresun(sprava); // ak prisiel prazdny
             }
         } else if (polohaMinibus == 3) { // ak sa nachadza v terminale3
             startVystup(sprava);
@@ -125,11 +129,14 @@ public class ManagerMinibus extends Manager {
         if (!sprava.getMinibus().jeMinibusPrazdny()) {
             startVystup(sprava);
         } else {
-            startPresun(sprava);
+            sprava.setAddressee(Id.agentSpolocnosti);
+            sprava.setCode(Mc.nastupZakaznikovZObsluhy);
+            request(sprava);
         }
+
     }
 
-    //meta! sender="AgentSpolocnosti", id="213", type="Response"
+//meta! sender="AgentSpolocnosti", id="213", type="Response"
     public void processVystupZakaznikaTerm3(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         if (!sprava.getMinibus().jeMinibusPrazdny()) {
@@ -146,12 +153,16 @@ public class ManagerMinibus extends Manager {
     @Override
     public void processMessage(MessageForm message) {
         switch (message.code()) {
+            case Mc.nastupZakaznikovTerm2:
+                processNastupZakaznikovTerm2(message);
+                break;
+
+            case Mc.vystupZakaznikaDoObsluhy:
+                processVystupZakaznikaDoObsluhy(message);
+                break;
+
             case Mc.finish:
                 switch (message.sender().id()) {
-                    case Id.procesVystupZakaznikaZMinibusu:
-                        processFinishProcesVystupZakaznikaZMinibusu(message);
-                        break;
-
                     case Id.procesPrechodMedziTerminalmi:
                         processFinishProcesPrechodMedziTerminalmi(message);
                         break;
@@ -159,19 +170,15 @@ public class ManagerMinibus extends Manager {
                     case Id.procesNastupZakaznikaDoMinibusu:
                         processFinishProcesNastupZakaznikaDoMinibusu(message);
                         break;
-                }
-                break;
 
-            case Mc.nastupZakaznikovZObsluhy:
-                processNastupZakaznikovZObsluhy(message);
+                    case Id.procesVystupZakaznikaZMinibusu:
+                        processFinishProcesVystupZakaznikaZMinibusu(message);
+                        break;
+                }
                 break;
 
             case Mc.vystupZakaznikaTerm3:
                 processVystupZakaznikaTerm3(message);
-                break;
-
-            case Mc.nastupZakaznikovTerm2:
-                processNastupZakaznikovTerm2(message);
                 break;
 
             case Mc.nastupZakaznikovTerm1:
@@ -182,8 +189,8 @@ public class ManagerMinibus extends Manager {
                 processInitPrichodMinibusov(message);
                 break;
 
-            case Mc.vystupZakaznikaDoObsluhy:
-                processVystupZakaznikaDoObsluhy(message);
+            case Mc.nastupZakaznikovZObsluhy:
+                processNastupZakaznikovZObsluhy(message);
                 break;
 
             default:

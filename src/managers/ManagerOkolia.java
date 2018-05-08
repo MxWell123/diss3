@@ -76,6 +76,7 @@ public class ManagerOkolia extends Manager {
         double pom = mySim().currentTime() - sprava.getZakaznik().getZaciatokCakania();
         sprava.getZakaznik().setCelkoveCakanie(pom);
         sprava.setAddressee(Id.agentModelu);
+        myAgent().pripocitajZakVratAuto();
         response(sprava);
     }
 
@@ -84,6 +85,7 @@ public class ManagerOkolia extends Manager {
         MyMessage sprava = (MyMessage) message;
         double pom = mySim().currentTime() - sprava.getZakaznik().getZaciatokCakania();
         sprava.getZakaznik().setCelkoveCakanie(pom);
+        myAgent().pripocitajZakPoAuto();
     }
 
     //meta! userInfo="Generated code: do not modify", tag="begin"
@@ -95,6 +97,10 @@ public class ManagerOkolia extends Manager {
         switch (message.code()) {
             case Mc.finish:
                 switch (message.sender().id()) {
+                    case Id.planovacPrichodZakaznikovTerm1:
+                        processFinishPlanovacPrichodZakaznikovTerm1(message);
+                        break;
+
                     case Id.planovacPrichodZakaznikovTerm2:
                         processFinishPlanovacPrichodZakaznikovTerm2(message);
                         break;
@@ -102,15 +108,7 @@ public class ManagerOkolia extends Manager {
                     case Id.planovacPrichodZakaznikovOdchod:
                         processFinishPlanovacPrichodZakaznikovOdchod(message);
                         break;
-
-                    case Id.planovacPrichodZakaznikovTerm1:
-                        processFinishPlanovacPrichodZakaznikovTerm1(message);
-                        break;
                 }
-                break;
-
-            case Mc.vystupZakaznikaTerm3:
-                processVystupZakaznikaTerm3(message);
                 break;
 
             case Mc.odchodZakaznikov:
@@ -119,6 +117,10 @@ public class ManagerOkolia extends Manager {
 
             case Mc.initPrichodyZakaznikov:
                 processInitPrichodyZakaznikov(message);
+                break;
+
+            case Mc.vystupZakaznikaTerm3:
+                processVystupZakaznikaTerm3(message);
                 break;
 
             default:

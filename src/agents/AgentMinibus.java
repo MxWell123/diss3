@@ -43,13 +43,13 @@ public class AgentMinibus extends Agent {
 	private void init()
 	{
 		new ManagerMinibus(Id.managerMinibus, mySim(), this);
+		new ProcesPrechodMedziTerminalmi(Id.procesPrechodMedziTerminalmi, mySim(), this);
 		new ProcesNastupZakaznikaDoMinibusu(Id.procesNastupZakaznikaDoMinibusu, mySim(), this);
 		new ProcesVystupZakaznikaZMinibusu(Id.procesVystupZakaznikaZMinibusu, mySim(), this);
-		new ProcesPrechodMedziTerminalmi(Id.procesPrechodMedziTerminalmi, mySim(), this);
 		addOwnMessage(Mc.koniecNastupu);
-		addOwnMessage(Mc.nastupZakaznikovZObsluhy);
-		addOwnMessage(Mc.vystupZakaznikaTerm3);
 		addOwnMessage(Mc.vystupZakaznikaDoObsluhy);
+		addOwnMessage(Mc.vystupZakaznikaTerm3);
+		addOwnMessage(Mc.nastupZakaznikovZObsluhy);
 		addOwnMessage(Mc.nastupZakaznikovTerm2);
 		addOwnMessage(Mc.nastupZakaznikovTerm1);
 		addOwnMessage(Mc.koniecVystupu);

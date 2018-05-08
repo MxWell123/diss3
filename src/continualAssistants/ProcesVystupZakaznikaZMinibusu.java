@@ -45,12 +45,12 @@ public class ProcesVystupZakaznikaZMinibusu extends Process {
     @Override
     public void processMessage(MessageForm message) {
         switch (message.code()) {
-            case Mc.start:
-                processStart(message);
-                break;
-
             case Mc.koniecVystupu:
                 processKoniecVystupu(message);
+                break;
+
+            case Mc.start:
+                processStart(message);
                 break;
 
             default:

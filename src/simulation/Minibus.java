@@ -40,8 +40,9 @@ public class Minibus {
     }
 
     public void pridajZakaznikaDoMinibusu(Zakaznik zak) {
-        if (pocetObsadenychMiest < pocetMiest) {
+        if (pocetObsadenychMiest + zak.getPocetSpolucestujucich() <= pocetMiest) {
             zakazniciVMinibuse.add(zak);
+            this.setPocetObsadenychMiest(pocetObsadenychMiest + zak.getPocetSpolucestujucich());
         }
     }
 
