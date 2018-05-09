@@ -15,7 +15,9 @@ public class Zakaznik {
 
     private double zaciatokCakania;
     private double celkoveCakanie;
+    private double prichodDoObsluhy;
     private int pocetSpolucestujucich;
+    private int cisloZamestnanca;
     private boolean typ; //false = z term1/term2 ...... true = vracia auto
     private Random nasada;
     private Random gen;
@@ -25,10 +27,27 @@ public class Zakaznik {
         this.celkoveCakanie = 0;
         this.pocetSpolucestujucich = 1 + vygenerujPocetSpolucestujucich();
         this.typ = typ;
+        this.cisloZamestnanca = 0;
+    }
+
+    public int getCisloZamestnanca() {
+        return cisloZamestnanca;
+    }
+
+    public void setCisloZamestnanca(int cisloZamestnanca) {
+        this.cisloZamestnanca = cisloZamestnanca;
     }
 
     public int getPocetSpolucestujucich() {
         return pocetSpolucestujucich;
+    }
+
+    public double getPrichodDoObsluhy() {
+        return prichodDoObsluhy;
+    }
+
+    public void setPrichodDoObsluhy(double prichodDoObsluhy) {
+        this.prichodDoObsluhy = prichodDoObsluhy;
     }
 
     public boolean isTyp() {

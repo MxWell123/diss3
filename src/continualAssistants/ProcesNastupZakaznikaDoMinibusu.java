@@ -28,13 +28,14 @@ public class ProcesNastupZakaznikaDoMinibusu extends Process {
         MyMessage sprava = (MyMessage) message;
         Zakaznik zak = sprava.getZakaznik();
         Minibus minibus = sprava.getMinibus();
-        minibus.pridajZakaznikaDoMinibusu(zak);
+        minibus.setTypPrace("Nastup zakaznikov");
 
+        minibus.pridajZakaznikaDoMinibusu(zak);
         double trvanie = 0.0;
         for (int i = 0; i < zak.getPocetSpolucestujucich(); i++) {
             trvanie += 10 + ((14 - 10) * rnd1.nextDouble());
         }
-
+        minibus.setCasZaciatkuVykonu(mySim().currentTime(), trvanie);
         sprava.setCode(Mc.koniecNastupu);
         hold(trvanie, sprava);
     }

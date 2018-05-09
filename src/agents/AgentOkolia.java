@@ -2,6 +2,7 @@ package agents;
 
 import OSPABA.*;
 import OSPRNG.ExponentialRNG;
+import OSPStat.Stat;
 import simulation.*;
 import managers.*;
 import continualAssistants.*;
@@ -14,11 +15,21 @@ public class AgentOkolia extends Agent {
     public final double KONIEC_PRICHODOV = 5.5 * HODINA;
     public int pocetObsluzenychZakPoAuto;
     public int pocetObsluzenychZakVraciaAuto;
+    private Stat casCakaniaPoAutoStat;
+    private Stat casCakaniaVratAutoStat;
 
     public AgentOkolia(int id, Simulation mySim, Agent parent) {
         super(id, mySim, parent);
         init();
     }
+
+    public Stat getCasCakaniaPoAutoStat() {
+        return casCakaniaPoAutoStat;
+    }
+
+    public Stat getCasCakaniaVratAutoStat() {
+        return casCakaniaVratAutoStat;
+    }  
 
     public int getPocetObsluzenychZakPoAuto() {
         return pocetObsluzenychZakPoAuto;
@@ -36,11 +47,21 @@ public class AgentOkolia extends Agent {
         this.pocetObsluzenychZakVraciaAuto = pocetObsluzenychZakVraciaAuto;
     }
 
+    public void pripocitajCasCakaniaPoAuto(double cas) {
+        casCakaniaPoAutoStat.addSample(cas);
+    }
+    
+     public void pripocitajCasCakaniaVratAuto(double cas) {
+        casCakaniaVratAutoStat.addSample(cas);
+    }    
+
     @Override
     public void prepareReplication() {
         super.prepareReplication();
         pocetObsluzenychZakPoAuto = 0;
         pocetObsluzenychZakVraciaAuto = 0;
+        casCakaniaPoAutoStat = new Stat();
+        casCakaniaVratAutoStat = new Stat();
         // Setup component for the next replication
     }
 
@@ -77,26 +98,25 @@ public class AgentOkolia extends Agent {
         }
     }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	private void init()
-	{
-		new ManagerOkolia(Id.managerOkolia, mySim(), this);
-		new PlanovacPrichodZakaznikovOdchod(Id.planovacPrichodZakaznikovOdchod, mySim(), this);
-		new PlanovacPrichodZakaznikovTerm2(Id.planovacPrichodZakaznikovTerm2, mySim(), this);
-		new PlanovacPrichodZakaznikovTerm1(Id.planovacPrichodZakaznikovTerm1, mySim(), this);
-		addOwnMessage(Mc.vystupZakaznikaTerm3);
-		addOwnMessage(Mc.odchodZakaznikov);
-		addOwnMessage(Mc.koniec);
-		addOwnMessage(Mc.initPrichodyZakaznikov);
-		addOwnMessage(Mc.novyZakaznik);
-	}
-	//meta! tag="end"
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    private void init() {
+        new ManagerOkolia(Id.managerOkolia, mySim(), this);
+        new PlanovacPrichodZakaznikovOdchod(Id.planovacPrichodZakaznikovOdchod, mySim(), this);
+        new PlanovacPrichodZakaznikovTerm2(Id.planovacPrichodZakaznikovTerm2, mySim(), this);
+        new PlanovacPrichodZakaznikovTerm1(Id.planovacPrichodZakaznikovTerm1, mySim(), this);
+        addOwnMessage(Mc.vystupZakaznikaTerm3);
+        addOwnMessage(Mc.odchodZakaznikov);
+        addOwnMessage(Mc.koniec);
+        addOwnMessage(Mc.initPrichodyZakaznikov);
+        addOwnMessage(Mc.novyZakaznik);
+    }
+    //meta! tag="end"
 
     public void pripocitajZakPoAuto() {
         pocetObsluzenychZakPoAuto++;
     }
-    
-     public void pripocitajZakVratAuto() {
-       pocetObsluzenychZakVraciaAuto++;
+
+    public void pripocitajZakVratAuto() {
+        pocetObsluzenychZakVraciaAuto++;
     }
 }

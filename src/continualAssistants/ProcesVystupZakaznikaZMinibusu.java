@@ -26,9 +26,13 @@ public class ProcesVystupZakaznikaZMinibusu extends Process {
     //meta! sender="AgentMinibus", id="106", type="Start"
     public void processStart(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
+        Minibus minibus = sprava.getMinibus();
         sprava.setCode(Mc.koniecVystupu);
-        sprava.setZakaznik(sprava.getMinibus().vyberZakaznikaZMinibusu());
-        hold(2 + ((8 - 2) * rnd1.nextDouble()), sprava);
+        sprava.setZakaznik(minibus.vyberZakaznikaZMinibusu());        
+        minibus.setTypPrace("Vystup zakaznikov");
+        double trvanie = 2 + ((8 - 2) * rnd1.nextDouble());
+        minibus.setCasZaciatkuVykonu(mySim().currentTime(), trvanie);
+        hold(trvanie, sprava);
     }
 
     //meta! userInfo="Process messages defined in code", id="0"

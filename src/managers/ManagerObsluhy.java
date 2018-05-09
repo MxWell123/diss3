@@ -27,6 +27,7 @@ public class ManagerObsluhy extends Manager {
     public void processFinish(MessageForm message) {
         MyMessage nextMessage = (MyMessage) message;
         MyMessage kopia = (MyMessage) nextMessage.createCopy();
+        myAgent().pripocitajPriemernyCasVRade(mySim().currentTime() - nextMessage.getZakaznik().getPrichodDoObsluhy());
         if (nextMessage.getZakaznik().isTyp()) {
             nextMessage.setAddressee(Id.agentSpolocnosti);
             nextMessage.setCode(Mc.prichodZakaznikovNaCakanieNaMinibus);
@@ -51,9 +52,12 @@ public class ManagerObsluhy extends Manager {
     public void processPrichodZakaznikaNaVratenieAuta(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         if (!myAgent().jeVolnyPracovnik()) {
+            sprava.getZakaznik().setPrichodDoObsluhy(mySim().currentTime());
+            sprava.getZakaznik().setZaciatokCakania(mySim().currentTime());
             myAgent().pridajZakaznikDoRadu(sprava.getZakaznik());
         } else {
-            myAgent().pripocitajVytazenychPrac();
+            int cisloZamestnanca = myAgent().pripocitajVytazenychPrac();
+            sprava.getZakaznik().setCisloZamestnanca(cisloZamestnanca);
             startWork(sprava);
         }
     }
@@ -68,9 +72,11 @@ public class ManagerObsluhy extends Manager {
         MyMessage sprava = (MyMessage) message;
         MyMessage sprava2 = (MyMessage) sprava.createCopy();
         if (!myAgent().jeVolnyPracovnik()) {
+            sprava.getZakaznik().setPrichodDoObsluhy(mySim().currentTime());
             myAgent().pridajZakaznikDoRadu(sprava.getZakaznik());
         } else {
-            myAgent().pripocitajVytazenychPrac();
+            int cisloZamestnanca = myAgent().pripocitajVytazenychPrac();
+            sprava.getZakaznik().setCisloZamestnanca(cisloZamestnanca);
             startWork(message);
         }
         sprava2.setAddressee(Id.agentSpolocnosti);

@@ -44,7 +44,7 @@ public class AgentPrichodov extends Agent {
     public int getPocetZakRad1() {
         return frontZakaznikovTerm1.size();
     }
-    
+
     public int getPocetZakRad2() {
         return frontZakaznikovTerm2.size();
     }
@@ -55,14 +55,13 @@ public class AgentPrichodov extends Agent {
         // Setup component for the next replication
     }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	private void init()
-	{
-		new ManagerPrichodov(Id.managerPrichodov, mySim(), this);
-		addOwnMessage(Mc.nastupZakaznikovTerm2);
-		addOwnMessage(Mc.prichodZakaznikaTerm2);
-		addOwnMessage(Mc.nastupZakaznikovTerm1);
-		addOwnMessage(Mc.prichodZakaznikaTerm1);
-	}
-	//meta! tag="end"
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    private void init() {
+        new ManagerPrichodov(Id.managerPrichodov, mySim(), this);
+        addOwnMessage(Mc.nastupZakaznikovTerm2);
+        addOwnMessage(Mc.prichodZakaznikaTerm2);
+        addOwnMessage(Mc.nastupZakaznikovTerm1);
+        addOwnMessage(Mc.prichodZakaznikaTerm1);
+    }
+    //meta! tag="end"
 }

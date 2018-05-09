@@ -19,11 +19,17 @@ public class Minibus {
     private double cenaZaKm;
     private SimQueue<Zakaznik> zakazniciVMinibuse;
     private int polohaMinibusu; // 0-term1, 1-term2, 2-AirCarRental, 3-term3
+    private String typPrace;
     private int pocetObsadenychMiest;
+    private double casZaciatkuVykonu;
+    private double trvanieVykonu;
 
     public Minibus(int cisloMinibusu, int typMinibusu) {
         this.cisloMinibusu = cisloMinibusu;
         this.typMinibusu = typMinibusu;
+        this.casZaciatkuVykonu = 0.0;
+        this.trvanieVykonu = 0.0;
+        this.typPrace = "";
         if (typMinibusu == 0) {
             pocetMiest = 12;
             cenaZaKm = 0.28;
@@ -39,11 +45,32 @@ public class Minibus {
         pocetObsadenychMiest = 0;
     }
 
+    public double getCasZaciatkuVykonu() {
+        return casZaciatkuVykonu;
+    }
+
+    public void setCasZaciatkuVykonu(double casZaciatkuVykonu, double trvanieVykonu) {
+        this.casZaciatkuVykonu = casZaciatkuVykonu;
+        this.trvanieVykonu = trvanieVykonu;
+    }
+
+    public double getTrvanieVykonu() {
+        return trvanieVykonu;
+    }
+
     public void pridajZakaznikaDoMinibusu(Zakaznik zak) {
         if (pocetObsadenychMiest + zak.getPocetSpolucestujucich() <= pocetMiest) {
             zakazniciVMinibuse.add(zak);
             this.setPocetObsadenychMiest(pocetObsadenychMiest + zak.getPocetSpolucestujucich());
         }
+    }
+
+    public String getTypPrace() {
+        return typPrace;
+    }
+
+    public void setTypPrace(String typPrace) {
+        this.typPrace = typPrace;
     }
 
     public int getPocetObsadenychMiest() {

@@ -39,6 +39,7 @@ public class ManagerMinibus extends Manager {
     public void processNastupZakaznikovTerm2(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         if (sprava.getZakaznik() != null && !sprava.getMinibus().jeMinibusPlny()) {
+            myAgent().pripocitajPriemCasRad2(mySim().currentTime() - sprava.getZakaznik().getZaciatokCakania());
             startNastup(message);
         } else {
             startPresun(message);
@@ -49,9 +50,10 @@ public class ManagerMinibus extends Manager {
     public void processNastupZakaznikovTerm1(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         if (sprava.getZakaznik() != null && !sprava.getMinibus().jeMinibusPlny()) {
-            startNastup(message);
+            myAgent().pripocitajPriemCasRad1(mySim().currentTime() - sprava.getZakaznik().getZaciatokCakania());
+            startNastup(sprava);
         } else {
-            startPresun(message);
+            startPresun(sprava);
         }
     }
 

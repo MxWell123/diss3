@@ -76,7 +76,8 @@ public class ManagerOkolia extends Manager {
         double pom = mySim().currentTime() - sprava.getZakaznik().getZaciatokCakania();
         sprava.getZakaznik().setCelkoveCakanie(pom);
         sprava.setAddressee(Id.agentModelu);
-        myAgent().pripocitajZakVratAuto();
+        myAgent().pripocitajCasCakaniaVratAuto(pom);//stat
+        myAgent().pripocitajZakVratAuto();//stat
         response(sprava);
     }
 
@@ -84,8 +85,8 @@ public class ManagerOkolia extends Manager {
     public void processOdchodZakaznikov(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         double pom = mySim().currentTime() - sprava.getZakaznik().getZaciatokCakania();
-        sprava.getZakaznik().setCelkoveCakanie(pom);
-        myAgent().pripocitajZakPoAuto();
+        myAgent().pripocitajCasCakaniaPoAuto(pom);//stat
+        myAgent().pripocitajZakPoAuto();//stat
     }
 
     //meta! userInfo="Generated code: do not modify", tag="begin"

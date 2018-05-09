@@ -27,27 +27,34 @@ public class ProcesPrechodMedziTerminalmi extends Process {
     //meta! sender="AgentMinibus", id="104", type="Start"
     public void processStart(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
-        if (sprava.getMinibus().getPolohaMinibusu() == 0) { // term 1
-            sprava.getMinibus().setPolohaMinibusu(1);
+        Minibus minibus = sprava.getMinibus();
+        minibus.setTypPrace("presun");
+        if (minibus.getPolohaMinibusu() == 0) { // term 1
+            minibus.setPolohaMinibusu(1);
             sprava.setCode(Mc.koniecPrechodu);
+            minibus.setCasZaciatkuVykonu(mySim().currentTime(), PRECHOD_TERM1_TERM2);
             hold(PRECHOD_TERM1_TERM2, message);
-        } else if (sprava.getMinibus().getPolohaMinibusu() == 1) { // term2
-            sprava.getMinibus().setPolohaMinibusu(2);
+        } else if (minibus.getPolohaMinibusu() == 1) { // term2
+            minibus.setPolohaMinibusu(2);
             sprava.setCode(Mc.koniecPrechodu);
+            minibus.setCasZaciatkuVykonu(mySim().currentTime(), PRECHOD_TERM2_ARCAR);
             hold(PRECHOD_TERM2_ARCAR, message);
-        } else if (sprava.getMinibus().getPolohaMinibusu() == 2) { // arcar
-            if (!sprava.getMinibus().jeMinibusPrazdny()) { // ide do term3
-                sprava.getMinibus().setPolohaMinibusu(3);
+        } else if (minibus.getPolohaMinibusu() == 2) { // arcar
+            if (!minibus.jeMinibusPrazdny()) { // ide do term3
+                minibus.setPolohaMinibusu(3);
                 sprava.setCode(Mc.koniecPrechodu);
+                minibus.setCasZaciatkuVykonu(mySim().currentTime(), PRECHOD_ARCAR_TERM3);
                 hold(PRECHOD_ARCAR_TERM3, message);
             } else {
-                sprava.getMinibus().setPolohaMinibusu(0); // ide rovno term1
+                minibus.setPolohaMinibusu(0); // ide rovno term1
                 sprava.setCode(Mc.koniecPrechodu);
+                minibus.setCasZaciatkuVykonu(mySim().currentTime(), PRECHOD_ARCAR_TERM1);
                 hold(PRECHOD_ARCAR_TERM1, message);
             }
-        } else if (sprava.getMinibus().getPolohaMinibusu() == 3) { // term3 
-            sprava.getMinibus().setPolohaMinibusu(0);
+        } else if (minibus.getPolohaMinibusu() == 3) { // term3 
+            minibus.setPolohaMinibusu(0);
             sprava.setCode(Mc.koniecPrechodu);
+            minibus.setCasZaciatkuVykonu(mySim().currentTime(), PRECHOD_TERM3_TERM1);
             hold(PRECHOD_TERM3_TERM1, message);
         }
     }
