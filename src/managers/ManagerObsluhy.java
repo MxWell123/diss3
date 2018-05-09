@@ -50,10 +50,10 @@ public class ManagerObsluhy extends Manager {
 
     //meta! sender="AgentSpolocnosti", id="83", type="Notice"
     public void processPrichodZakaznikaNaVratenieAuta(MessageForm message) {
-        MyMessage sprava = (MyMessage) message;
+        MyMessage sprava = (MyMessage) message;        
+        sprava.getZakaznik().setZaciatokCakania(mySim().currentTime());
         if (!myAgent().jeVolnyPracovnik()) {
             sprava.getZakaznik().setPrichodDoObsluhy(mySim().currentTime());
-            sprava.getZakaznik().setZaciatokCakania(mySim().currentTime());
             myAgent().pridajZakaznikDoRadu(sprava.getZakaznik());
         } else {
             int cisloZamestnanca = myAgent().pripocitajVytazenychPrac();

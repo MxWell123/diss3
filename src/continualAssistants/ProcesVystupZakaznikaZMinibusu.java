@@ -28,7 +28,7 @@ public class ProcesVystupZakaznikaZMinibusu extends Process {
         MyMessage sprava = (MyMessage) message;
         Minibus minibus = sprava.getMinibus();
         sprava.setCode(Mc.koniecVystupu);
-        sprava.setZakaznik(minibus.vyberZakaznikaZMinibusu());        
+        sprava.setZakaznik(minibus.vyberZakaznikaZMinibusu());
         minibus.setTypPrace("Vystup zakaznikov");
         double trvanie = 2 + ((8 - 2) * rnd1.nextDouble());
         minibus.setCasZaciatkuVykonu(mySim().currentTime(), trvanie);
