@@ -8,8 +8,6 @@ import continualAssistants.*;
 //meta! id="48"
 public class ManagerMinibus extends Manager {
 
-    private boolean vystupiliVsetci;
-
     public ManagerMinibus(int id, Simulation mySim, Agent myAgent) {
         super(id, mySim, myAgent);
         init();
@@ -19,7 +17,6 @@ public class ManagerMinibus extends Manager {
     public void prepareReplication() {
         super.prepareReplication();
         // Setup component for the next replication
-        vystupiliVsetci = false;
         if (petriNet() != null) {
             petriNet().clear();
         }

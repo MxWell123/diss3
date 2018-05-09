@@ -23,13 +23,23 @@ public class AgentOkolia extends Agent {
         init();
     }
 
+    @Override
+    public void prepareReplication() {
+        pocetObsluzenychZakPoAuto = 0;
+        pocetObsluzenychZakVraciaAuto = 0;
+        casCakaniaPoAutoStat = new Stat();
+        casCakaniaVratAutoStat = new Stat();
+        super.prepareReplication();
+        // Setup component for the next replication
+    }
+
     public Stat getCasCakaniaPoAutoStat() {
         return casCakaniaPoAutoStat;
     }
 
     public Stat getCasCakaniaVratAutoStat() {
         return casCakaniaVratAutoStat;
-    }  
+    }
 
     public int getPocetObsluzenychZakPoAuto() {
         return pocetObsluzenychZakPoAuto;
@@ -50,19 +60,9 @@ public class AgentOkolia extends Agent {
     public void pripocitajCasCakaniaPoAuto(double cas) {
         casCakaniaPoAutoStat.addSample(cas);
     }
-    
-     public void pripocitajCasCakaniaVratAuto(double cas) {
-        casCakaniaVratAutoStat.addSample(cas);
-    }    
 
-    @Override
-    public void prepareReplication() {
-        super.prepareReplication();
-        pocetObsluzenychZakPoAuto = 0;
-        pocetObsluzenychZakVraciaAuto = 0;
-        casCakaniaPoAutoStat = new Stat();
-        casCakaniaVratAutoStat = new Stat();
-        // Setup component for the next replication
+    public void pripocitajCasCakaniaVratAuto(double cas) {
+        casCakaniaVratAutoStat.addSample(cas);
     }
 
     public double dajTrvanie(ExponentialRNG[] generatory, double[] vstupy) {

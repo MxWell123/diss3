@@ -44,6 +44,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     private Color CISLO_8;
     private Color CISLO_9;
     private Color CISLO_10;
+    private int pocetPracovnikov;
 
     /**
      * Creates new form GUI
@@ -123,6 +124,8 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        progresBarPrac = new javax.swing.JProgressBar();
+        percento = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         pocZamTextField = new javax.swing.JTextField();
@@ -135,8 +138,8 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        priemCasTerm1Lab = new javax.swing.JLabel();
         priemCasTerm2Lab = new javax.swing.JLabel();
+        priemCasTerm1Lab = new javax.swing.JLabel();
         priemCasObsluhaLab = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         poAutoLabel = new javax.swing.JLabel();
@@ -155,19 +158,22 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
+        prBar = new javax.swing.JProgressBar();
+        per = new javax.swing.JLabel();
         spomalenie = new javax.swing.JSlider();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         spojitost = new javax.swing.JSlider();
         jLabel24 = new javax.swing.JLabel();
         simCas = new javax.swing.JLabel();
+        casBar = new javax.swing.JProgressBar();
 
         jLabel4.setText("jLabel4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         nadpis.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        nadpis.setText("Turbo mód");
+        nadpis.setText("Simulacia ARCAR");
 
         Turbo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -320,6 +326,8 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
 
         tabbedPane.addTab("Zamestnanci", jPanel3);
 
+        percento.setText("0 %");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -333,50 +341,60 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel22)
-                            .addComponent(jLabel21)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(priemCasVratAuto)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel23)
-                                        .addGap(131, 131, 131)
-                                        .addComponent(priemCasPoAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel28)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(poAuto))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(vyslVytazenost, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(vyslTerm2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(vyslTerm3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(vyslCasTerm1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(vyslCasTerm2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(vyslCasObsluha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(vyslTerm1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel29)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(vratAuto))))
-                            .addComponent(jLabel30)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel15))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(pocetZamSim)
-                                    .addComponent(pocMinSim, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                                .addGap(63, 63, 63)
-                                .addComponent(jButton4)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3)))
-                        .addGap(0, 150, Short.MAX_VALUE)))
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel30)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel14)
+                                            .addComponent(jLabel15))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(pocetZamSim)
+                                            .addComponent(pocMinSim, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                                        .addGap(63, 63, 63)
+                                        .addComponent(jButton4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton3)))
+                                .addGap(0, 150, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel21)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(priemCasVratAuto)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel23)
+                                                .addGap(131, 131, 131)
+                                                .addComponent(priemCasPoAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel28)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(poAuto))
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(vyslVytazenost, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(vyslTerm2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(vyslTerm3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(vyslCasTerm1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(vyslCasTerm2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(vyslCasObsluha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(vyslTerm1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel29)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(vratAuto)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                                .addComponent(progresBarPrac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(percento)
+                                .addGap(59, 59, 59)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -422,34 +440,42 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(vyslCasTerm2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(vyslCasObsluha))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(vyslVytazenost))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
-                    .addComponent(priemCasPoAuto))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel30)
-                    .addComponent(priemCasVratAuto))
-                .addGap(13, 13, 13)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(poAuto)
-                    .addComponent(jLabel28))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel29)
-                    .addComponent(vratAuto))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel22)
+                            .addComponent(vyslCasObsluha))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel21)
+                                    .addComponent(vyslVytazenost))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel23)
+                                    .addComponent(priemCasPoAuto))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel30)
+                                    .addComponent(priemCasVratAuto))
+                                .addGap(13, 13, 13)
+                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(poAuto)
+                                    .addComponent(jLabel28))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel29)
+                                    .addComponent(vratAuto)))
+                            .addComponent(progresBarPrac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(percento)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -499,11 +525,11 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
 
         jLabel10.setText("priemerny cas v rade pred obsluhou:");
 
-        priemCasTerm1Lab.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        priemCasTerm1Lab.setText("0");
-
         priemCasTerm2Lab.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         priemCasTerm2Lab.setText("0");
+
+        priemCasTerm1Lab.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        priemCasTerm1Lab.setText("0");
 
         priemCasObsluhaLab.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         priemCasObsluhaLab.setText("0");
@@ -545,6 +571,8 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
 
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        per.setText("0.0 %");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -582,8 +610,8 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
                             .addComponent(term1Label, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(term2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(obsluhaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(priemCasTerm1Lab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(priemCasTerm2Lab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(priemCasTerm1Lab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(priemCasObsluhaLab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -618,10 +646,18 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
                                                 .addComponent(jLabel11)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(poAutoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(133, 133, 133)
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(intSpol, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(133, 133, 133)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(jLabel1)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(intSpol, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(prBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(192, 192, 192)
+                                                .addComponent(per)))))
                                 .addGap(0, 152, Short.MAX_VALUE))))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -665,11 +701,11 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
                                 .addGap(12, 12, 12)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel8)
-                                    .addComponent(priemCasTerm2Lab))
+                                    .addComponent(priemCasTerm1Lab))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel9)
-                                    .addComponent(priemCasTerm1Lab))))
+                                    .addComponent(priemCasTerm2Lab))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(priemCasObsluhaLab)
@@ -689,8 +725,11 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(vytPracovnikov))
-                        .addGap(0, 217, Short.MAX_VALUE))
+                            .addComponent(vytPracovnikov)
+                            .addComponent(per))
+                        .addGap(13, 13, 13)
+                        .addComponent(prBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 190, Short.MAX_VALUE))
                     .addComponent(jSeparator6))
                 .addContainerGap())
         );
@@ -738,18 +777,20 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
                 .addComponent(jLabel27)
                 .addGap(18, 18, 18)
                 .addComponent(spojitost, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(68, 68, 68)
                 .addComponent(jLabel24)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(simCas, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addGap(18, 18, 18)
+                .addComponent(casBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(Turbo)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -761,7 +802,8 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(simCas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(simCas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(casBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Turbo)
                 .addContainerGap())
@@ -792,9 +834,12 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int pocetAut = Integer.parseInt(pocMinSim.getText());
-        int pocetPracovnikov = Integer.parseInt(pocetZamSim.getText());
+        pocetPracovnikov = Integer.parseInt(pocetZamSim.getText());
         int pocetReplikacii = 1;
-
+        progresBarPrac.setMinimum(0);
+        progresBarPrac.setMaximum(100);
+        casBar.setMinimum(0);
+        casBar.setMaximum(100);
         mySim.setPocetMinibusov(pocetAut);
         mySim.setPocetPracovnikov(pocetPracovnikov);
         mySim.onReplicationWillStart(new Consumer<Simulation>() {
@@ -831,9 +876,13 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int pocetAut = Integer.parseInt(pocMinibusTextField.getText());
-        int pocetPracovnikov = Integer.parseInt(pocZamTextField.getText());
+        pocetPracovnikov = Integer.parseInt(pocZamTextField.getText());
         int pocetReplikacii = Integer.parseInt(pocReplText.getText());
         typSpustenia = 1;
+        prBar.setMaximum(100);
+        prBar.setMinimum(0);
+        casBar.setMinimum(0);
+        casBar.setMaximum(100);
         mySim.setPocetMinibusov(pocetAut);
         mySim.setPocetPracovnikov(pocetPracovnikov);
         mySim.onReplicationDidFinish(new Consumer<Simulation>() {
@@ -844,8 +893,8 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         }
         );
         for (int i = 0;
-            i < pocetAut;
-            i++) {
+                i < pocetAut;
+                i++) {
             dtm.addRow(new Object[]{i, "", "", ""});
             dtm.setValueAt(i, i, 0);
         }
@@ -903,6 +952,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane Turbo;
+    private javax.swing.JProgressBar casBar;
     private javax.swing.JLabel intSpol;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -955,6 +1005,8 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel nadpis;
     private javax.swing.JLabel obsluhaLabel;
+    private javax.swing.JLabel per;
+    private javax.swing.JLabel percento;
     private javax.swing.JLabel poAuto;
     private javax.swing.JLabel poAutoLabel;
     private javax.swing.JTextField pocMinSim;
@@ -962,11 +1014,13 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     private javax.swing.JTextField pocReplText;
     private javax.swing.JTextField pocZamTextField;
     private javax.swing.JTextField pocetZamSim;
+    private javax.swing.JProgressBar prBar;
     private javax.swing.JLabel priemCasObsluhaLab;
     private javax.swing.JLabel priemCasPoAuto;
     private javax.swing.JLabel priemCasTerm1Lab;
     private javax.swing.JLabel priemCasTerm2Lab;
     private javax.swing.JLabel priemCasVratAuto;
+    private javax.swing.JProgressBar progresBarPrac;
     private javax.swing.JLabel simCas;
     private javax.swing.JSlider spojitost;
     private javax.swing.JSlider spomalenie;
@@ -989,12 +1043,21 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     public void refresh(Simulation simulation) {
         //-------------------------------------------------------------------------- simulacia hodnoty
         MySimulation mySim = (MySimulation) simulation;
-        simCas.setText(longDoCasu((long) (57600 + mySim.currentTime())));
+        simCas.setText(dajSimCas((long) (57600 + mySim.currentTime())));
+        double pomocnaProgresBar = ((mySim.currentTime()) / 14400) * 100;
+        casBar.setValue((int) pomocnaProgresBar);
         if (typSpustenia == 0) {
-            this.vyslVytazenost.setText(String.valueOf(mySim.agentObsluhy().getPocetVytazenychPracovnikov()));
-            this.vyslTerm1.setText(String.valueOf(mySim.agentPrichodov().getPocetZakRad1()));
-            this.vyslTerm2.setText(String.valueOf(mySim.agentPrichodov().getPocetZakRad2()));
-            this.vyslTerm3.setText(String.valueOf(mySim.agentObsluhy().velkostRadu()));
+            double priemPocetVytPrac = mySim.agentObsluhy().getPriemernyPocetVytazenychPracovnikov().mean();
+            double pomo = priemPocetVytPrac / pocetPracovnikov;
+            if (priemPocetVytPrac == 0) {
+                pomo = 0.1;
+            }
+            this.percento.setText(String.format("%.2f", pomo * 100) + " %");
+            this.progresBarPrac.setValue((int) Math.round(pomo * 100));
+            this.vyslVytazenost.setText(String.format("%.2f", priemPocetVytPrac));
+            this.vyslTerm1.setText(String.format("%.2f", mySim.agentPrichodov().getPriemernyRadZakaznikovTerm1().mean()));
+            this.vyslTerm2.setText(String.format("%.2f", mySim.agentPrichodov().getPriemernyRadZakaznikovTerm2().mean()));
+            this.vyslTerm3.setText(String.format("%.2f", mySim.agentObsluhy().getPriemernaVelkostRadu().mean()));
             this.poAuto.setText(String.valueOf(mySim.agentOkolia().getPocetObsluzenychZakPoAuto()));
             this.vratAuto.setText(String.valueOf(mySim.agentOkolia().getPocetObsluzenychZakVraciaAuto()));
             this.priemCasPoAuto.setText(String.format("%.2f", mySim.agentOkolia().getCasCakaniaPoAutoStat().mean() / 60));
@@ -1073,11 +1136,22 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
                 JOptionPane.showMessageDialog(null, "Nezadali ste všetky potrebne udaje");
             }
         } else {
+            double priemPocetVytPrac = mySim.getPriemernaVytazenostPracovnikov().mean();
+            double pomo = priemPocetVytPrac / pocetPracovnikov;
+            if (priemPocetVytPrac == 0) {
+                pomo = 0.1;
+            }
+            this.per.setText(String.format("%.2f", pomo * 100) + " %");
+            this.prBar.setValue((int) Math.round(pomo * 100));
             this.term1Label.setText(String.format("%.2f", mySim.getPriemernyRadTerm1().mean()));
             this.term2Label.setText(String.format("%.2f", mySim.getPriemernyRadTerm2().mean()));
             this.obsluhaLabel.setText(String.format("%.2f", mySim.getPriemernyRadPredObsluhou().mean()));
             this.poAutoLabel.setText(String.format("%.2f", mySim.getCasCakaniaPoAutoStat().mean() / 60));
             this.vraciaAutoLabel.setText(String.format("%.2f", mySim.getCasCakaniaVratAutoStat().mean() / 60));
+            this.priemCasTerm1Lab.setText(String.format("%.2f", mySim.getPriemernyCasVRadeTerm1().mean() / 60));
+            this.priemCasTerm2Lab.setText(String.format("%.2f", mySim.getPriemernyCasVRadeTerm2().mean() / 60));
+            this.priemCasObsluhaLab.setText(String.format("%.2f", mySim.getPriemernyCasVRadePredObsluhou().mean() / 60));
+            this.vytPracovnikov.setText(String.format("%.2f", priemPocetVytPrac));
         }
 
     }
@@ -1090,7 +1164,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     public void simStateChanged(Simulation smltn, SimState ss) {
     }
 
-    public static String longDoCasu(double time) {
+    public static String dajSimCas(double time) {
         long timeLong = (long) time;
         long second = timeLong % 60;
         long minute = (timeLong / 60) % 60;

@@ -2,6 +2,7 @@ package agents;
 
 import OSPABA.*;
 import OSPDataStruct.SimQueue;
+import OSPStat.Stat;
 import simulation.*;
 import managers.*;
 import continualAssistants.*;
@@ -11,12 +12,22 @@ public class AgentPrichodov extends Agent {
 
     private SimQueue<Zakaznik> frontZakaznikovTerm1;
     private SimQueue<Zakaznik> frontZakaznikovTerm2;
+    private Stat priemernyRadZakaznikovTerm1;
+    private Stat priemernyRadZakaznikovTerm2;
 
     public AgentPrichodov(int id, Simulation mySim, Agent parent) {
         super(id, mySim, parent);
+        init();
+    }
+
+    @Override
+    public void prepareReplication() {
         frontZakaznikovTerm1 = new SimQueue<>();
         frontZakaznikovTerm2 = new SimQueue<>();
-        init();
+        priemernyRadZakaznikovTerm1 = new Stat();
+        priemernyRadZakaznikovTerm2 = new Stat();
+        super.prepareReplication();
+        // Setup component for the next replication
     }
 
     public void pridajZakaznikDoRaduTerm1(Zakaznik zak) {
@@ -28,6 +39,22 @@ public class AgentPrichodov extends Agent {
             return null;
         }
         return frontZakaznikovTerm1.poll();
+    }
+
+    public void pridajDoStatistikyTerm1() {
+        priemernyRadZakaznikovTerm1.addSample(frontZakaznikovTerm1.size());
+    }
+
+    public void pridajDoStatistikyTerm2() {
+        priemernyRadZakaznikovTerm2.addSample(frontZakaznikovTerm2.size());
+    }
+
+    public Stat getPriemernyRadZakaznikovTerm1() {
+        return priemernyRadZakaznikovTerm1;
+    }
+
+    public Stat getPriemernyRadZakaznikovTerm2() {
+        return priemernyRadZakaznikovTerm2;
     }
 
     public void pridajZakaznikDoRaduTerm2(Zakaznik zak) {
@@ -47,12 +74,6 @@ public class AgentPrichodov extends Agent {
 
     public int getPocetZakRad2() {
         return frontZakaznikovTerm2.size();
-    }
-
-    @Override
-    public void prepareReplication() {
-        super.prepareReplication();
-        // Setup component for the next replication
     }
 
     //meta! userInfo="Generated code: do not modify", tag="begin"

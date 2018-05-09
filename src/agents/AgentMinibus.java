@@ -21,9 +21,10 @@ public class AgentMinibus extends Agent {
 
     @Override
     public void prepareReplication() {
-        super.prepareReplication();
         priemCasVradeTerm1 = new Stat();
         priemCasVradeTerm2 = new Stat();
+        counterMinibusov = 0;        
+        super.prepareReplication();
         // Setup component for the next replication
     }
 
@@ -39,7 +40,6 @@ public class AgentMinibus extends Agent {
     public Stat getPriemCasVradeTerm2() {
         return priemCasVradeTerm2;
     }
-    
 
     public void pripocitajPriemCasRad1(double cas) {
         priemCasVradeTerm1.addSample(cas);

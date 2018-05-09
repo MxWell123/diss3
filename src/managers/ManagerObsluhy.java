@@ -44,17 +44,21 @@ public class ManagerObsluhy extends Manager {
             startWork(kopia);
         } else {
             myAgent().odpocitajVytazenychPrac();
+            myAgent().pridajDoStatistiky();
+            myAgent().pridajDoStatistikyVytazenost();
         }
 
     }
 
     //meta! sender="AgentSpolocnosti", id="83", type="Notice"
     public void processPrichodZakaznikaNaVratenieAuta(MessageForm message) {
-        MyMessage sprava = (MyMessage) message;        
+        MyMessage sprava = (MyMessage) message;
         sprava.getZakaznik().setZaciatokCakania(mySim().currentTime());
+        sprava.getZakaznik().setPrichodDoObsluhy(mySim().currentTime());
         if (!myAgent().jeVolnyPracovnik()) {
-            sprava.getZakaznik().setPrichodDoObsluhy(mySim().currentTime());
             myAgent().pridajZakaznikDoRadu(sprava.getZakaznik());
+            myAgent().pridajDoStatistiky();
+            myAgent().pridajDoStatistikyVytazenost();
         } else {
             int cisloZamestnanca = myAgent().pripocitajVytazenychPrac();
             sprava.getZakaznik().setCisloZamestnanca(cisloZamestnanca);
@@ -71,9 +75,11 @@ public class ManagerObsluhy extends Manager {
     public void processVystupZakaznikaDoObsluhy(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         MyMessage sprava2 = (MyMessage) sprava.createCopy();
+        sprava.getZakaznik().setPrichodDoObsluhy(mySim().currentTime());
         if (!myAgent().jeVolnyPracovnik()) {
-            sprava.getZakaznik().setPrichodDoObsluhy(mySim().currentTime());
             myAgent().pridajZakaznikDoRadu(sprava.getZakaznik());
+            myAgent().pridajDoStatistiky();
+            myAgent().pridajDoStatistikyVytazenost();
         } else {
             int cisloZamestnanca = myAgent().pripocitajVytazenychPrac();
             sprava.getZakaznik().setCisloZamestnanca(cisloZamestnanca);

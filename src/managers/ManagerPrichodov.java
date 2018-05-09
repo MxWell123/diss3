@@ -27,6 +27,7 @@ public class ManagerPrichodov extends Manager {
     public void processNastupZakaznikovTerm2(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         sprava.setZakaznik(myAgent().vyberZakaznikaZRaduTerm2());
+        myAgent().pridajDoStatistikyTerm2();
         response(sprava);
     }
 
@@ -35,12 +36,14 @@ public class ManagerPrichodov extends Manager {
         MyMessage sprava = (MyMessage) message;
         sprava.getZakaznik().setZaciatokCakania(mySim().currentTime());
         myAgent().pridajZakaznikDoRaduTerm2(sprava.getZakaznik());
+        myAgent().pridajDoStatistikyTerm2();
     }
 
     //meta! sender="AgentSpolocnosti", id="61", type="Request"
     public void processNastupZakaznikovTerm1(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         sprava.setZakaznik(myAgent().vyberZakaznikaZRaduTerm1());
+        myAgent().pridajDoStatistikyTerm1();
         response(sprava);
     }
 
@@ -49,6 +52,7 @@ public class ManagerPrichodov extends Manager {
         MyMessage sprava = (MyMessage) message;
         sprava.getZakaznik().setZaciatokCakania(mySim().currentTime());
         myAgent().pridajZakaznikDoRaduTerm1(sprava.getZakaznik());
+        myAgent().pridajDoStatistikyTerm1();
     }
 
     //meta! userInfo="Process messages defined in code", id="0"

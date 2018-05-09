@@ -17,6 +17,10 @@ public class MySimulation extends Simulation {
     private Stat priemernyRadTerm1;
     private Stat priemernyRadTerm2;
     private Stat priemernyRadPredObsluhou;
+    private Stat priemernyCasVRadeTerm1;
+    private Stat priemernyCasVRadeTerm2;
+    private Stat priemernyCasVRadePredObsluhou;
+    private Stat priemernaVytazenostPracovnikov;
 
     public MySimulation() {
         init();
@@ -30,6 +34,10 @@ public class MySimulation extends Simulation {
         priemernyRadTerm1 = new Stat();
         priemernyRadTerm2 = new Stat();
         priemernyRadPredObsluhou = new Stat();
+        priemernyCasVRadeTerm1 = new Stat();
+        priemernyCasVRadeTerm2 = new Stat();
+        priemernyCasVRadePredObsluhou = new Stat();
+        priemernaVytazenostPracovnikov = new Stat();
         // Create global statistcis
     }
 
@@ -78,9 +86,33 @@ public class MySimulation extends Simulation {
         super.replicationFinished();
         casCakaniaPoAutoStat.addSample(agentOkolia().getCasCakaniaPoAutoStat().mean());
         casCakaniaVratAutoStat.addSample(agentOkolia().getCasCakaniaVratAutoStat().mean());
-        priemernyRadTerm1.addSample(agentPrichodov().getPocetZakRad1());
-        priemernyRadTerm2.addSample(agentPrichodov().getPocetZakRad2());
-        priemernyRadPredObsluhou.addSample(agentObsluhy().velkostRadu());
+        priemernyRadTerm1.addSample(agentPrichodov().getPriemernyRadZakaznikovTerm1().mean());
+        priemernyRadTerm2.addSample(agentPrichodov().getPriemernyRadZakaznikovTerm2().mean());
+        priemernyRadPredObsluhou.addSample(agentObsluhy().getPriemernaVelkostRadu().mean());
+        priemernyCasVRadeTerm1.addSample(agentMinibus().getPriemCasVradeTerm1().mean());
+        priemernyCasVRadeTerm2.addSample(agentMinibus().getPriemCasVradeTerm2().mean());
+        priemernyCasVRadePredObsluhou.addSample(agentObsluhy().getPriemernyCasCakaniaVRade().mean());
+        priemernaVytazenostPracovnikov.addSample(agentObsluhy().getPriemernyPocetVytazenychPracovnikov().mean());
+    }
+
+    public int getPocetPracovnikov() {
+        return pocetPracovnikov;
+    }
+
+    public Stat getPriemernaVytazenostPracovnikov() {
+        return priemernaVytazenostPracovnikov;
+    }
+
+    public Stat getPriemernyCasVRadeTerm1() {
+        return priemernyCasVRadeTerm1;
+    }
+
+    public Stat getPriemernyCasVRadeTerm2() {
+        return priemernyCasVRadeTerm2;
+    }
+
+    public Stat getPriemernyCasVRadePredObsluhou() {
+        return priemernyCasVRadePredObsluhou;
     }
 
     public Stat getCasCakaniaPoAutoStat() {

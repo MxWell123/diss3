@@ -13,7 +13,6 @@ public class AgentSpolocnosti extends Agent {
 
     public AgentSpolocnosti(int id, Simulation mySim, Agent parent) {
         super(id, mySim, parent);
-        frontZakaznikovNaMinibus = new SimQueue<>();
         init();
     }
 
@@ -30,6 +29,7 @@ public class AgentSpolocnosti extends Agent {
 
     @Override
     public void prepareReplication() {
+        frontZakaznikovNaMinibus = new SimQueue<>();
         super.prepareReplication();
         // Setup component for the next replication
     }

@@ -23,8 +23,8 @@ public class AgentModelu extends Agent {
 
     @Override
     public void prepareReplication() {
-        super.prepareReplication();
-        pocetVypustenychMinbusov = 0;
+        pocetVypustenychMinbusov = 0; 
+        super.prepareReplication();               
         // Setup component for the next replication
     }
 

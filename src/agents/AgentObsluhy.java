@@ -14,6 +14,8 @@ public class AgentObsluhy extends Agent {
     private int pocetVytazenychPracovnikov;
     private int pocetPracovnikov;
     private Stat priemernyCasCakaniaVRade;
+    private Stat priemernaVelkostRadu;
+    private Stat priemernyPocetVytazenychPracovnikov;
     private Zamestnanec[] zamestnanci;
 
     public AgentObsluhy(int id, Simulation mySim, Agent parent) {
@@ -21,8 +23,40 @@ public class AgentObsluhy extends Agent {
         init();
     }
 
+    @Override
+    public void prepareReplication() {
+        pocetVytazenychPracovnikov = 0;
+        zamestnanci = new Zamestnanec[pocetPracovnikov];
+        for (int i = 0; i < pocetPracovnikov; i++) {
+            zamestnanci[i] = new Zamestnanec(i);
+        }
+        frontZakaznikovPredObsluhou = new SimQueue<>();
+        priemernyCasCakaniaVRade = new Stat();
+        priemernaVelkostRadu = new Stat();
+        priemernyPocetVytazenychPracovnikov = new Stat();
+        super.prepareReplication();
+
+        // Setup component for the next replication
+    }
+
     public void setPocetPracovnikov(int pocetPracovnikov) {
         this.pocetPracovnikov = pocetPracovnikov;
+    }
+
+    public Stat getPriemernaVelkostRadu() {
+        return priemernaVelkostRadu;
+    }
+
+    public void pridajDoStatistiky() {
+        priemernaVelkostRadu.addSample(frontZakaznikovPredObsluhou.size());
+    }
+
+    public void pridajDoStatistikyVytazenost() {
+        priemernyPocetVytazenychPracovnikov.addSample(pocetVytazenychPracovnikov);
+    }
+
+    public Stat getPriemernyPocetVytazenychPracovnikov() {
+        return priemernyPocetVytazenychPracovnikov;
     }
 
     public void pridajZakaznikDoRadu(Zakaznik zak) {
@@ -44,20 +78,6 @@ public class AgentObsluhy extends Agent {
 
     public Zamestnanec[] getZamestnanci() {
         return zamestnanci;
-    }
-
-    @Override
-    public void prepareReplication() {
-        pocetVytazenychPracovnikov = 0;
-        zamestnanci = new Zamestnanec[pocetPracovnikov];
-        for (int i = 0; i < pocetPracovnikov; i++) {
-            zamestnanci[i] = new Zamestnanec(i);
-        }
-        frontZakaznikovPredObsluhou = new SimQueue<>();
-        priemernyCasCakaniaVRade = new Stat();
-        super.prepareReplication();
-
-        // Setup component for the next replication
     }
 
     public void pripocitajPriemernyCasVRade(double cas) {
