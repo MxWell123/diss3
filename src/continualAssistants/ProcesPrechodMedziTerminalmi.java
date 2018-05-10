@@ -33,28 +33,33 @@ public class ProcesPrechodMedziTerminalmi extends Process {
             minibus.setPolohaMinibusu(1);
             sprava.setCode(Mc.koniecPrechodu);
             minibus.setCasZaciatkuVykonu(mySim().currentTime(), PRECHOD_TERM1_TERM2);
+            myAgent().pripocitajKilometre(0.5);
             hold(PRECHOD_TERM1_TERM2, message);
         } else if (minibus.getPolohaMinibusu() == 1) { // term2
             minibus.setPolohaMinibusu(2);
             sprava.setCode(Mc.koniecPrechodu);
             minibus.setCasZaciatkuVykonu(mySim().currentTime(), PRECHOD_TERM2_ARCAR);
+            myAgent().pripocitajKilometre(3.4);
             hold(PRECHOD_TERM2_ARCAR, message);
         } else if (minibus.getPolohaMinibusu() == 2) { // arcar
             if (!minibus.jeMinibusPrazdny()) { // ide do term3
                 minibus.setPolohaMinibusu(3);
                 sprava.setCode(Mc.koniecPrechodu);
                 minibus.setCasZaciatkuVykonu(mySim().currentTime(), PRECHOD_ARCAR_TERM3);
+                myAgent().pripocitajKilometre(2.9);
                 hold(PRECHOD_ARCAR_TERM3, message);
             } else {
                 minibus.setPolohaMinibusu(0); // ide rovno term1
                 sprava.setCode(Mc.koniecPrechodu);
                 minibus.setCasZaciatkuVykonu(mySim().currentTime(), PRECHOD_ARCAR_TERM1);
+                myAgent().pripocitajKilometre(2.5);
                 hold(PRECHOD_ARCAR_TERM1, message);
             }
         } else if (minibus.getPolohaMinibusu() == 3) { // term3 
             minibus.setPolohaMinibusu(0);
             sprava.setCode(Mc.koniecPrechodu);
             minibus.setCasZaciatkuVykonu(mySim().currentTime(), PRECHOD_TERM3_TERM1);
+            myAgent().pripocitajKilometre(0.9);
             hold(PRECHOD_TERM3_TERM1, message);
         }
     }

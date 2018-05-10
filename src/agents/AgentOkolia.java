@@ -12,7 +12,7 @@ public class AgentOkolia extends Agent {
 
     private static final double HODINA = 3600D;
     private static final int MINUTA = 60;
-    public final double KONIEC_PRICHODOV = 5.5 * HODINA;
+    public final double KONIEC_PRICHODOV = 5 * HODINA;
     public int pocetObsluzenychZakPoAuto;
     public int pocetObsluzenychZakVraciaAuto;
     private Stat casCakaniaPoAutoStat;
@@ -25,12 +25,16 @@ public class AgentOkolia extends Agent {
 
     @Override
     public void prepareReplication() {
+        resetStatistik();
+        super.prepareReplication();
+        // Setup component for the next replication
+    }
+
+    public void resetStatistik() {
         pocetObsluzenychZakPoAuto = 0;
         pocetObsluzenychZakVraciaAuto = 0;
         casCakaniaPoAutoStat = new Stat();
         casCakaniaVratAutoStat = new Stat();
-        super.prepareReplication();
-        // Setup component for the next replication
     }
 
     public Stat getCasCakaniaPoAutoStat() {

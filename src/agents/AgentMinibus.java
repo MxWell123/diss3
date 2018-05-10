@@ -11,6 +11,7 @@ public class AgentMinibus extends Agent {
 
     private int counterMinibusov;
     private int typMinibusu;
+    private double pocetKilometrov;
     private Stat priemCasVradeTerm1;
     private Stat priemCasVradeTerm2;
 
@@ -23,7 +24,8 @@ public class AgentMinibus extends Agent {
     public void prepareReplication() {
         priemCasVradeTerm1 = new Stat();
         priemCasVradeTerm2 = new Stat();
-        counterMinibusov = 0;        
+        counterMinibusov = 0;
+        pocetKilometrov = 0.0;
         super.prepareReplication();
         // Setup component for the next replication
     }
@@ -59,6 +61,14 @@ public class AgentMinibus extends Agent {
 
     public void setTypMinibusu(int typMinibusu) {
         this.typMinibusu = typMinibusu;
+    }
+
+    public void pripocitajKilometre(double vzdialenost) {
+        this.pocetKilometrov += vzdialenost;
+    }
+
+    public double getPocetKilometrov() {
+        return pocetKilometrov;
     }
 
     //meta! userInfo="Generated code: do not modify", tag="begin"

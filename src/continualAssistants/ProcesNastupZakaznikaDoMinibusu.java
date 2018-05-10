@@ -29,7 +29,6 @@ public class ProcesNastupZakaznikaDoMinibusu extends Process {
         Zakaznik zak = sprava.getZakaznik();
         Minibus minibus = sprava.getMinibus();
         minibus.setTypPrace("Nastup zakaznikov");
-
         minibus.pridajZakaznikaDoMinibusu(zak);
         double trvanie = 0.0;
         for (int i = 0; i < zak.getPocetSpolucestujucich(); i++) {

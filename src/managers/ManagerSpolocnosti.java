@@ -27,8 +27,14 @@ public class ManagerSpolocnosti extends Manager {
     public void processNastupZakaznikovZObsluhy(MessageForm message) {
         MyMessage sprava = (MyMessage) message.createCopy();
         sprava.setAddressee(Id.agentMinibus);
-        sprava.setCode(Mc.nastupZakaznikovZObsluhy);       
+        sprava.setCode(Mc.nastupZakaznikovZObsluhy);
         sprava.setZakaznik(myAgent().vyberZakaznikaZRaduNaMinibus());
+        if (mySim().currentTime() > 0.5 * 60 * 60) {
+            myAgent().pridajDoStatistikyRadMinibus(); // stat
+            if (sprava.getZakaznik() != null) {
+                myAgent().pridajDoStatistikyCasRadMinibus(sprava.getZakaznik().getPrichodDoObsluhy()); // stat
+            }
+        }
         response(sprava);
     }
 
@@ -102,6 +108,10 @@ public class ManagerSpolocnosti extends Manager {
     public void processPrichodZakaznikovNaCakanieNaMinibus(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         myAgent().pridajZakaznikDoRaduNaMinibus(sprava.getZakaznik());
+        sprava.getZakaznik().setPrichodDoObsluhy(mySim().currentTime());
+        if (mySim().currentTime() > 0.5 * 60 * 60) {
+            myAgent().pridajDoStatistikyRadMinibus(); // stat
+        }
     }
 
     //meta! sender="AgentObsluhy", id="230", type="Notice"

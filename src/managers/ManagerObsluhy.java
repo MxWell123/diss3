@@ -27,7 +27,9 @@ public class ManagerObsluhy extends Manager {
     public void processFinish(MessageForm message) {
         MyMessage nextMessage = (MyMessage) message;
         MyMessage kopia = (MyMessage) nextMessage.createCopy();
-        myAgent().pripocitajPriemernyCasVRade(mySim().currentTime() - nextMessage.getZakaznik().getPrichodDoObsluhy());
+        if (mySim().currentTime() > 0.5 * 60 * 60) {
+            myAgent().pripocitajPriemernyCasVRade(mySim().currentTime() - nextMessage.getZakaznik().getPrichodDoObsluhy());
+        }
         if (nextMessage.getZakaznik().isTyp()) {
             nextMessage.setAddressee(Id.agentSpolocnosti);
             nextMessage.setCode(Mc.prichodZakaznikovNaCakanieNaMinibus);
@@ -44,8 +46,10 @@ public class ManagerObsluhy extends Manager {
             startWork(kopia);
         } else {
             myAgent().odpocitajVytazenychPrac();
-            myAgent().pridajDoStatistiky();
-            myAgent().pridajDoStatistikyVytazenost();
+            if (mySim().currentTime() > 0.5 * 60 * 60) {
+                myAgent().pridajDoStatistiky();
+                myAgent().pridajDoStatistikyVytazenost();
+            }
         }
 
     }
@@ -57,8 +61,10 @@ public class ManagerObsluhy extends Manager {
         sprava.getZakaznik().setPrichodDoObsluhy(mySim().currentTime());
         if (!myAgent().jeVolnyPracovnik()) {
             myAgent().pridajZakaznikDoRadu(sprava.getZakaznik());
-            myAgent().pridajDoStatistiky();
-            myAgent().pridajDoStatistikyVytazenost();
+            if (mySim().currentTime() > 0.5 * 60 * 60) {
+                myAgent().pridajDoStatistiky();
+                myAgent().pridajDoStatistikyVytazenost();
+            }
         } else {
             int cisloZamestnanca = myAgent().pripocitajVytazenychPrac();
             sprava.getZakaznik().setCisloZamestnanca(cisloZamestnanca);
@@ -78,8 +84,10 @@ public class ManagerObsluhy extends Manager {
         sprava.getZakaznik().setPrichodDoObsluhy(mySim().currentTime());
         if (!myAgent().jeVolnyPracovnik()) {
             myAgent().pridajZakaznikDoRadu(sprava.getZakaznik());
-            myAgent().pridajDoStatistiky();
-            myAgent().pridajDoStatistikyVytazenost();
+            if (mySim().currentTime() > 0.5 * 60 * 60) {
+                myAgent().pridajDoStatistiky();
+                myAgent().pridajDoStatistikyVytazenost();
+            }
         } else {
             int cisloZamestnanca = myAgent().pripocitajVytazenychPrac();
             sprava.getZakaznik().setCisloZamestnanca(cisloZamestnanca);

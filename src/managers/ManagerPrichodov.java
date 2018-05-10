@@ -27,7 +27,9 @@ public class ManagerPrichodov extends Manager {
     public void processNastupZakaznikovTerm2(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         sprava.setZakaznik(myAgent().vyberZakaznikaZRaduTerm2());
-        myAgent().pridajDoStatistikyTerm2();
+        if (mySim().currentTime() > 0.5 * 60 * 60) {
+            myAgent().pridajDoStatistikyTerm2(); // stat
+        }
         response(sprava);
     }
 
@@ -36,14 +38,18 @@ public class ManagerPrichodov extends Manager {
         MyMessage sprava = (MyMessage) message;
         sprava.getZakaznik().setZaciatokCakania(mySim().currentTime());
         myAgent().pridajZakaznikDoRaduTerm2(sprava.getZakaznik());
-        myAgent().pridajDoStatistikyTerm2();
+        if (mySim().currentTime() > 0.5 * 60 * 60) {
+            myAgent().pridajDoStatistikyTerm2(); // stat
+        }
     }
 
     //meta! sender="AgentSpolocnosti", id="61", type="Request"
     public void processNastupZakaznikovTerm1(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         sprava.setZakaznik(myAgent().vyberZakaznikaZRaduTerm1());
-        myAgent().pridajDoStatistikyTerm1();
+        if (mySim().currentTime() > 0.5 * 60 * 60) {
+            myAgent().pridajDoStatistikyTerm1(); // stat
+        }
         response(sprava);
     }
 
@@ -52,10 +58,12 @@ public class ManagerPrichodov extends Manager {
         MyMessage sprava = (MyMessage) message;
         sprava.getZakaznik().setZaciatokCakania(mySim().currentTime());
         myAgent().pridajZakaznikDoRaduTerm1(sprava.getZakaznik());
-        myAgent().pridajDoStatistikyTerm1();
+        if (mySim().currentTime() > 0.5 * 60 * 60) {
+            myAgent().pridajDoStatistikyTerm1(); // stat
+        }
     }
-
     //meta! userInfo="Process messages defined in code", id="0"
+
     public void processDefault(MessageForm message) {
         throw new UnsupportedOperationException("Vykonal sa default v ManagerPrichodov.");
     }

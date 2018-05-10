@@ -2,6 +2,7 @@ package agents;
 
 import OSPABA.*;
 import OSPDataStruct.SimQueue;
+import OSPStat.Stat;
 import simulation.*;
 import managers.*;
 import continualAssistants.*;
@@ -10,6 +11,8 @@ import continualAssistants.*;
 public class AgentSpolocnosti extends Agent {
 
     private SimQueue<Zakaznik> frontZakaznikovNaMinibus;
+    private Stat priemernyRadNaMinibus;
+    private Stat primernyCasVRadeNaMinibus;
 
     public AgentSpolocnosti(int id, Simulation mySim, Agent parent) {
         super(id, mySim, parent);
@@ -30,8 +33,26 @@ public class AgentSpolocnosti extends Agent {
     @Override
     public void prepareReplication() {
         frontZakaznikovNaMinibus = new SimQueue<>();
+        priemernyRadNaMinibus = new Stat();
+        primernyCasVRadeNaMinibus = new Stat();
         super.prepareReplication();
         // Setup component for the next replication
+    }
+
+    public void pridajDoStatistikyCasRadMinibus(double cas) {
+        primernyCasVRadeNaMinibus.addSample(mySim().currentTime() - cas);
+    }
+
+    public Stat getPrimernyCasVRadeNaMinibus() {
+        return primernyCasVRadeNaMinibus;
+    }
+
+    public void pridajDoStatistikyRadMinibus() {
+        priemernyRadNaMinibus.addSample(frontZakaznikovNaMinibus.size());
+    }
+
+    public Stat getPriemernyRadNaMinibus() {
+        return priemernyRadNaMinibus;
     }
 
     //meta! userInfo="Generated code: do not modify", tag="begin"

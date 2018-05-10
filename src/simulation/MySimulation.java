@@ -21,6 +21,11 @@ public class MySimulation extends Simulation {
     private Stat priemernyCasVRadeTerm2;
     private Stat priemernyCasVRadePredObsluhou;
     private Stat priemernaVytazenostPracovnikov;
+    private Stat priemernyPocetLudiNaMinibus;
+    private Stat priemernyCasCakaniaNaMinibus;
+    private Stat priemernyPocetPrejdenychKilometrov;
+    private Stat priemernaCena;
+    private Minibus minibus;
 
     public MySimulation() {
         init();
@@ -38,6 +43,11 @@ public class MySimulation extends Simulation {
         priemernyCasVRadeTerm2 = new Stat();
         priemernyCasVRadePredObsluhou = new Stat();
         priemernaVytazenostPracovnikov = new Stat();
+        priemernyPocetLudiNaMinibus = new Stat();
+        priemernyCasCakaniaNaMinibus = new Stat();
+        priemernyPocetPrejdenychKilometrov = new Stat();
+        priemernaCena = new Stat();
+        minibus = new Minibus(0, agentMinibus().getTypMinibusu());
         // Create global statistcis
     }
 
@@ -50,6 +60,18 @@ public class MySimulation extends Simulation {
         agentModelu().spustiSimulaciu(pocetMinibusov, typMinibusu);
 
         // Reset entities, queues, local statistics, etc...
+    }
+
+    public Stat getPriemernyPocetLudiNaMinibus() {
+        return priemernyPocetLudiNaMinibus;
+    }
+
+    public int getTypMinibusu() {
+        return typMinibusu;
+    }
+
+    public Stat getPriemernyCasCakaniaNaMinibus() {
+        return priemernyCasCakaniaNaMinibus;
     }
 
     public Stat getPriemernyRadTerm1() {
@@ -84,15 +106,29 @@ public class MySimulation extends Simulation {
     public void replicationFinished() {
         // Collect local statistics into global, update UI, etc...
         super.replicationFinished();
-        casCakaniaPoAutoStat.addSample(agentOkolia().getCasCakaniaPoAutoStat().mean());
-        casCakaniaVratAutoStat.addSample(agentOkolia().getCasCakaniaVratAutoStat().mean());
-        priemernyRadTerm1.addSample(agentPrichodov().getPriemernyRadZakaznikovTerm1().mean());
-        priemernyRadTerm2.addSample(agentPrichodov().getPriemernyRadZakaznikovTerm2().mean());
-        priemernyRadPredObsluhou.addSample(agentObsluhy().getPriemernaVelkostRadu().mean());
-        priemernyCasVRadeTerm1.addSample(agentMinibus().getPriemCasVradeTerm1().mean());
-        priemernyCasVRadeTerm2.addSample(agentMinibus().getPriemCasVradeTerm2().mean());
-        priemernyCasVRadePredObsluhou.addSample(agentObsluhy().getPriemernyCasCakaniaVRade().mean());
-        priemernaVytazenostPracovnikov.addSample(agentObsluhy().getPriemernyPocetVytazenychPracovnikov().mean());
+        if (this.currentTime() > 0.5 * 60 * 60) {
+            casCakaniaPoAutoStat.addSample(agentOkolia().getCasCakaniaPoAutoStat().mean());
+            casCakaniaVratAutoStat.addSample(agentOkolia().getCasCakaniaVratAutoStat().mean());
+            priemernyRadTerm1.addSample(agentPrichodov().getPriemernyRadZakaznikovTerm1().mean());
+            priemernyRadTerm2.addSample(agentPrichodov().getPriemernyRadZakaznikovTerm2().mean());
+            priemernyRadPredObsluhou.addSample(agentObsluhy().getPriemernaVelkostRadu().mean());
+            priemernyCasVRadeTerm1.addSample(agentMinibus().getPriemCasVradeTerm1().mean());
+            priemernyCasVRadeTerm2.addSample(agentMinibus().getPriemCasVradeTerm2().mean());
+            priemernyCasVRadePredObsluhou.addSample(agentObsluhy().getPriemernyCasCakaniaVRade().mean());
+            priemernaVytazenostPracovnikov.addSample(agentObsluhy().getPriemernyPocetVytazenychPracovnikov().mean());
+            priemernyPocetLudiNaMinibus.addSample(agentSpolocnosti().getPriemernyRadNaMinibus().mean());
+            priemernyCasCakaniaNaMinibus.addSample(agentSpolocnosti().getPrimernyCasVRadeNaMinibus().mean());
+            priemernyPocetPrejdenychKilometrov.addSample(agentMinibus().getPocetKilometrov());
+            priemernaCena.addSample(agentMinibus().getPocetKilometrov() * minibus.getCenaZaKm());
+        }
+    }
+
+    public Stat getPriemernyPocetPrejdenychKilometrov() {
+        return priemernyPocetPrejdenychKilometrov;
+    }
+
+    public Stat getPriemernaCena() {
+        return priemernaCena;
     }
 
     public int getPocetPracovnikov() {
@@ -205,4 +241,5 @@ public class MySimulation extends Simulation {
     public Minibus[] getMinibusy() {
         return agentModelu().getMinibusy();
     }
+
 }

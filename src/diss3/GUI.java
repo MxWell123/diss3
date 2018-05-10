@@ -68,7 +68,6 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         CISLO_8 = new Color(127, 255, 0);
         CISLO_9 = new Color(124, 252, 0);
         CISLO_10 = new Color(0, 255, 0);
-
         initComponents();
     }
 
@@ -126,6 +125,17 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         jTable2 = new javax.swing.JTable();
         progresBarPrac = new javax.swing.JProgressBar();
         percento = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        casVratenieAuta = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        pocetLudiVratenieAuta = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel45 = new javax.swing.JLabel();
+        prejdeneKilometre = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        cena = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         pocZamTextField = new javax.swing.JTextField();
@@ -151,8 +161,6 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         term1Label = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         vytPracovnikov = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        intSpol = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         vraciaAutoLabel = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
@@ -160,13 +168,45 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         jSeparator7 = new javax.swing.JSeparator();
         prBar = new javax.swing.JProgressBar();
         per = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        casRadMini = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        priemLudiMini = new javax.swing.JLabel();
+        turboButton = new javax.swing.JRadioButton();
+        jButton5 = new javax.swing.JButton();
+        jLabel33 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel35 = new javax.swing.JLabel();
+        intervalPoAuto = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        intervalPocetLudiTermina1 = new javax.swing.JLabel();
+        intervalPocetLudiTerminal2 = new javax.swing.JLabel();
+        intervalPocetLudiPredObsluhou = new javax.swing.JLabel();
+        intervalPocetLudiVradeMinibus = new javax.swing.JLabel();
+        intervalPriemCasVRadeTerm1 = new javax.swing.JLabel();
+        intervalPriemCasVRadeterm2 = new javax.swing.JLabel();
+        intervalPriemCasVRadeNaMinibus = new javax.swing.JLabel();
+        intervalPriemCasVRadeObsluha = new javax.swing.JLabel();
+        intervalPreAuto = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        priemPocetKilometrov = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        priemernaCena = new javax.swing.JLabel();
         spomalenie = new javax.swing.JSlider();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         spojitost = new javax.swing.JSlider();
-        jLabel24 = new javax.swing.JLabel();
         simCas = new javax.swing.JLabel();
         casBar = new javax.swing.JProgressBar();
+        zahrievanieText = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
 
@@ -320,7 +360,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -328,74 +368,165 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
 
         percento.setText("0 %");
 
+        jLabel24.setText("priemerny cas v rade na Minibus vratenie auta");
+
+        casVratenieAuta.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        casVratenieAuta.setText("0");
+
+        jLabel25.setText("pocet ludi cakanie na minibus vratenie auta");
+
+        pocetLudiVratenieAuta.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        pocetLudiVratenieAuta.setText("0");
+
+        jButton6.setText("stop");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Typ Minibusu");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 - 12 miest", "1 - 18 miest", "2 - 30miest" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel45.setText("pocet prejdenych kilometrov");
+
+        prejdeneKilometre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        prejdeneKilometre.setText("0");
+
+        jLabel46.setText("cena:");
+
+        cena.setText("0.0 €");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator3)
-                    .addComponent(jSeparator4)
-                    .addComponent(jSeparator5)
-                    .addComponent(jSeparator1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator3)
+                            .addComponent(jSeparator1)
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jLabel19)
-                                    .addComponent(jLabel20)
-                                    .addComponent(jLabel30)
+                                    .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                                .addGap(8, 8, 8)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addComponent(jLabel30)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(priemCasVratAuto))
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addComponent(jLabel23)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(priemCasPoAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addComponent(jLabel22)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(vyslCasObsluha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(jLabel24)
+                                                            .addComponent(jLabel19)
+                                                            .addComponent(jLabel20))
+                                                        .addGap(0, 0, Short.MAX_VALUE))
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                        .addComponent(jLabel21)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(vyslVytazenost, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(casVratenieAuta)
+                                                    .addComponent(vyslCasTerm2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(vyslCasTerm1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                                .addGap(9, 9, 9)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addComponent(jLabel16)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(vyslTerm1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addComponent(jLabel17)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(vyslTerm2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addComponent(jLabel25)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(pocetLudiVratenieAuta))
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addComponent(jLabel18)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(vyslTerm3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                                .addGap(9, 9, 9)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addComponent(jLabel45)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(prejdeneKilometre))
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addComponent(jLabel29)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(vratAuto))
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addComponent(jLabel28)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(poAuto)))))
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(progresBarPrac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(2, 2, 2))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(36, 36, 36)
+                                                .addComponent(jLabel46)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(cena)
+                                                .addGap(9, 9, 9))))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel14)
-                                            .addComponent(jLabel15))
-                                        .addGap(18, 18, 18)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(11, 11, 11)
+                                                .addComponent(jLabel15)
+                                                .addGap(29, 29, 29))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel14)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(pocetZamSim)
                                             .addComponent(pocMinSim, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                                         .addGap(63, 63, 63)
-                                        .addComponent(jButton4)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton3)))
-                                .addGap(0, 150, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel21)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(priemCasVratAuto)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jLabel23)
-                                                .addGap(131, 131, 131)
-                                                .addComponent(priemCasPoAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jLabel28)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(poAuto))
-                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(vyslVytazenost, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(vyslTerm2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(vyslTerm3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(vyslCasTerm1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(vyslCasTerm2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(vyslCasObsluha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(vyslTerm1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jLabel29)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(vratAuto)))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                                .addComponent(progresBarPrac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(percento)
-                                .addGap(59, 59, 59)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jButton4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jButton6)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton3))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(percento)
+                        .addGap(82, 82, 82))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jSeparator4)
+                        .addGap(18, 18, 18)))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -405,56 +536,70 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator2)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(pocetZamSim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(pocMinSim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton4)
-                        .addComponent(jButton3)))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(vyslTerm1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(vyslTerm2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(vyslTerm3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(vyslCasTerm1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(vyslCasTerm2))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(pocetZamSim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(pocMinSim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4)
+                            .addComponent(jButton3)
+                            .addComponent(jLabel15)
+                            .addComponent(jButton6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(vyslTerm1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(vyslTerm2))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel25)
+                            .addComponent(pocetLudiVratenieAuta))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(vyslTerm3)
+                            .addComponent(jLabel18))
+                        .addGap(18, 18, 18)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(vyslCasTerm1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(vyslCasTerm2))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel22)
                             .addComponent(vyslCasObsluha))
                         .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(casVratenieAuta))
+                        .addGap(18, 18, 18)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel21)
-                                    .addComponent(vyslVytazenost))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(9, 9, 9)
+                                .addComponent(percento)
+                                .addGap(3, 3, 3)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(progresBarPrac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel21)
+                                        .addComponent(vyslVytazenost)))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel23)
                                     .addComponent(priemCasPoAuto))
@@ -462,25 +607,28 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel30)
                                     .addComponent(priemCasVratAuto))
-                                .addGap(13, 13, 13)
+                                .addGap(18, 18, 18)
                                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(poAuto)
-                                    .addComponent(jLabel28))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel28)
+                                    .addComponent(poAuto))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel29)
-                                    .addComponent(vratAuto)))
-                            .addComponent(progresBarPrac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(vratAuto))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(prejdeneKilometre)
+                                    .addComponent(jLabel46)
+                                    .addComponent(cena)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel45))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(percento)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tabbedPane)
-                .addContainerGap())
+                        .addContainerGap()
+                        .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addGap(32, 32, 32))
         );
 
         Turbo.addTab("Simulacia", jPanel2);
@@ -559,11 +707,6 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         vytPracovnikov.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         vytPracovnikov.setText("0");
 
-        jLabel1.setText("interval spolahlivosti:");
-
-        intSpol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        intSpol.setText("<0;0>");
-
         jLabel31.setText("celkovy cas zakaznika v system vracia auto:");
 
         vraciaAutoLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -573,170 +716,372 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
 
         per.setText("0.0 %");
 
+        jLabel32.setText("priemerny cas v rade na minibus");
+
+        casRadMini.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        casRadMini.setText("0");
+
+        jLabel34.setText("priemerny pocet ludi v rade na minibus");
+
+        priemLudiMini.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        priemLudiMini.setText("0");
+
+        turboButton.setText("Turbo mod");
+        turboButton.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                turboButtonStateChanged(evt);
+            }
+        });
+
+        jButton5.setText("stop");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jLabel33.setText("Typ Minibusu:");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 - 12 miest", "1 - 18 miest", "2 - 30miest" }));
+
+        jLabel35.setText("Interval spolahlivosti :");
+
+        intervalPoAuto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        intervalPoAuto.setText("<0;0>");
+
+        jLabel36.setText("Interval spolahlivosti :");
+
+        jLabel37.setText("Interval spolahlivosti :");
+
+        jLabel38.setText("Interval spolahlivosti :");
+
+        jLabel39.setText("Interval spolahlivosti :");
+
+        jLabel40.setText("Interval spolahlivosti :");
+
+        jLabel41.setText("Interval spolahlivosti :");
+
+        jLabel42.setText("Interval spolahlivosti :");
+
+        jLabel43.setText("Interval spolahlivosti :");
+
+        jLabel44.setText("Interval spolahlivosti :");
+
+        intervalPocetLudiTermina1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        intervalPocetLudiTermina1.setText("<0;0>");
+
+        intervalPocetLudiTerminal2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        intervalPocetLudiTerminal2.setText("<0;0>");
+
+        intervalPocetLudiPredObsluhou.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        intervalPocetLudiPredObsluhou.setText("<0;0>");
+
+        intervalPocetLudiVradeMinibus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        intervalPocetLudiVradeMinibus.setText("<0;0>");
+
+        intervalPriemCasVRadeTerm1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        intervalPriemCasVRadeTerm1.setText("<0;0>");
+
+        intervalPriemCasVRadeterm2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        intervalPriemCasVRadeterm2.setText("<0;0>");
+
+        intervalPriemCasVRadeNaMinibus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        intervalPriemCasVRadeNaMinibus.setText("<0;0>");
+
+        intervalPriemCasVRadeObsluha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        intervalPriemCasVRadeObsluha.setText("<0;0>");
+
+        intervalPreAuto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        intervalPreAuto.setText("<0;0>");
+
+        jLabel47.setText("priemerny pocet prejdenych kilometrov:");
+        jLabel47.setToolTipText("");
+
+        priemPocetKilometrov.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        priemPocetKilometrov.setText("0");
+
+        jLabel48.setText("Priemerna cena za minibusy:");
+
+        priemernaCena.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        priemernaCena.setText("0.0 €");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pocReplText, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pocMinibusTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(pocZamTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(pocZamTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel33))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pocMinibusTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel13)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pocReplText, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(turboButton))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
+                        .addGap(38, 38, 38)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2))
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel8))
-                        .addGap(40, 40, 40)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel32)
+                                    .addComponent(jLabel9))
+                                .addGap(96, 96, 96)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(casRadMini, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(priemCasObsluhaLab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(priemCasTerm2Lab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(141, 141, 141)
+                                .addComponent(priemCasTerm1Lab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(term1Label, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(term2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(obsluhaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(priemCasTerm2Lab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(priemCasTerm1Lab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(priemCasObsluhaLab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel40)
+                                .addGap(83, 83, 83))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel39)
+                                    .addComponent(jLabel38)
+                                    .addComponent(jLabel37))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(intervalPriemCasVRadeObsluha)
+                            .addComponent(intervalPriemCasVRadeNaMinibus)
+                            .addComponent(intervalPriemCasVRadeTerm1)
+                            .addComponent(intervalPriemCasVRadeterm2))
+                        .addGap(201, 201, 201))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel31)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel47))
+                        .addGap(64, 64, 64)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(poAutoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(vytPracovnikov, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vraciaAutoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(priemPocetKilometrov))
+                        .addGap(171, 171, 171)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(per)
+                                .addGap(91, 91, 91)
+                                .addComponent(prBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel35)
+                                    .addComponent(jLabel36))
+                                .addGap(81, 81, 81)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(intervalPreAuto)
+                                    .addComponent(intervalPoAuto)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel48)
+                                .addGap(47, 47, 47)
+                                .addComponent(priemernaCena, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator8))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator7))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(intervalPocetLudiPredObsluhou)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSeparator8)
-                                    .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addContainerGap())
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(obsluhaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(38, 38, 38)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel10)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(36, 36, 36)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel31)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(vraciaAutoLabel))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel12)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(vytPracovnikov, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel11)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(poAutoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel34))
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(133, 133, 133)
+                                                .addGap(93, 93, 93)
+                                                .addComponent(priemLudiMini, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jLabel1)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(intSpol, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(prBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(192, 192, 192)
-                                                .addComponent(per)))))
-                                .addGap(0, 152, Short.MAX_VALUE))))))
+                                                    .addComponent(term2Label, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(term1Label, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGap(168, 168, 168)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel44)
+                                    .addComponent(jLabel43)
+                                    .addComponent(jLabel42)
+                                    .addComponent(jLabel41))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(81, 81, 81)
+                                        .addComponent(intervalPocetLudiVradeMinibus))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(intervalPocetLudiTerminal2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(intervalPocetLudiTermina1, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addGap(50, 50, 50))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel2)
+                                            .addComponent(term1Label)
+                                            .addComponent(jLabel44)
+                                            .addComponent(intervalPocetLudiTermina1))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel3)
+                                            .addComponent(term2Label)
+                                            .addComponent(jLabel43)
+                                            .addComponent(intervalPocetLudiTerminal2))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel5)
+                                            .addComponent(obsluhaLabel)
+                                            .addComponent(jLabel42)
+                                            .addComponent(intervalPocetLudiPredObsluhou))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel34)
+                                            .addComponent(priemLudiMini)
+                                            .addComponent(jLabel41)
+                                            .addComponent(intervalPocetLudiVradeMinibus))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(priemCasTerm1Lab)
+                                            .addComponent(jLabel40)
+                                            .addComponent(intervalPriemCasVRadeTerm1))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(intervalPriemCasVRadeNaMinibus)
+                                                .addComponent(jLabel39))
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(priemCasTerm2Lab)
+                                                .addComponent(jLabel9)))
+                                        .addGap(18, 18, 18)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel32)
+                                        .addComponent(casRadMini))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(intervalPriemCasVRadeterm2)
+                                        .addComponent(jLabel38)))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(priemCasObsluhaLab)
+                                        .addComponent(intervalPriemCasVRadeObsluha))
+                                    .addComponent(jLabel37))
+                                .addGap(18, 18, 18)
+                                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel31)
+                                        .addComponent(vraciaAutoLabel)
+                                        .addComponent(jLabel36))
+                                    .addComponent(intervalPreAuto, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel11)
+                                            .addComponent(poAutoLabel)
+                                            .addComponent(jLabel35)
+                                            .addComponent(intervalPoAuto))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel12)
+                                            .addComponent(vytPracovnikov)
+                                            .addComponent(per)))
+                                    .addComponent(prBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel47)
+                                    .addComponent(priemPocetKilometrov)
+                                    .addComponent(jLabel48)
+                                    .addComponent(priemernaCena))
+                                .addGap(0, 214, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel6)
                                     .addComponent(pocZamTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel7)
-                                    .addComponent(pocMinibusTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(pocMinibusTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel13)
-                                    .addComponent(pocReplText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(39, 39, 39)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton2)
-                                    .addComponent(jButton1)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(term1Label))
-                                .addGap(20, 20, 20)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(term2Label))
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel33))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(obsluhaLabel)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel8)
-                                    .addComponent(priemCasTerm1Lab))
+                                    .addComponent(pocReplText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(turboButton)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel9)
-                                    .addComponent(priemCasTerm2Lab))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(priemCasObsluhaLab)
-                            .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel31)
-                            .addComponent(vraciaAutoLabel)
-                            .addComponent(jLabel1)
-                            .addComponent(intSpol))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(poAutoLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(vytPracovnikov)
-                            .addComponent(per))
-                        .addGap(13, 13, 13)
-                        .addComponent(prBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 190, Short.MAX_VALUE))
+                                    .addComponent(jButton1)
+                                    .addComponent(jButton5)
+                                    .addComponent(jButton2))
+                                .addGap(420, 420, 420))))
                     .addComponent(jSeparator6))
                 .addContainerGap())
         );
 
         Turbo.addTab("Turbo mod", jPanel1);
 
+        spomalenie.setMaximum(50);
         spomalenie.setMinimum(1);
+        spomalenie.setValue(1);
         spomalenie.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 spomalenieStateChanged(evt);
@@ -756,57 +1101,65 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
             }
         });
 
-        jLabel24.setText("Simulacny cas:");
-
         simCas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         simCas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         simCas.setText("00:00:00");
+
+        zahrievanieText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nadpis)
-                .addGap(124, 124, 124)
-                .addComponent(jLabel26)
-                .addGap(32, 32, 32)
-                .addComponent(spomalenie, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel27)
-                .addGap(18, 18, 18)
-                .addComponent(spojitost, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addComponent(jLabel24)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(simCas, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(casBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(Turbo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(nadpis)
+                        .addGap(88, 88, 88)
+                        .addComponent(jLabel26)
+                        .addGap(18, 18, 18)
+                        .addComponent(spomalenie, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel27)
+                        .addGap(32, 32, 32)
+                        .addComponent(spojitost, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(zahrievanieText)
+                        .addGap(93, 93, 93)
+                        .addComponent(simCas, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(casBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10))
+                    .addComponent(Turbo))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nadpis)
-                                .addGap(9, 9, 9))
-                            .addComponent(spomalenie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(spojitost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(simCas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(casBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Turbo)
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(12, 12, 12)
+                                    .addComponent(nadpis))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(casBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(simCas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(zahrievanieText)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(spojitost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(spomalenie, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Turbo))
         );
 
         pack();
@@ -829,19 +1182,30 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     }//GEN-LAST:event_TurboMouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+        if (mySim.isRunning() && mySim != null) {
+            if (mySim.isPaused()) {
+                mySim.resumeSimulation();
+                jButton2.setText("prerus");
+            } else {
+                mySim.pauseSimulation();
+                jButton2.setText("pokracuj");
+            }
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int pocetAut = Integer.parseInt(pocMinSim.getText());
         pocetPracovnikov = Integer.parseInt(pocetZamSim.getText());
+        int typMinibusu = jComboBox1.getSelectedIndex();
         int pocetReplikacii = 1;
+        typSpustenia = 0;
         progresBarPrac.setMinimum(0);
         progresBarPrac.setMaximum(100);
         casBar.setMinimum(0);
         casBar.setMaximum(100);
         mySim.setPocetMinibusov(pocetAut);
         mySim.setPocetPracovnikov(pocetPracovnikov);
+        mySim.setTypMinibusu(typMinibusu);
         mySim.onReplicationWillStart(new Consumer<Simulation>() {
             @Override
             public void accept(Simulation sim) {
@@ -859,7 +1223,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
             dtm2.setValueAt(i, i, 0);
         }
 
-        mySim.simulateAsync(pocetReplikacii, 4.5 * 60 * 60);
+        mySim.simulateAsync(pocetReplikacii, 5.25 * 60 * 60);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void pocMinSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pocMinSimActionPerformed
@@ -870,14 +1234,47 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         // TODO add your handling code here:
     }//GEN-LAST:event_pocetZamSimActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        if (mySim != null && (mySim.isRunning() || mySim.isPaused())) {
+            mySim.stopSimulation();
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        if (mySim != null && (mySim.isRunning() || mySim.isPaused())) {
+            mySim.stopSimulation();
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void turboButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_turboButtonStateChanged
+        if (turboButton.isSelected()) {
+            mySim.setSimSpeed(0, 0);
+        } else {
+            mySim.setSimSpeed(spojitost.getValue(), (double) spomalenie.getValue() / 100);
+        }
+    }//GEN-LAST:event_turboButtonStateChanged
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (mySim.isRunning() && mySim != null) {
+            if (mySim.isPaused()) {
+                mySim.resumeSimulation();
+                jButton2.setText("prerus");
+            } else {
+                mySim.pauseSimulation();
+                jButton2.setText("pokracuj");
+            }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int pocetAut = Integer.parseInt(pocMinibusTextField.getText());
         pocetPracovnikov = Integer.parseInt(pocZamTextField.getText());
         int pocetReplikacii = Integer.parseInt(pocReplText.getText());
+        int typMinibusu = jComboBox2.getSelectedIndex();
         typSpustenia = 1;
         prBar.setMaximum(100);
         prBar.setMinimum(0);
@@ -885,10 +1282,15 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         casBar.setMaximum(100);
         mySim.setPocetMinibusov(pocetAut);
         mySim.setPocetPracovnikov(pocetPracovnikov);
+        mySim.setTypMinibusu(typMinibusu);
         mySim.onReplicationDidFinish(new Consumer<Simulation>() {
             @Override
             public void accept(Simulation sim) {
-                sim.setSimSpeed(spojitost.getValue(), (double) spomalenie.getValue() / 100);
+                if (turboButton.isSelected()) {
+                    sim.setSimSpeed(0, 0);
+                } else {
+                    sim.setSimSpeed(spojitost.getValue(), (double) spomalenie.getValue() / 100);
+                }
             }
         }
         );
@@ -899,7 +1301,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
             dtm.setValueAt(i, i, 0);
         }
 
-        mySim.simulateAsync(pocetReplikacii, 4.5 * 60 * 60);
+        mySim.simulateAsync(pocetReplikacii, 5.25 * 60 * 60);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void pocZamTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pocZamTextFieldActionPerformed
@@ -953,11 +1355,27 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane Turbo;
     private javax.swing.JProgressBar casBar;
-    private javax.swing.JLabel intSpol;
+    private javax.swing.JLabel casRadMini;
+    private javax.swing.JLabel casVratenieAuta;
+    private javax.swing.JLabel cena;
+    private javax.swing.JLabel intervalPoAuto;
+    private javax.swing.JLabel intervalPocetLudiPredObsluhou;
+    private javax.swing.JLabel intervalPocetLudiTermina1;
+    private javax.swing.JLabel intervalPocetLudiTerminal2;
+    private javax.swing.JLabel intervalPocetLudiVradeMinibus;
+    private javax.swing.JLabel intervalPreAuto;
+    private javax.swing.JLabel intervalPriemCasVRadeNaMinibus;
+    private javax.swing.JLabel intervalPriemCasVRadeObsluha;
+    private javax.swing.JLabel intervalPriemCasVRadeTerm1;
+    private javax.swing.JLabel intervalPriemCasVRadeterm2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -975,6 +1393,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -982,7 +1401,24 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1013,13 +1449,18 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     private javax.swing.JTextField pocMinibusTextField;
     private javax.swing.JTextField pocReplText;
     private javax.swing.JTextField pocZamTextField;
+    private javax.swing.JLabel pocetLudiVratenieAuta;
     private javax.swing.JTextField pocetZamSim;
     private javax.swing.JProgressBar prBar;
+    private javax.swing.JLabel prejdeneKilometre;
     private javax.swing.JLabel priemCasObsluhaLab;
     private javax.swing.JLabel priemCasPoAuto;
     private javax.swing.JLabel priemCasTerm1Lab;
     private javax.swing.JLabel priemCasTerm2Lab;
     private javax.swing.JLabel priemCasVratAuto;
+    private javax.swing.JLabel priemLudiMini;
+    private javax.swing.JLabel priemPocetKilometrov;
+    private javax.swing.JLabel priemernaCena;
     private javax.swing.JProgressBar progresBarPrac;
     private javax.swing.JLabel simCas;
     private javax.swing.JSlider spojitost;
@@ -1027,6 +1468,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JLabel term1Label;
     private javax.swing.JLabel term2Label;
+    private javax.swing.JRadioButton turboButton;
     private javax.swing.JLabel vraciaAutoLabel;
     private javax.swing.JLabel vratAuto;
     private javax.swing.JLabel vyslCasObsluha;
@@ -1037,121 +1479,161 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
     private javax.swing.JLabel vyslTerm3;
     private javax.swing.JLabel vyslVytazenost;
     private javax.swing.JLabel vytPracovnikov;
+    private javax.swing.JLabel zahrievanieText;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void refresh(Simulation simulation) {
         //-------------------------------------------------------------------------- simulacia hodnoty
         MySimulation mySim = (MySimulation) simulation;
-        simCas.setText(dajSimCas((long) (57600 + mySim.currentTime())));
-        double pomocnaProgresBar = ((mySim.currentTime()) / 14400) * 100;
+        simCas.setText(dajSimCas((long) (15.5 * 60 * 60 + mySim.currentTime())));
+        double pomocnaProgresBar = ((mySim.currentTime()) / 5.25 * 60 * 60) * 100;
         casBar.setValue((int) pomocnaProgresBar);
-        if (typSpustenia == 0) {
-            double priemPocetVytPrac = mySim.agentObsluhy().getPriemernyPocetVytazenychPracovnikov().mean();
-            double pomo = priemPocetVytPrac / pocetPracovnikov;
-            if (priemPocetVytPrac == 0) {
-                pomo = 0.1;
-            }
-            this.percento.setText(String.format("%.2f", pomo * 100) + " %");
-            this.progresBarPrac.setValue((int) Math.round(pomo * 100));
-            this.vyslVytazenost.setText(String.format("%.2f", priemPocetVytPrac));
-            this.vyslTerm1.setText(String.format("%.2f", mySim.agentPrichodov().getPriemernyRadZakaznikovTerm1().mean()));
-            this.vyslTerm2.setText(String.format("%.2f", mySim.agentPrichodov().getPriemernyRadZakaznikovTerm2().mean()));
-            this.vyslTerm3.setText(String.format("%.2f", mySim.agentObsluhy().getPriemernaVelkostRadu().mean()));
-            this.poAuto.setText(String.valueOf(mySim.agentOkolia().getPocetObsluzenychZakPoAuto()));
-            this.vratAuto.setText(String.valueOf(mySim.agentOkolia().getPocetObsluzenychZakVraciaAuto()));
-            this.priemCasPoAuto.setText(String.format("%.2f", mySim.agentOkolia().getCasCakaniaPoAutoStat().mean() / 60));
-            this.priemCasVratAuto.setText(String.format("%.2f", mySim.agentOkolia().getCasCakaniaVratAutoStat().mean() / 60));
-            this.vyslCasTerm1.setText(String.format("%.2f", mySim.agentMinibus().getPriemCasVradeTerm1().mean() / 60));
-            this.vyslCasTerm2.setText(String.format("%.2f", mySim.agentMinibus().getPriemCasVradeTerm2().mean() / 60));
-            this.vyslCasObsluha.setText(String.format("%.2f", mySim.agentObsluhy().getPriemernyCasCakaniaVRade().mean() / 60));
-
-            //--------------------------------------------------------------------------Minibusy tabulka
-            Minibus[] minibusy = mySim.getMinibusy();
-            // dtm.setRowCount(0);
-            jTable1.setDefaultRenderer(Object.class, new MyTableCellRender(3));
-            if (minibusy != null) {
-                for (int i = 0; i < minibusy.length; i++) {
-                    if (minibusy[i] != null) {
-                        dtm.setValueAt(i, i, 0);
-                        int pom = minibusy[i].getPolohaMinibusu();
-                        String pom2 = "";
-                        if (pom == 0) {
-                            pom2 = "Terminal-1";
-                        } else if (pom == 1) {
-                            pom2 = "Terminal-2";
-                        } else if (pom == 2) {
-                            pom2 = "Arcar";
-                        } else if (pom == 3) {
-                            pom2 = "Terminal-3";
-                        }
-                        dtm.setValueAt(pom2, i, 1);
-                        String vykon = minibusy[i].getTypPrace();
-                        dtm.setValueAt(vykon, i, 2);
-                        pomocna = Math.round(((mySim.currentTime() - minibusy[i].getCasZaciatkuVykonu())
-                                / ((minibusy[i].getCasZaciatkuVykonu() + minibusy[i].getTrvanieVykonu()) - minibusy[i].getCasZaciatkuVykonu())) * 100);
-                        if (vykon.equals("")) {
-                            dtm.setValueAt(0D, i, 3);
-                        } else {
-                            dtm.setValueAt(pomocna, i, 3);
-                        }
-
-                    } else {
-                        dtm.setValueAt(i, i, 0);
-                        dtm.setValueAt("----", i, 1);
-                        dtm.setValueAt("----", i, 2);
-                        dtm.setValueAt("----", i, 3);
-                    }
+        if (mySim.currentTime() > 0.5 * 60 * 60) {
+            this.zahrievanieText.setText("");
+            if (typSpustenia == 0) {
+                double priemPocetVytPrac = mySim.agentObsluhy().getPriemernyPocetVytazenychPracovnikov().mean();
+                double pomo = priemPocetVytPrac / pocetPracovnikov;
+                if (priemPocetVytPrac == 0) {
+                    pomo = 0.1;
                 }
-                this.jTable1.setModel(dtm);
-            } else {
-                JOptionPane.showMessageDialog(null, "Nezadali ste všetky potrebne udaje");
-            }
-            //------------------------------------------------------------------------------------------Zamestnanci tabulka
-            Zamestnanec[] zamestnanci = mySim.getZamestnanci();
-            jTable2.setDefaultRenderer(Object.class, new MyTableCellRender(2));
-            if (zamestnanci != null) {
-                for (int i = 0; i < zamestnanci.length; i++) {
-                    if (zamestnanci[i] != null) {
-                        int pom = zamestnanci[i].getCisloZamestnanca();
-                        String pom2 = zamestnanci[i].getVykonPrace();
-                        dtm2.setValueAt(pom, i, 0);
-                        dtm2.setValueAt(pom2, i, 1);
-                        pomocna = Math.round(((mySim.currentTime() - zamestnanci[i].getCasZaciatkuVykonu())
-                                / ((zamestnanci[i].getCasZaciatkuVykonu() + zamestnanci[i].getTrvanieVykonu()) - zamestnanci[i].getCasZaciatkuVykonu())) * 100);
-                        if (pomocna < 1.0 || pomocna > 100.0) {
-                            dtm2.setValueAt(0D, i, 2);
-                        } else {
-                            dtm2.setValueAt(pomocna, i, 2);
-                        }
-                    } else {
-                        dtm2.setValueAt(i, i, 0);
-                        dtm2.setValueAt("----", i, 1);
-                        dtm2.setValueAt("----", i, 2);
-                    }
+                this.percento.setText(String.format("%.2f", pomo * 100) + " %");
+                this.progresBarPrac.setValue((int) Math.round(pomo * 100));
+                this.pocetLudiVratenieAuta.setText(String.format("%.2f", mySim.agentSpolocnosti().getPriemernyRadNaMinibus().mean()));
+                this.casVratenieAuta.setText(String.format("%.2f", mySim.agentSpolocnosti().getPrimernyCasVRadeNaMinibus().mean() / 60));
+                this.vyslVytazenost.setText(String.format("%.2f", priemPocetVytPrac));
+                this.vyslTerm1.setText(String.format("%.2f", mySim.agentPrichodov().getPriemernyRadZakaznikovTerm1().mean()));
+                this.vyslTerm2.setText(String.format("%.2f", mySim.agentPrichodov().getPriemernyRadZakaznikovTerm2().mean()));
+                this.vyslTerm3.setText(String.format("%.2f", mySim.agentObsluhy().getPriemernaVelkostRadu().mean()));
+                this.poAuto.setText(String.valueOf(mySim.agentOkolia().getPocetObsluzenychZakPoAuto()));
+                this.vratAuto.setText(String.valueOf(mySim.agentOkolia().getPocetObsluzenychZakVraciaAuto()));
+                this.priemCasPoAuto.setText(String.format("%.2f", mySim.agentOkolia().getCasCakaniaPoAutoStat().mean() / 60));
+                this.priemCasVratAuto.setText(String.format("%.2f", mySim.agentOkolia().getCasCakaniaVratAutoStat().mean() / 60));
+                this.vyslCasTerm1.setText(String.format("%.2f", mySim.agentMinibus().getPriemCasVradeTerm1().mean() / 60));
+                this.vyslCasTerm2.setText(String.format("%.2f", mySim.agentMinibus().getPriemCasVradeTerm2().mean() / 60));
+                this.vyslCasObsluha.setText(String.format("%.2f", mySim.agentObsluhy().getPriemernyCasCakaniaVRade().mean() / 60));
 
+                //--------------------------------------------------------------------------Minibusy tabulka
+                Minibus[] minibusy = mySim.getMinibusy();
+                this.prejdeneKilometre.setText(String.format("%.2f", mySim.agentMinibus().getPocetKilometrov()));
+                this.cena.setText(String.format("%.2f", mySim.agentMinibus().getPocetKilometrov() * minibusy[0].getCenaZaKm()) + " €");
+
+                // dtm.setRowCount(0);
+                jTable1.setDefaultRenderer(Object.class, new MyTableCellRender(3));
+                if (minibusy != null) {
+                    for (int i = 0; i < minibusy.length; i++) {
+                        if (minibusy[i] != null) {
+                            dtm.setValueAt(i, i, 0);
+                            int pom = minibusy[i].getPolohaMinibusu();
+                            String pom2 = "";
+                            if (pom == 0) {
+                                pom2 = "Terminal-1";
+                            } else if (pom == 1) {
+                                pom2 = "Terminal-2";
+                            } else if (pom == 2) {
+                                pom2 = "Arcar";
+                            } else if (pom == 3) {
+                                pom2 = "Terminal-3";
+                            }
+                            dtm.setValueAt(pom2, i, 1);
+                            String vykon = minibusy[i].getTypPrace();
+                            dtm.setValueAt(vykon, i, 2);
+                            pomocna = Math.round(((mySim.currentTime() - minibusy[i].getCasZaciatkuVykonu())
+                                    / ((minibusy[i].getCasZaciatkuVykonu() + minibusy[i].getTrvanieVykonu()) - minibusy[i].getCasZaciatkuVykonu())) * 100);
+                            if (vykon.equals("")) {
+                                dtm.setValueAt(0D, i, 3);
+                            } else {
+                                dtm.setValueAt(pomocna, i, 3);
+                            }
+
+                        } else {
+                            dtm.setValueAt(i, i, 0);
+                            dtm.setValueAt("----", i, 1);
+                            dtm.setValueAt("----", i, 2);
+                            dtm.setValueAt("----", i, 3);
+                        }
+                    }
+                    this.jTable1.setModel(dtm);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Nezadali ste všetky potrebne udaje");
                 }
-                this.jTable2.setModel(dtm2);
+                //------------------------------------------------------------------------------------------Zamestnanci tabulka
+                Zamestnanec[] zamestnanci = mySim.getZamestnanci();
+                jTable2.setDefaultRenderer(Object.class, new MyTableCellRender(2));
+                if (zamestnanci != null) {
+                    for (int i = 0; i < zamestnanci.length; i++) {
+                        if (zamestnanci[i] != null) {
+                            int pom = zamestnanci[i].getCisloZamestnanca();
+                            String pom2 = zamestnanci[i].getVykonPrace();
+                            dtm2.setValueAt(pom, i, 0);
+                            dtm2.setValueAt(pom2, i, 1);
+                            pomocna = Math.round(((mySim.currentTime() - zamestnanci[i].getCasZaciatkuVykonu())
+                                    / ((zamestnanci[i].getCasZaciatkuVykonu() + zamestnanci[i].getTrvanieVykonu()) - zamestnanci[i].getCasZaciatkuVykonu())) * 100);
+                            if (pomocna < 1.0 || pomocna > 100.0) {
+                                dtm2.setValueAt(0D, i, 2);
+                            } else {
+                                dtm2.setValueAt(pomocna, i, 2);
+                            }
+                        } else {
+                            dtm2.setValueAt(i, i, 0);
+                            dtm2.setValueAt("----", i, 1);
+                            dtm2.setValueAt("----", i, 2);
+                        }
+
+                    }
+                    this.jTable2.setModel(dtm2);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Nezadali ste všetky potrebne udaje");
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "Nezadali ste všetky potrebne udaje");
+                double priemPocetVytPrac = mySim.getPriemernaVytazenostPracovnikov().mean();
+                double pomo = priemPocetVytPrac / pocetPracovnikov;
+                if (priemPocetVytPrac == 0) {
+                    pomo = 0.1;
+                }
+                this.per.setText(String.format("%.2f", pomo * 100) + " %");
+                this.prBar.setValue((int) Math.round(pomo * 100));
+                this.term1Label.setText(String.format("%.2f", mySim.getPriemernyRadTerm1().mean()));
+                this.term2Label.setText(String.format("%.2f", mySim.getPriemernyRadTerm2().mean()));
+                this.obsluhaLabel.setText(String.format("%.2f", mySim.getPriemernyRadPredObsluhou().mean()));
+                this.poAutoLabel.setText(String.format("%.2f", mySim.getCasCakaniaPoAutoStat().mean() / 60));
+                this.vraciaAutoLabel.setText(String.format("%.2f", mySim.getCasCakaniaVratAutoStat().mean() / 60));
+                this.priemCasTerm1Lab.setText(String.format("%.2f", mySim.getPriemernyCasVRadeTerm1().mean() / 60));
+                this.priemCasTerm2Lab.setText(String.format("%.2f", mySim.getPriemernyCasVRadeTerm2().mean() / 60));
+                this.priemCasObsluhaLab.setText(String.format("%.2f", mySim.getPriemernyCasVRadePredObsluhou().mean() / 60));
+                this.vytPracovnikov.setText(String.format("%.2f", priemPocetVytPrac));
+                this.priemLudiMini.setText(String.format("%.2f", mySim.getPriemernyPocetLudiNaMinibus().mean()));
+                this.casRadMini.setText(String.format("%.2f", mySim.getPriemernyCasCakaniaNaMinibus().mean() / 60));
+                this.priemPocetKilometrov.setText(String.format("%.2f", mySim.getPriemernyPocetPrejdenychKilometrov().mean()));
+                this.priemernaCena.setText(String.format("%.2f", mySim.getPriemernaCena().mean()));
+                if (mySim.getCasCakaniaPoAutoStat().sampleSize() > 2) {
+                    double[] interval = mySim.getCasCakaniaPoAutoStat().confidenceInterval_90();
+                    this.intervalPoAuto.setText("<" + String.format("%.2f", interval[0] / 60) + " ; " + String.format("%.2f", interval[1] / 60) + ">");
+                    interval = mySim.getPriemernyRadTerm1().confidenceInterval_90();
+                    this.intervalPocetLudiTermina1.setText("<" + String.format("%.2f", interval[0]) + " ; " + String.format("%.2f", interval[1]) + ">");
+                    interval = mySim.getPriemernyRadTerm2().confidenceInterval_90();
+                    this.intervalPocetLudiTerminal2.setText("<" + String.format("%.2f", interval[0]) + " ; " + String.format("%.2f", interval[1]) + ">");
+                    interval = mySim.getPriemernyRadPredObsluhou().confidenceInterval_90();
+                    this.intervalPocetLudiPredObsluhou.setText("<" + String.format("%.2f", interval[0]) + " ; " + String.format("%.2f", interval[1]) + ">");
+                    interval = mySim.getPriemernyPocetLudiNaMinibus().confidenceInterval_90();
+                    this.intervalPocetLudiVradeMinibus.setText("<" + String.format("%.2f", interval[0]) + " ; " + String.format("%.2f", interval[1]) + ">");
+                    interval = mySim.getPriemernyRadTerm2().confidenceInterval_90();
+                    this.intervalPocetLudiTerminal2.setText("<" + String.format("%.2f", interval[0]) + " ; " + String.format("%.2f", interval[1]) + ">");
+                    interval = mySim.getPriemernyCasVRadeTerm1().confidenceInterval_90();
+                    this.intervalPriemCasVRadeTerm1.setText("<" + String.format("%.2f", interval[0] / 60) + " ; " + String.format("%.2f", interval[1] / 60) + ">");
+                    interval = mySim.getPriemernyCasVRadeTerm2().confidenceInterval_90();
+                    this.intervalPriemCasVRadeterm2.setText("<" + String.format("%.2f", interval[0] / 60) + " ; " + String.format("%.2f", interval[1] / 60) + ">");
+                    interval = mySim.getPriemernyCasVRadePredObsluhou().confidenceInterval_90();
+                    this.intervalPriemCasVRadeObsluha.setText("<" + String.format("%.2f", interval[0] / 60) + " ; " + String.format("%.2f", interval[1] / 60) + ">");
+                    interval = mySim.getPriemernyCasCakaniaNaMinibus().confidenceInterval_90();
+                    this.intervalPriemCasVRadeNaMinibus.setText("<" + String.format("%.2f", interval[0] / 60) + " ; " + String.format("%.2f", interval[1] / 60) + ">");
+                    interval = mySim.getCasCakaniaVratAutoStat().confidenceInterval_90();
+                    this.intervalPreAuto.setText("<" + String.format("%.2f", interval[0] / 60) + " ; " + String.format("%.2f", interval[1] / 60) + ">");
+                }
+
             }
         } else {
-            double priemPocetVytPrac = mySim.getPriemernaVytazenostPracovnikov().mean();
-            double pomo = priemPocetVytPrac / pocetPracovnikov;
-            if (priemPocetVytPrac == 0) {
-                pomo = 0.1;
-            }
-            this.per.setText(String.format("%.2f", pomo * 100) + " %");
-            this.prBar.setValue((int) Math.round(pomo * 100));
-            this.term1Label.setText(String.format("%.2f", mySim.getPriemernyRadTerm1().mean()));
-            this.term2Label.setText(String.format("%.2f", mySim.getPriemernyRadTerm2().mean()));
-            this.obsluhaLabel.setText(String.format("%.2f", mySim.getPriemernyRadPredObsluhou().mean()));
-            this.poAutoLabel.setText(String.format("%.2f", mySim.getCasCakaniaPoAutoStat().mean() / 60));
-            this.vraciaAutoLabel.setText(String.format("%.2f", mySim.getCasCakaniaVratAutoStat().mean() / 60));
-            this.priemCasTerm1Lab.setText(String.format("%.2f", mySim.getPriemernyCasVRadeTerm1().mean() / 60));
-            this.priemCasTerm2Lab.setText(String.format("%.2f", mySim.getPriemernyCasVRadeTerm2().mean() / 60));
-            this.priemCasObsluhaLab.setText(String.format("%.2f", mySim.getPriemernyCasVRadePredObsluhou().mean() / 60));
-            this.vytPracovnikov.setText(String.format("%.2f", priemPocetVytPrac));
+            this.zahrievanieText.setText("PREBIEHA ZAHRIEVANIE");
         }
 
     }
@@ -1183,7 +1665,7 @@ public class GUI extends javax.swing.JFrame implements ISimDelegate {
         }
 
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            if (!table.getValueAt(row, columnNumber).equals("----")) {
+            if (!table.getValueAt(row, columnNumber).equals("----") || table.getValueAt(row, columnNumber) != null) {
                 double pom = (double) table.getValueAt(row, columnNumber);
                 if (pom < 10) {
                     setBackground(CISLO_1);

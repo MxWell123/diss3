@@ -21,13 +21,13 @@ public class PlanovacMinibusov extends Scheduler {
         counter = 0;
     }
 
-	//meta! sender="AgentModelu", id="189", type="Notice"
-	public void processKoniec(MessageForm message) {
+    //meta! sender="AgentModelu", id="189", type="Notice"
+    public void processKoniec(MessageForm message) {
 
     }
 
-	//meta! sender="AgentModelu", id="188", type="Start"
-	public void processStart(MessageForm message) {
+    //meta! sender="AgentModelu", id="188", type="Start"
+    public void processStart(MessageForm message) {
         MyMessage sprava = (MyMessage) message;
         Minibus minibus = new Minibus(counter, myAgent().getTypMinibusu());
         sprava.setMinibus(minibus);
@@ -37,13 +37,13 @@ public class PlanovacMinibusov extends Scheduler {
         this.hold(CAS_MEDZERY, sprava);
     }
 
-	//meta! userInfo="Process messages defined in code", id="0"
-	public void processDefault(MessageForm message) {
+    //meta! userInfo="Process messages defined in code", id="0"
+    public void processDefault(MessageForm message) {
         throw new UnsupportedOperationException("Vykonal sa default v PlanovacMinibusov.");
     }
 
-	//meta! sender="AgentModelu", id="195", type="Notice"
-	public void processNovyMinibus(MessageForm message) {
+    //meta! sender="AgentModelu", id="195", type="Notice"
+    public void processNovyMinibus(MessageForm message) {
 
         if (counter < myAgent().getPocetMinibusov()) {
             MyMessage kopia = (MyMessage) message.createCopy();
@@ -57,30 +57,28 @@ public class PlanovacMinibusov extends Scheduler {
 
     }
 
-	//meta! userInfo="Generated code: do not modify", tag="begin"
-	@Override
-	public void processMessage(MessageForm message)
-	{
-		switch (message.code())
-		{
-		case Mc.novyMinibus:
-			processNovyMinibus(message);
-		break;
+    //meta! userInfo="Generated code: do not modify", tag="begin"
+    @Override
+    public void processMessage(MessageForm message) {
+        switch (message.code()) {
+            case Mc.novyMinibus:
+                processNovyMinibus(message);
+                break;
 
-		case Mc.start:
-			processStart(message);
-		break;
+            case Mc.start:
+                processStart(message);
+                break;
 
-		case Mc.koniec:
-			processKoniec(message);
-		break;
+            case Mc.koniec:
+                processKoniec(message);
+                break;
 
-		default:
-			processDefault(message);
-		break;
-		}
-	}
-	//meta! tag="end"
+            default:
+                processDefault(message);
+                break;
+        }
+    }
+    //meta! tag="end"
 
     @Override
     public AgentModelu myAgent() {

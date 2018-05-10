@@ -137,18 +137,4 @@ public class ManagerModelu extends Manager {
         return (AgentModelu) super.myAgent();
     }
 
-    public int pocetCestujucich() {
-        double nahodna = rand.nextDouble();
-        if (nahodna <= 0.6) {
-            return 0;
-        } else if (nahodna <= 0.8) {
-            return 1;
-        } else if (nahodna <= 0.95) {
-            return 2;
-        } else if (nahodna <= 1) {
-            return 3;
-        }
-        return -1;
-    }
-
 }
