@@ -6,6 +6,7 @@ import OSPStat.Stat;
 import simulation.*;
 import managers.*;
 import continualAssistants.*;
+import java.util.Random;
 
 //meta! id="2"
 public class AgentOkolia extends Agent {
@@ -17,6 +18,8 @@ public class AgentOkolia extends Agent {
     public int pocetObsluzenychZakVraciaAuto;
     private Stat casCakaniaPoAutoStat;
     private Stat casCakaniaVratAutoStat;
+    private Random nasada;
+    private Random rnd;
 
     public AgentOkolia(int id, Simulation mySim, Agent parent) {
         super(id, mySim, parent);
@@ -26,6 +29,8 @@ public class AgentOkolia extends Agent {
     @Override
     public void prepareReplication() {
         resetStatistik();
+        nasada = new Random();
+        rnd = new Random(nasada.nextLong());
         super.prepareReplication();
         // Setup component for the next replication
     }
@@ -70,34 +75,70 @@ public class AgentOkolia extends Agent {
     }
 
     public double dajTrvanie(ExponentialRNG[] generatory, double[] vstupy) {
+
+//        THINNING
         final double aktualnyCas = mySim().currentTime();
         int aktualnyInterval = dajCisloIntervalu(aktualnyCas);
         double aktualneTrvanie = generatory[aktualnyInterval].sample();
-        if (aktualneTrvanie > 15 * MINUTA) {
-            aktualneTrvanie = 15 * MINUTA;
-        }
+
+        double u = rnd.nextDouble();
         int nasledujuciInterval = dajCisloIntervalu(aktualnyCas + aktualneTrvanie);
         if (nasledujuciInterval > aktualnyInterval
                 && vstupy[aktualnyInterval] < vstupy[nasledujuciInterval]) {
-
-            double zaciatokNasledujucehoIntervalu = nasledujuciInterval * 15 * MINUTA + HODINA;
-            double trvanieVNasledujucom = (aktualnyCas + aktualneTrvanie) % (zaciatokNasledujucehoIntervalu);
-            double trvanieVAktualnom = aktualneTrvanie - trvanieVNasledujucom;
-            double nasledujuceTrvanie = generatory[nasledujuciInterval].sample();
-            return trvanieVAktualnom + ((trvanieVNasledujucom + nasledujuceTrvanie) / 2);
+            while (true) {
+                double pom = (1 / aktualneTrvanie) / (1 / vstupy[aktualnyInterval]);
+                if (u <= pom) {
+                    return aktualneTrvanie;
+                } else {
+                    aktualneTrvanie = generatory[aktualnyInterval].sample();
+                    u = rnd.nextDouble();
+                }
+            }
         } else {
             return aktualneTrvanie;
         }
+//PRIEMER
+//        final double aktualnyCas = mySim().currentTime();
+//        int aktualnyInterval = dajCisloIntervalu(aktualnyCas);
+//        double aktualneTrvanie = generatory[aktualnyInterval].sample();
+//        if (aktualneTrvanie > 15 * MINUTA) {
+//            aktualneTrvanie = 15 * MINUTA;
+//        }
+//        int nasledujuciInterval = dajCisloIntervalu(aktualnyCas + aktualneTrvanie);
+//        if (nasledujuciInterval > aktualnyInterval
+//                && vstupy[aktualnyInterval] < vstupy[nasledujuciInterval]) {
+//
+//            double zaciatokNasledujucehoIntervalu = nasledujuciInterval * 15 * MINUTA + HODINA;
+//            double trvanieVNasledujucom = (aktualnyCas + aktualneTrvanie) % (zaciatokNasledujucehoIntervalu);
+//            double trvanieVAktualnom = aktualneTrvanie - trvanieVNasledujucom;
+//            double nasledujuceTrvanie = generatory[nasledujuciInterval].sample();
+//            return trvanieVAktualnom + ((trvanieVNasledujucom + nasledujuceTrvanie) / 2);
+//        } else {
+//            return aktualneTrvanie;
+//        }
     }
 
     private int dajCisloIntervalu(double aktualnyCas) {
-        int aktualnaHodina = (int) (aktualnyCas / HODINA);
-        if (aktualnaHodina < 1) {
+//        PRIEMER
+//        int aktualnaHodina = (int) (aktualnyCas / HODINA);
+//        if (aktualnaHodina < 1) {
+//            return 0;
+//        } else {
+//            double zvysokSekund = aktualnyCas % HODINA;
+//            int aktualnaMinuta = (int) (zvysokSekund / (15 * MINUTA));
+//            int pomocna = ((aktualnaHodina - 1) * 4) + aktualnaMinuta;
+//            return pomocna;
+//        }
+
+//        THINING / PIECEWISE THINNING 
+        if (aktualnyCas < 0.5 * HODINA || aktualnyCas > 5 * HODINA) {
             return 0;
         } else {
+            aktualnyCas = aktualnyCas - 0.5 * 60 * 60;
             double zvysokSekund = aktualnyCas % HODINA;
             int aktualnaMinuta = (int) (zvysokSekund / (15 * MINUTA));
-            int pomocna = ((aktualnaHodina - 1) * 4) + aktualnaMinuta;
+            int aktualnaHodina = (int) (aktualnyCas / HODINA);
+            int pomocna = ((aktualnaHodina) * 4) + aktualnaMinuta;
             return pomocna;
         }
     }

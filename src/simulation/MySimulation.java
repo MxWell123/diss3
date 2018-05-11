@@ -3,7 +3,6 @@ package simulation;
 import OSPABA.*;
 import OSPStat.Stat;
 import agents.*;
-import diss3.Obs;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +59,10 @@ public class MySimulation extends Simulation {
         agentModelu().spustiSimulaciu(pocetMinibusov, typMinibusu);
 
         // Reset entities, queues, local statistics, etc...
+    }
+
+    public int getPocetMinibusov() {
+        return pocetMinibusov;
     }
 
     public Stat getPriemernyPocetLudiNaMinibus() {
@@ -119,7 +122,10 @@ public class MySimulation extends Simulation {
             priemernyPocetLudiNaMinibus.addSample(agentSpolocnosti().getPriemernyRadNaMinibus().mean());
             priemernyCasCakaniaNaMinibus.addSample(agentSpolocnosti().getPrimernyCasVRadeNaMinibus().mean());
             priemernyPocetPrejdenychKilometrov.addSample(agentMinibus().getPocetKilometrov());
-            priemernaCena.addSample(agentMinibus().getPocetKilometrov() * minibus.getCenaZaKm());
+            priemernaCena.addSample((agentMinibus().getPocetKilometrov() * minibus.getCenaZaKm()) + (4.5 * this.getPocetPracovnikov() * 11.50 )
+                    + (12.50 * this.getPocetMinibusov() * 4.5));
+            
+
         }
     }
 
